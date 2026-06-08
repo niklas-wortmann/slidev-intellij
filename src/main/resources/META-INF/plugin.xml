@@ -76,6 +76,9 @@
                     icon="AllIcons.Actions.GroupBy"/>
         </group>
 
+        <action id="Slidev.ChooseEntry" class="dev.slidev.intellij.actions.SlidevChooseEntryAction"
+                icon="AllIcons.Actions.ListFiles"/>
+
         <group id="Slidev.ProjectsToolbar">
             <action id="Slidev.AddEntry" class="dev.slidev.intellij.actions.SlidevAddEntryAction"
                     icon="AllIcons.General.Add"/>

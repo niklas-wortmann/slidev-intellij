@@ -6,8 +6,12 @@ import com.intellij.execution.configurations.PtyCommandLine
 import com.intellij.execution.process.KillableColoredProcessHandler
 import com.intellij.execution.process.ProcessEvent
 import com.intellij.execution.process.ProcessListener
+import com.intellij.notification.NotificationAction
 import com.intellij.notification.NotificationGroupManager
 import com.intellij.notification.NotificationType
+import com.intellij.openapi.actionSystem.AnAction
+import com.intellij.openapi.wm.ToolWindowId
+import com.intellij.openapi.wm.ToolWindowManager
 import com.intellij.openapi.application.EDT
 import com.intellij.openapi.components.Service
 import com.intellij.openapi.components.service
@@ -135,7 +139,7 @@ class SlidevServerManager(private val project: Project, private val scope: Corou
     }
 
     private fun failed(state: SlidevProjectState, handler: KillableColoredProcessHandler) {
-        notify(SlidevBundle.message("notification.server.failed"), NotificationType.ERROR)
+        notify(SlidevBundle.message("notification.server.failed"), NotificationType.ERROR, showOutputAction())
         if (!handler.isProcessTerminated) {
             handler.destroyProcess()
         }
@@ -155,11 +159,20 @@ class SlidevServerManager(private val project: Project, private val scope: Corou
         SlidevProjectService.getInstance(project).publish { it.serverChanged(state) }
     }
 
-    private fun notify(content: String, type: NotificationType) {
-        NotificationGroupManager.getInstance().getNotificationGroup("Slidev")
+    private fun notify(content: String, type: NotificationType, action: AnAction? = null) {
+        val notification = NotificationGroupManager.getInstance().getNotificationGroup("Slidev")
             .createNotification(content, type)
-            .notify(project)
+        if (action != null) {
+            notification.addAction(action)
+        }
+        notification.notify(project)
     }
+
+    /** Opens the Run tool window where the dev-server console (started via [RunContentExecutor]) lives. */
+    private fun showOutputAction(): AnAction =
+        NotificationAction.createSimpleExpiring(SlidevBundle.message("notification.server.show.output")) {
+            ToolWindowManager.getInstance(project).getToolWindow(ToolWindowId.RUN)?.activate(null)
+        }
 
     companion object {
         private const val POLL_ATTEMPTS = 100

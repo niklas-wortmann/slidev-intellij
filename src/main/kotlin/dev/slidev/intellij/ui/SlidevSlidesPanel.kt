@@ -16,6 +16,7 @@ import com.intellij.ui.SimpleTextAttributes
 import com.intellij.ui.treeStructure.Tree
 import com.intellij.util.ui.EditableModel
 import dev.slidev.intellij.SlidevBundle
+import dev.slidev.intellij.actions.SlidevChooseEntryAction
 import dev.slidev.intellij.core.SlideNavigation
 import dev.slidev.intellij.core.SlideReorder
 import dev.slidev.intellij.parser.ResolvedSlide
@@ -55,6 +56,10 @@ class SlidevSlidesPanel(private val project: Project) : JPanel(BorderLayout()), 
         tree.showsRootHandles = false
         tree.selectionModel.selectionMode = TreeSelectionModel.SINGLE_TREE_SELECTION
         tree.emptyText.text = SlidevBundle.message("slides.tree.empty")
+        tree.emptyText.appendLine(
+            SlidevBundle.message("slides.tree.empty.choose"),
+            SimpleTextAttributes.LINK_PLAIN_ATTRIBUTES,
+        ) { SlidevChooseEntryAction.showPopup(project) }
         tree.cellRenderer = SlideRenderer()
         tree.addTreeSelectionListener {
             if (!ignoreEvents) {

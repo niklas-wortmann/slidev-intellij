@@ -51,11 +51,11 @@ The vscode language server does exactly two things worth porting: (a) treat each
 
 ## Phase 9 — Command parity gaps (small, mechanical)
 
-- [ ] **9.1 — `choose-entry` action** (S): quick-pick equivalent (popup `JBList` of registered entries → set active). Vscode has it in the command palette and the slides-tree empty state. Register in plugin.xml + bundle keys.
-- [ ] **9.2 — Slides panel empty state** (S): "No active slides entry — Choose one" link panel invoking 9.1 (port of `viewsWelcome`).
-- [ ] **9.3 — Dev-server console** (S–M): verify `ProcessHandler` output is surfaced; if not, attach a `ConsoleView` tab (or Run tool window) — port of `views/logger.ts`. Server-failed notification should link to it.
-- [ ] **9.4 — `config-port` parity check** (XS): vscode prompts per-window; settings field exists — confirm a per-project port override isn't needed, document decision.
-- [ ] **9.5 — `force-enabled` decision** (XS): N/A in IntelliJ (tool window is opt-in); document as intentionally dropped.
+- [x] **9.1 — `choose-entry` action** (S): quick-pick equivalent (popup `JBList` of registered entries → set active). Vscode has it in the command palette and the slides-tree empty state. Register in plugin.xml + bundle keys. *(Done: `SlidevChooseEntryAction` + `Slidev.ChooseEntry` registration; popup lists entries relative to the project root.)*
+- [x] **9.2 — Slides panel empty state** (S): "No active slides entry — Choose one" link panel invoking 9.1 (port of `viewsWelcome`). *(Done: `emptyText` link line in `SlidevSlidesPanel` invoking the chooser popup.)*
+- [x] **9.3 — Dev-server console** (S–M): verify `ProcessHandler` output is surfaced; if not, attach a `ConsoleView` tab (or Run tool window) — port of `views/logger.ts`. Server-failed notification should link to it. *(Verified: `SlidevServerManager` already runs the handler through `RunContentExecutor`, so PTY output lands in a Run tool window console. Added a "Show Output" action to the server-failed notification.)*
+- [x] **9.4 — `config-port` parity check** (XS): **Decision:** no per-project port override needed. VS Code's `config-port` is per-window because one window can hold many workspaces; in IntelliJ, `SlidevSettings` is already project-level (`Service.Level.PROJECT` + `nonDefaultProject` configurable), which is the same granularity. Multiple entries in one IDE project get auto-allocated ports (`ServerDetector.allocPort`).
+- [x] **9.5 — `force-enabled` decision** (XS): **Decision:** intentionally dropped. VS Code needs `force-enabled` because the extension activates lazily on globs; the IntelliJ tool window is always available and project scanning is cheap, so there is nothing to force.
 
 ## Phase 10 — Preview hardening
 
@@ -77,7 +77,7 @@ The 7 `lmTools.ts` tools (getActiveSlide, getSlideContent, getAllSlideTitles, fi
 - [ ] **12.2 — Plugin Verifier** (S): `runPluginVerifier` against 2025.3 + latest EAP; fix reported API issues.
 - [ ] **12.3 — README + screenshots** (S): feature table mirroring the vscode README, dev-command docs link.
 - [ ] **12.4 — CI** (M): GitHub Actions — build, test, verifier; `signPlugin`/`publishPlugin` with marketplace token on tag.
-- [ ] **12.5 — Initial commit hygiene** (XS): repo has everything staged but zero commits — commit the scaffold and port as logical chunks before further work.
+- [x] **12.5 — Initial commit hygiene** (XS): repo has everything staged but zero commits — commit the scaffold and port as logical chunks before further work. *(Done: 7 logical commits on `main`.)*
 
 ---
 
