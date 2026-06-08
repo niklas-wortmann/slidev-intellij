@@ -1,0 +1,99 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <id>dev.slidev.intellij</id>
+    <name>Slidev</name>
+    <vendor url="https://sli.dev">Slidev</vendor>
+
+    <description><![CDATA[
+        Integrated support for <a href="https://sli.dev">Slidev</a> presentations.<br>
+        <ul>
+            <li>Auto-detects <code>slides.md</code> Slidev projects in your workspace</li>
+            <li>Starts and manages the Slidev dev server</li>
+            <li>Live side-by-side preview with bidirectional editor &harr; preview navigation sync</li>
+            <li>Slides and projects tree views</li>
+            <li>Per-slide code folding and slide-divider annotations in the editor</li>
+        </ul>
+        Port of the official Slidev VS Code extension.
+        ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+    <!-- The "Markdown" language is defined by this plugin; folding registration is optional so the
+         rest of the plugin works in IDEs where Markdown support is disabled or absent. -->
+    <depends optional="true" config-file="slidev-markdown.xml">org.intellij.plugins.markdown</depends>
+
+    <resource-bundle>messages.SlidevBundle</resource-bundle>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow id="Slidev" anchor="right" canCloseContents="false"
+                    factoryClass="dev.slidev.intellij.ui.SlidevToolWindowFactory"
+                    icon="dev.slidev.intellij.SlidevIcons.ToolWindow"/>
+        <postStartupActivity implementation="dev.slidev.intellij.startup.SlidevStartupActivity"/>
+        <projectConfigurable parentId="tools" id="dev.slidev.intellij.settings"
+                             key="configurable.slidev.display.name"
+                             nonDefaultProject="true"
+                             instance="dev.slidev.intellij.settings.SlidevSettingsConfigurable"/>
+        <notificationGroup id="Slidev" displayType="BALLOON" key="notification.group.slidev"/>
+        <editor.linePainter implementation="dev.slidev.intellij.editor.SlidevSlideLinePainter"/>
+    </extensions>
+
+    <projectListeners>
+        <listener class="dev.slidev.intellij.editor.SlidevAnnotationsRefresher"
+                  topic="dev.slidev.intellij.project.SlidevListener"/>
+    </projectListeners>
+
+    <actions>
+        <action id="Slidev.PrevSlide" class="dev.slidev.intellij.actions.SlidevPrevSlideAction"
+                icon="AllIcons.Actions.PreviousOccurence">
+            <keyboard-shortcut keymap="$default" first-keystroke="alt UP"/>
+        </action>
+        <action id="Slidev.NextSlide" class="dev.slidev.intellij.actions.SlidevNextSlideAction"
+                icon="AllIcons.Actions.NextOccurence">
+            <keyboard-shortcut keymap="$default" first-keystroke="alt DOWN"/>
+        </action>
+
+        <group id="Slidev.PreviewToolbar">
+            <action id="Slidev.PreviewPrevSlide" class="dev.slidev.intellij.actions.SlidevPreviewPrevSlideAction"
+                    icon="AllIcons.Actions.PreviousOccurence"/>
+            <action id="Slidev.PreviewNextSlide" class="dev.slidev.intellij.actions.SlidevPreviewNextSlideAction"
+                    icon="AllIcons.Actions.NextOccurence"/>
+            <action id="Slidev.PrevClick" class="dev.slidev.intellij.actions.SlidevPrevClickAction"
+                    icon="AllIcons.Actions.Back"/>
+            <action id="Slidev.NextClick" class="dev.slidev.intellij.actions.SlidevNextClickAction"
+                    icon="AllIcons.Actions.Forward"/>
+            <separator/>
+            <action id="Slidev.StartServer" class="dev.slidev.intellij.actions.SlidevStartServerAction"
+                    icon="AllIcons.Actions.Execute"/>
+            <action id="Slidev.StopServer" class="dev.slidev.intellij.actions.SlidevStopServerAction"
+                    icon="AllIcons.Actions.Suspend"/>
+            <action id="Slidev.OpenInBrowser" class="dev.slidev.intellij.actions.SlidevOpenInBrowserAction"
+                    icon="AllIcons.Nodes.PpWeb"/>
+            <action id="Slidev.RefreshPreview" class="dev.slidev.intellij.actions.SlidevRefreshPreviewAction"
+                    icon="AllIcons.Actions.Refresh"/>
+            <separator/>
+            <action id="Slidev.ToggleSync" class="dev.slidev.intellij.actions.SlidevToggleSyncAction"
+                    icon="AllIcons.Actions.Lightning"/>
+            <action id="Slidev.TogglePreviewMode" class="dev.slidev.intellij.actions.SlidevTogglePreviewModeAction"
+                    icon="AllIcons.Actions.GroupBy"/>
+        </group>
+
+        <group id="Slidev.ProjectsToolbar">
+            <action id="Slidev.AddEntry" class="dev.slidev.intellij.actions.SlidevAddEntryAction"
+                    icon="AllIcons.General.Add"/>
+            <action id="Slidev.Rescan" class="dev.slidev.intellij.actions.SlidevRescanAction"
+                    icon="AllIcons.Actions.Refresh"/>
+        </group>
+
+        <group id="Slidev.ProjectsContext">
+            <action id="Slidev.SetActive" class="dev.slidev.intellij.actions.SlidevSetActiveAction"
+                    icon="AllIcons.Actions.Show"/>
+            <action id="Slidev.RemoveEntry" class="dev.slidev.intellij.actions.SlidevRemoveEntryAction"
+                    icon="AllIcons.General.Remove"/>
+        </group>
+
+        <group id="Slidev.EditorNavigation">
+            <reference ref="Slidev.PrevSlide"/>
+            <reference ref="Slidev.NextSlide"/>
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+        </group>
+    </actions>
+</idea-plugin>
