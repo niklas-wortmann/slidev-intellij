@@ -3,7 +3,7 @@
     <!-- Marketplace rejects plugin IDs containing the word "intellij" (TemplateWordInPluginId). -->
     <id>dev.slidev.plugin</id>
     <name>Slidev</name>
-    <vendor url="https://sli.dev">Slidev</vendor>
+    <vendor url="https://wordman.dev">Jan-Niklas Wortmann</vendor>
 
     <description><![CDATA[
         Integrated support for <a href="https://sli.dev">Slidev</a> presentations.<br>
