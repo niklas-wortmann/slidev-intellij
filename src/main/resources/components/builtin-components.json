@@ -1,0 +1,229 @@
+{
+  "components": [
+    {
+      "name": "Arrow",
+      "description": "Draw an arrow.",
+      "docsUrl": "https://sli.dev/builtin/components#arrow",
+      "props": [
+        { "name": "x1", "type": "string | number", "required": true, "description": "start point x position" },
+        { "name": "y1", "type": "string | number", "required": true, "description": "start point y position" },
+        { "name": "x2", "type": "string | number", "required": true, "description": "end point x position" },
+        { "name": "y2", "type": "string | number", "required": true, "description": "end point y position" },
+        { "name": "width", "type": "string | number", "default": "2", "description": "line width" },
+        { "name": "color", "type": "string", "default": "'currentColor'", "description": "line color" },
+        { "name": "two-way", "type": "boolean", "default": "false", "description": "draw a two-way arrow" }
+      ]
+    },
+    {
+      "name": "VDragArrow",
+      "description": "An Arrow component that can be dragged.",
+      "docsUrl": "https://sli.dev/features/draggable#draggable-arrow",
+      "props": [
+        { "name": "pos", "type": "string", "description": "initial position and size (x,y,w,h)" },
+        { "name": "width", "type": "string | number", "default": "2", "description": "line width" },
+        { "name": "color", "type": "string", "default": "'currentColor'", "description": "line color" },
+        { "name": "two-way", "type": "boolean", "default": "false", "description": "draw a two-way arrow" }
+      ]
+    },
+    {
+      "name": "AutoFitText",
+      "description": "Box inside which the font size automatically adapts to fit the content. Similar to a PowerPoint or Keynote TextBox. (Experimental)",
+      "docsUrl": "https://sli.dev/builtin/components#autofittext",
+      "props": [
+        { "name": "max", "type": "string | number", "default": "100", "description": "Maximum font size" },
+        { "name": "min", "type": "string | number", "default": "30", "description": "Minimum font size" },
+        { "name": "modelValue", "type": "string", "default": "''", "description": "text content" }
+      ]
+    },
+    {
+      "name": "LightOrDark",
+      "description": "Display one thing or another depending on the active light or dark theme, via the #dark and #light slots. Extra props are passed through as scoped slot props.",
+      "docsUrl": "https://sli.dev/builtin/components#lightordark",
+      "props": []
+    },
+    {
+      "name": "Link",
+      "description": "Insert a link you can use to navigate to a given slide.",
+      "docsUrl": "https://sli.dev/builtin/components#link",
+      "props": [
+        { "name": "to", "type": "string | number", "description": "The path of the slide to navigate to (slide paths start from 1); a string navigates to a routeAlias" },
+        { "name": "title", "type": "string", "description": "The title to display" }
+      ]
+    },
+    {
+      "name": "PoweredBySlidev",
+      "description": "Renders \"Powered by Slidev\" with a link to the Slidev website.",
+      "docsUrl": "https://sli.dev/builtin/components#poweredbyslidev",
+      "props": []
+    },
+    {
+      "name": "RenderWhen",
+      "description": "Render slots depending on whether the context matches (for example whether we are in presenter view). The #default slot renders on match, #fallback otherwise.",
+      "docsUrl": "https://sli.dev/builtin/components#renderwhen",
+      "props": [
+        {
+          "name": "context",
+          "type": "Context | Context[]",
+          "description": "a context or array of contexts to check for: 'main' | 'visible' | 'print' | 'slide' | 'overview' | 'presenter' | 'previewNext'"
+        }
+      ]
+    },
+    {
+      "name": "SlideCurrentNo",
+      "description": "Current slide number.",
+      "docsUrl": "https://sli.dev/builtin/components#slidecurrentno",
+      "props": []
+    },
+    {
+      "name": "SlidesTotal",
+      "description": "Total number of slides.",
+      "docsUrl": "https://sli.dev/builtin/components#slidestotal",
+      "props": []
+    },
+    {
+      "name": "Toc",
+      "description": "Insert a Table Of Contents. Slides with hideInToc: true in their frontmatter are skipped.",
+      "docsUrl": "https://sli.dev/builtin/components#toc",
+      "props": [
+        { "name": "columns", "type": "string | number", "default": "1", "description": "The number of columns of the display" },
+        { "name": "listClass", "type": "string | string[]", "default": "''", "description": "Classes to apply to the table of contents list" },
+        { "name": "maxDepth", "type": "string | number", "default": "Infinity", "description": "The maximum depth level of title to display" },
+        { "name": "minDepth", "type": "string | number", "default": "1", "description": "The minimum depth level of title to display" },
+        {
+          "name": "mode",
+          "type": "'all' | 'onlyCurrentTree' | 'onlySiblings'",
+          "default": "'all'",
+          "description": "'all' displays all items, 'onlyCurrentTree' only items in the current tree, 'onlySiblings' only items in the current tree and their direct siblings"
+        }
+      ]
+    },
+    {
+      "name": "Transform",
+      "description": "Apply scaling or transforming to elements.",
+      "docsUrl": "https://sli.dev/builtin/components#transform",
+      "props": [
+        { "name": "scale", "type": "number | string", "default": "1", "description": "transform scale value" },
+        { "name": "origin", "type": "string", "default": "'top left'", "description": "transform origin value" }
+      ]
+    },
+    {
+      "name": "Tweet",
+      "description": "Embed a tweet.",
+      "docsUrl": "https://sli.dev/builtin/components#tweet",
+      "props": [
+        { "name": "id", "type": "number | string", "required": true, "description": "id of the tweet" },
+        { "name": "scale", "type": "number | string", "default": "1", "description": "transform scale value" },
+        { "name": "conversation", "type": "string", "default": "'none'", "description": "tweet embed parameter" },
+        { "name": "cards", "type": "'hidden' | 'visible'", "default": "'visible'", "description": "tweet embed parameter" }
+      ]
+    },
+    {
+      "name": "BlueSky",
+      "description": "Embed a Bluesky post.",
+      "docsUrl": "https://sli.dev/builtin/components#bluesky",
+      "props": [
+        { "name": "uri", "type": "string", "required": true, "description": "AT-URI of the Bluesky post, or a https://bsky.app/profile/.../post/... URL" },
+        { "name": "scale", "type": "number | string", "default": "1", "description": "transform scale value" }
+      ]
+    },
+    {
+      "name": "VAfter",
+      "description": "Click animation: show the wrapped element after the previous v-click element.",
+      "docsUrl": "https://sli.dev/builtin/components#vafter-vclick-and-vclicks",
+      "props": []
+    },
+    {
+      "name": "VClick",
+      "description": "Click animation: show the wrapped element after a click.",
+      "docsUrl": "https://sli.dev/builtin/components#vafter-vclick-and-vclicks",
+      "props": [
+        { "name": "at", "type": "number | string", "default": "'+1'", "description": "the click turn to show the element at; '+n' is relative" },
+        { "name": "hide", "type": "boolean", "default": "false", "description": "hide the element after the click instead of showing it" },
+        { "name": "animation", "type": "string", "description": "animation style, e.g. 'fade'" }
+      ]
+    },
+    {
+      "name": "VClicks",
+      "description": "Click animation: apply a click animation to every direct child (handy for lists).",
+      "docsUrl": "https://sli.dev/builtin/components#vafter-vclick-and-vclicks",
+      "props": [
+        { "name": "depth", "type": "number | string", "default": "1", "description": "nesting depth of list items to animate" },
+        { "name": "every", "type": "number | string", "default": "1", "description": "number of children to reveal per click" },
+        { "name": "at", "type": "number | string", "default": "'+1'", "description": "the click turn to start at; '+n' is relative" },
+        { "name": "hide", "type": "boolean", "default": "false", "description": "hide the elements after the click instead of showing them" },
+        { "name": "animation", "type": "string | string[]", "description": "animation style, e.g. 'fade'" }
+      ]
+    },
+    {
+      "name": "VSwitch",
+      "description": "Switch between multiple slots based on clicks.",
+      "docsUrl": "https://sli.dev/builtin/components#vswitch",
+      "props": [
+        { "name": "at", "type": "number | string", "default": "'+1'", "description": "the click turn to start at; '+n' is relative" },
+        { "name": "unmount", "type": "boolean", "default": "false", "description": "unmount the previous slot when switching to the next slot" },
+        { "name": "transition", "type": "string | object | false", "default": "false", "description": "the transition effect" },
+        { "name": "tag", "type": "string", "default": "'div'", "description": "tag of the component root element" },
+        { "name": "childTag", "type": "string", "default": "'div'", "description": "tag of the child elements" }
+      ]
+    },
+    {
+      "name": "VDrag",
+      "description": "Make the wrapped element draggable in the slide.",
+      "docsUrl": "https://sli.dev/features/draggable",
+      "props": [
+        { "name": "pos", "type": "string", "description": "initial position and size (x,y,w,h)" }
+      ]
+    },
+    {
+      "name": "SlidevVideo",
+      "description": "Embed a video.",
+      "docsUrl": "https://sli.dev/builtin/components#slidevvideo",
+      "props": [
+        { "name": "controls", "type": "boolean", "default": "false", "description": "show the video controls" },
+        { "name": "autoplay", "type": "boolean | 'once'", "default": "false", "description": "true or 'once' starts the video once without restarting it when ended or paused" },
+        { "name": "autoreset", "type": "'slide' | 'click'", "description": "go back to the start of the video when going back to the slide or to the component's click turn" },
+        { "name": "poster", "type": "string", "description": "The source of the image to print when the video is not playing" },
+        { "name": "printPoster", "type": "string", "description": "The override for poster when printing" },
+        { "name": "timestamp", "type": "string | number", "default": "0", "description": "The starting time of the video in seconds" },
+        { "name": "printTimestamp", "type": "string | number | 'last'", "description": "The override for timestamp when printing" }
+      ]
+    },
+    {
+      "name": "Youtube",
+      "description": "Embed a YouTube video. Add ?start=1234 to the id value to start at a specific time (in seconds).",
+      "docsUrl": "https://sli.dev/builtin/components#youtube",
+      "props": [
+        { "name": "id", "type": "string", "required": true, "description": "id of the YouTube video" },
+        { "name": "width", "type": "number", "description": "width of the video" },
+        { "name": "height", "type": "number", "description": "height of the video" }
+      ]
+    }
+  ],
+  "directives": [
+    {
+      "name": "v-click",
+      "description": "Click animation: show the element after a click. Accepts a click turn value, e.g. v-click=\"3\" or v-click=\"'+2'\".",
+      "docsUrl": "https://sli.dev/guide/animations#click-animation"
+    },
+    {
+      "name": "v-after",
+      "description": "Click animation: show the element at the same click turn as the previous v-click element.",
+      "docsUrl": "https://sli.dev/guide/animations#click-animation"
+    },
+    {
+      "name": "v-motion",
+      "description": "Apply motion animations to the element (powered by @vueuse/motion), e.g. :initial / :enter / :leave variant objects.",
+      "docsUrl": "https://sli.dev/guide/animations#motion"
+    },
+    {
+      "name": "v-mark",
+      "description": "Rough Notation marker: underline, circle, or highlight the element, optionally bound to a click turn, e.g. v-mark.underline.orange.",
+      "docsUrl": "https://sli.dev/features/rough-marker"
+    },
+    {
+      "name": "v-drag",
+      "description": "Make the element draggable in the slide; the position is persisted into the markdown.",
+      "docsUrl": "https://sli.dev/features/draggable"
+    }
+  ]
+}

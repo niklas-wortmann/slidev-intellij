@@ -69,6 +69,53 @@ The 7 `lmTools.ts` tools (getActiveSlide, getSlideContent, getAllSlideTitles, fi
 - [x] **12.5 — Initial commit hygiene** (XS): repo has everything staged but zero commits — commit the scaffold and port as logical chunks before further work. *(Done: 7 logical commits on `main`.)*
 - [x] **12.6 — Alpha release mechanics** (S): version `0.1.0-alpha.1` (gradle.properties), Marketplace channel derived from the version's pre-release suffix (`-alpha.1` → `alpha` channel, none → `default`), CHANGELOG patched, README install-from-disk + alpha-channel instructions. Remaining **human steps**: run the 10.3 manual matrix in the sandbox; optionally create the Marketplace listing (the *first* upload must be manual via the web UI, channel `alpha`), then create a token + `release` environment secrets so future tags publish automatically; screenshots (12.3).
 
+## Phase 13 — Component index (foundation for component/comark language support)
+
+Slides mix Markdown, Vue components ([docs](https://sli.dev/guide/component)), inline HTML, and optionally Comark syntax ([docs](https://sli.dev/features/comark)). All completion/highlighting features below depend on one shared component index that mirrors `unplugin-vue-components` resolution: built-ins + local `components/` dir + theme/addon packages.
+
+- [x] **13.1 — Vendor built-in component metadata** (S): `resources/components/builtin-components.json` — all 20 built-ins with props (type/default/required/description) + docs URLs, plus the 5 global directives (`v-click`, `v-after`, `v-motion`, `v-mark`, `v-drag`). Hand-vendored from `packages/client/builtin` + `docs/builtin/components.md` (noted in `SlidevBuiltinComponents` kdoc); loaded with the bundled SnakeYAML like the frontmatter schemas.
+- [x] **13.2 — Local components scanner** (S–M): `VueComponentScanner` in `parser/` — filename → PascalCase tag (mirroring `unplugin-vue-components`), best-effort `defineProps` extraction over raw text covering both the type-literal form (incl. `withDefaults`, optionality, nested generics/functions) and the object form (incl. `required: true`), brace/string/comment-aware. Pure Kotlin, unit-tested.
+- [x] **13.3 — Theme/addon resolution** (S): `SlidevPackageNames` maps headmatter `theme:`/`addons:` to package candidates mirroring `resolver.ts` (`@slidev/theme-*` → `slidev-theme-*` / `slidev-addon-*` fallbacks, scoped/prefixed pass-through, local paths, `theme: none`); the index probes `node_modules` upward from the entry root and scans each package's `components/`.
+- [x] **13.4 — Index service** (S): `SlidevComponentIndex` (project service) — per-entry cache keyed by (theme, addons, VFS stamp); `BulkFileListener` bumps the stamp on `.vue` changes and `package.json` create/delete; shadowing order builtin < theme < addon < local. EDT callers get stale-while-revalidate (last snapshot or built-ins, recompute in background) — `node_modules` is never scanned on the EDT. Tested (`SlidevComponentIndexTest`: precedence, node_modules resolution, invalidation; 28 new tests across the four classes).
+
+## Phase 14 — Component & HTML completion/docs (text-based, all IDEs)
+
+The Vue plugin only exists in paid IDEs, so the baseline is text-offset-based over `SlidevParser` ranges — the same house style as Phase 8's fallback. Works everywhere, including Community.
+
+- [ ] **14.1 — Tag completion** (M): `<` in slide content → component names from the index, with self-closing-tag insertion. First verify what the bundled Markdown plugin already provides for plain HTML tags and only fill gaps.
+- [ ] **14.2 — Attribute completion** (M): inside an open component tag, offer props from the index in plain / `:`-bound / `@event` variants, plus the global Slidev directives (`v-click`, `v-after`, `v-motion`, `v-mark`, `v-drag`).
+- [ ] **14.3 — Hover docs** (S): component names/props via `platform.backend.documentation.targetProvider` (v2 API — same lesson as frontmatter: the legacy `lang.documentationProvider` gets shadowed).
+- [ ] **14.4 — Goto declaration** (S): local/theme/addon component tag → its `.vue` file; built-ins → external docs URL.
+- [ ] **14.5 — Typed handler** (XS): auto-popup on `<` and space-inside-tag (extend the `SlidevFrontmatterTypedHandler` pattern).
+- [ ] **14.6 — Tests** (M): index resolution (built-in/local/theme precedence), tag + attribute completion, docs, navigation; non-Slidev markdown unaffected.
+
+## Phase 15 — Highlighting for component tags & Vue attributes
+
+- [ ] **15.1 — Annotator-based semantic coloring** (M): custom `TextAttributesKey`s + color settings page — known component names, Vue directive prefixes (`:`/`@`/`v-`), and a weak-warning for unknown components (typo-catcher). Layers *on top of* the Markdown plugin's generic HTML-tag coloring, doesn't replace it. Reuses debounced parse results (`SlidevFoldingBuilder` pattern).
+- [ ] **15.2 — Spike: HTML injection into HTML blocks** (S, ⚠ optional): language injection into proper HTML *blocks* (not inline tags) for full HTML completion in Community. Risky given the 8.4 outcome — inline HTML comes as scattered `HTML_TAG` tokens in markdown PSI; 15.1 is the committed fallback.
+
+## Phase 16 — Comark support (gated on `comark: true` / deprecated `mdc: true` headmatter)
+
+Greenfield: no IntelliJ support for Comark exists anywhere. Custom scanner + annotator + completion, activated per-file from the headmatter flag (already present in the vendored schema). Grammar reference: [comark.dev/syntax/markdown](https://comark.dev/syntax/markdown) / `@comark/markdown-it`.
+
+- [ ] **16.1 — Comark scanner** (M–L): pure-Kotlin scanner in `parser/` covering the syntax subset: `[text]{...}` spans, `:name{...}` inline components, `::name … ::` block components (with nesting), `{key=value .class #id key="value"}` attribute blocks after images/links/elements. Fixture tests against the comark spec. **Must not collide with Slidev's named-slot syntax (`::right::`)** — distinguish slot markers from block components.
+- [ ] **16.2 — Annotator highlighting** (S–M): color settings entries for directive markers, component names, attribute keys/values, `.class`/`#id` shorthands.
+- [ ] **16.3 — Completion** (M): component names after `:` / `::` (PascalCase→kebab-case mapping from the Phase 13 index), props inside `{}` including the shorthands; stretch: layout slot names after `::` from the active layout.
+- [ ] **16.4 — Editing ergonomics** (S): auto-close `{}`, complete the `::` block terminator, brace matching.
+- [ ] **16.5 — Activation plumbing** (XS): per-file headmatter check via existing `SlidevParser` results; everything no-ops when comark is off.
+- [ ] **16.6 — Tests** (M): scanner fixtures (incl. slot-syntax non-collision), gating on/off, completion, annotator.
+
+## Phase 17 — Deep Vue integration (optional, paid-IDE only, stretch)
+
+- [ ] **17.1 — Spike: Polysymbols contribution** (M, ⚠): optional dependency on `JavaScript` + `org.jetbrains.plugins.vue` in a separate `slidev-vue.xml` (same pattern as `slidev-mcp.xml`). Contribute the Phase 13 index through the Polysymbols API (Web Symbols, renamed 2025.2+) so the platform's HTML/Vue machinery does type-aware prop completion, rename, and find-usages. The 13–16 baseline must stand alone without this.
+
+### Phase 13–17 risks & notes
+
+- **Markdown inline-HTML fragmentation:** inline tags are scattered `HTML_TAG` tokens in markdown PSI — text-offset approach (house style) avoids fighting it.
+- **Spec drift:** Comark was recently renamed from MDC; vendor a fixed grammar subset with a refresh script, like the schemas.
+- **Preview:** comark syntax renders as literal text in the IDE markdown preview (`SlidevPreviewVueAttributesExtension` only strips Vue attrs) — separate backlog item.
+- **Dependency order:** 13 → 14/15 (parallelizable) → 16; 17 independent after 13.
+
 ---
 
 ## Suggested order & effort
@@ -81,8 +128,12 @@ The 7 `lmTools.ts` tools (getActiveSlide, getSlideContent, getAllSlideTitles, fi
 | 4 | Phase 10 (preview hardening + manual matrix) | ~1 day |
 | 5 | Phase 12 (release) | ~1–2 days |
 | 6 | Phase 11 (LM tools) | optional |
+| 7 | Phase 13 (component index) | ~2–3 days |
+| 8 | Phase 14 + 15 (component completion/docs + highlighting, parallelizable) | ~3–5 days |
+| 9 | Phase 16 (comark) | ~3–5 days, 16.1 scanner is the bulk |
+| 10 | Phase 17 (Polysymbols/Vue) | ~1 week+, spike-gated, optional |
 
-The only genuinely uncertain task is **8.4** (JSON-schema over injected YAML) — do that spike first within Phase 8, since its outcome decides whether 8.5 is free or becomes a hand-rolled completion contributor.
+The only genuinely uncertain task is **8.4** (JSON-schema over injected YAML) — do that spike first within Phase 8, since its outcome decides whether 8.5 is free or becomes a hand-rolled completion contributor. For the language-support phases, the equivalent risk items are **15.2** (HTML injection spike — fallback already committed as 15.1) and **17.1** (Polysymbols spike — entire phase is optional).
 
 ## Completed phases (reference)
 
