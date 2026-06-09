@@ -165,6 +165,41 @@ class SlidevSlideTagsTest {
         assertNull(tokenAt("<htt<caret>ps://sli.dev>"))
     }
 
+    // ------------------------------------------------------------- full scans
+
+    @Test
+    fun `tokens scans all paragraphs in document order`() {
+        val text = "# A\n\n<Tweet id=\"1\" :scale=\"0.6\" />\n\ntext\n\n<div v-click>x</div>"
+        val tokens = SlidevSlideTags.tokens(text, "slides.md")
+        val tags = tokens.filterIsInstance<SlidevSlideTags.Token.Tag>()
+        val attributes = tokens.filterIsInstance<SlidevSlideTags.Token.Attribute>()
+        assertEquals(listOf("Tweet", "div", "div"), tags.map { it.name })
+        assertEquals(listOf("id", ":scale", "v-click"), attributes.map { it.name })
+        // Ranges point at the names in the original text.
+        assertEquals("Tweet", text.substring(tags[0].range.first, tags[0].range.last + 1))
+        assertEquals(":scale", text.substring(attributes[1].range.first, attributes[1].range.last + 1))
+    }
+
+    @Test
+    fun `tokens reports closing tags`() {
+        val tags = SlidevSlideTags.tokens("<Toc>\ncontent\n</Toc>", "slides.md")
+            .filterIsInstance<SlidevSlideTags.Token.Tag>()
+        assertEquals(listOf(false, true), tags.map { it.closing })
+    }
+
+    @Test
+    fun `tokens skips frontmatter fences comments and inline code`() {
+        val text = "---\nlayout: <Center />\n---\n\n<!-- <Note /> -->\n\n```html\n<Fence />\n```\n\nsee `<Code />` and <Real />"
+        val tags = SlidevSlideTags.tokens(text, "slides.md").filterIsInstance<SlidevSlideTags.Token.Tag>()
+        assertEquals(listOf("Real"), tags.map { it.name })
+    }
+
+    @Test
+    fun `tokens ignores prose angles and autolinks`() {
+        val tokens = SlidevSlideTags.tokens("a < b, <2x, <https://sli.dev>", "slides.md")
+        assertTrue(tokens.isEmpty())
+    }
+
     // ---------------------------------------------------------------- regions
 
     @Test

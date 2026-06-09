@@ -27,13 +27,15 @@ internal object SlidevSlideTags {
         class AttributeName(val tagName: String, val prefix: String) : Context()
     }
 
-    /** A complete token under an offset, for hover documentation and navigation. */
+    /** A complete token, for hover documentation, navigation, and highlighting. */
     sealed class Token {
+        abstract val range: IntRange
+
         /** A tag name; [range] covers the name only, not the `<`/`</`. */
-        class Tag(val name: String, val range: IntRange, val closing: Boolean) : Token()
+        class Tag(val name: String, override val range: IntRange, val closing: Boolean) : Token()
 
         /** An attribute name inside `<`[tagName], including `:`/`@`/`v-` sigils. */
-        class Attribute(val tagName: String, val name: String, val range: IntRange) : Token()
+        class Attribute(val tagName: String, val name: String, override val range: IntRange) : Token()
     }
 
     /** Whether [offset] lies in slide content (not frontmatter, not fenced code). */
@@ -141,18 +143,37 @@ internal object SlidevSlideTags {
         if (!doc.isContentLine(line)) {
             return null
         }
+        val tokens = mutableListOf<Token>()
+        collectTokens(text, doc.paragraphStartOffset(line), doc.paragraphEndOffset(line), tokens)
+        return tokens.firstOrNull { target in it.range.first..(it.range.last + 1) }
+    }
 
-        var i = doc.paragraphStartOffset(line)
-        val ceiling = doc.paragraphEndOffset(line)
-        var tagName: String? = null
+    /** All tag/attribute tokens in slide content of [text], in document order. */
+    fun tokens(text: String, filepath: String): List<Token> {
+        val doc = DocText(text, filepath)
+        val result = mutableListOf<Token>()
+        for (paragraph in doc.paragraphRanges()) {
+            collectTokens(text, paragraph.first, paragraph.last + 1, result)
+        }
+        return result
+    }
+
+    /**
+     * Scans `[from, ceiling)` — one paragraph — into [sink]. Comments, inline code
+     * spans, and attribute values yield no tokens; an unterminated comment or quote
+     * swallows the rest of the paragraph, matching how the browser would parse it.
+     */
+    private fun collectTokens(text: String, from: Int, ceiling: Int, sink: MutableList<Token>) {
+        var i = from
+        var tagName: String? = null // non-null while inside an open tag's attribute area
         while (i < ceiling) {
             val c = text[i]
             if (tagName == null) {
                 when {
                     c == '<' && text.startsWith("<!--", i) -> {
                         val close = text.indexOf("-->", i + 4)
-                        if (close == -1 || target <= close + 2) {
-                            return null // offset inside a comment (or comment runs past it)
+                        if (close == -1) {
+                            return // unclosed comment swallows the rest
                         }
                         i = close + 3
                     }
@@ -175,11 +196,9 @@ internal object SlidevSlideTags {
                             i = maxOf(j, i + 1) // not a tag
                             continue
                         }
-                        if (target in nameStart..j) {
-                            return Token.Tag(name, nameStart until j, closing)
-                        }
+                        sink.add(Token.Tag(name, nameStart until j, closing))
                         when (next) {
-                            null -> return null
+                            null -> return
                             '>' -> i = j + 1
                             else -> {
                                 tagName = name
@@ -190,15 +209,8 @@ internal object SlidevSlideTags {
 
                     c == '`' -> {
                         val close = text.indexOf('`', i + 1)
-                        if (close != -1 && close < ceiling) {
-                            if (target in i..close) {
-                                return null // inside an inline code span
-                            }
-                            i = close + 1
-                        }
-                        else {
-                            i++
-                        }
+                        // Skip closed inline code; an unclosed backtick is literal text.
+                        i = if (close != -1 && close < ceiling) close + 1 else i + 1
                     }
 
                     else -> i++
@@ -209,10 +221,7 @@ internal object SlidevSlideTags {
                     c == '"' || c == '\'' -> {
                         val close = text.indexOf(c, i + 1)
                         if (close == -1 || close >= ceiling) {
-                            return null
-                        }
-                        if (target in i..close) {
-                            return null // inside an attribute value
+                            return
                         }
                         i = close + 1
                     }
@@ -237,9 +246,7 @@ internal object SlidevSlideTags {
                         while (j < ceiling && isAttrNameChar(text[j])) {
                             j++
                         }
-                        if (target in i..j) {
-                            return Token.Attribute(tagName, text.substring(i, j), i until j)
-                        }
+                        sink.add(Token.Attribute(tagName, text.substring(i, j), i until j))
                         i = j
                     }
 
@@ -247,7 +254,6 @@ internal object SlidevSlideTags {
                 }
             }
         }
-        return null
     }
 
     private fun isTagNameChar(c: Char): Boolean = c.isLetterOrDigit() || c == '-'
@@ -299,6 +305,23 @@ internal object SlidevSlideTags {
                 last++
             }
             return lineStarts[last] + lines[last].length
+        }
+
+        /** Offset ranges of all content paragraphs, in document order. */
+        fun paragraphRanges(): Sequence<IntRange> = sequence {
+            var line = 0
+            while (line < lines.size) {
+                if (lines[line].isBlank() || !isContentLine(line)) {
+                    line++
+                    continue
+                }
+                var last = line
+                while (last < lines.lastIndex && lines[last + 1].isNotBlank() && isContentLine(last + 1)) {
+                    last++
+                }
+                yield(lineStarts[line] until lineStarts[last] + lines[last].length)
+                line = last + 1
+            }
         }
     }
 }

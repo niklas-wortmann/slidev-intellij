@@ -50,6 +50,14 @@
              v-mark.red) — DefaultCharFilter would hide it on any non-identifier character. -->
         <lookup.charFilter implementation="dev.slidev.intellij.editor.SlidevComponentTagCharFilter"
                            order="first"/>
+
+        <!-- Semantic coloring of component tags and Vue attributes in slide content
+             (plan.md, 15.1): known components, v-/:/@ attributes, plus a weak warning
+             on unrecognized PascalCase tags. Layers on top of the Markdown plugin's
+             generic HTML-tag coloring. -->
+        <annotator language="Markdown"
+                   implementationClass="dev.slidev.intellij.editor.SlidevComponentAnnotator"/>
+        <colorSettingsPage implementation="dev.slidev.intellij.editor.SlidevColorSettingsPage"/>
     </extensions>
 
     <extensions defaultExtensionNs="org.intellij.markdown">
