@@ -1,6 +1,7 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
-    <id>dev.slidev.intellij</id>
+    <!-- Marketplace rejects plugin IDs containing the word "intellij" (TemplateWordInPluginId). -->
+    <id>dev.slidev.plugin</id>
     <name>Slidev</name>
     <vendor url="https://sli.dev">Slidev</vendor>
 
@@ -8,10 +9,13 @@
         Integrated support for <a href="https://sli.dev">Slidev</a> presentations.<br>
         <ul>
             <li>Auto-detects <code>slides.md</code> Slidev projects in your workspace</li>
-            <li>Starts and manages the Slidev dev server</li>
-            <li>Live side-by-side preview with bidirectional editor &harr; preview navigation sync</li>
-            <li>Slides and projects tree views</li>
-            <li>Per-slide code folding and slide-divider annotations in the editor</li>
+            <li>Starts, adopts, and stops the Slidev dev server (configurable dev command and port)</li>
+            <li>Live side-by-side preview with bidirectional editor &harr; preview navigation sync,
+                click stepping, and an overview mode</li>
+            <li>Slides tree with drag-and-drop reordering and a projects tree for multi-entry workspaces</li>
+            <li>Per-slide code folding, slide-number annotations, and frontmatter highlighting in the editor</li>
+            <li>Schema-driven completion, quick documentation, and validation for slide frontmatter
+                (headmatter and per-slide)</li>
         </ul>
         Port of the official Slidev VS Code extension.
         ]]></description>

@@ -1,103 +1,86 @@
-# Slidev
+# Slidev for IntelliJ-based IDEs
 
-[![Twitter Follow](https://img.shields.io/badge/follow-%40JBPlatform-1DA1F2?logo=twitter)](https://twitter.com/JBPlatform)
-[![Developers Forum](https://img.shields.io/badge/JetBrains%20Platform-Join-blue)][jb:forum]
+<!-- Plugin description -->
+Integrated support for [Slidev](https://sli.dev) presentations in IntelliJ-based IDEs —
+a port of the official [Slidev VS Code extension](https://github.com/slidevjs/slidev/tree/main/packages/vscode).
+<!-- Plugin description end -->
 
-## Plugin structure
+## Features
 
-A generated project contains the following content structure:
+| Feature | Details |
+|---|---|
+| 🗂 **Project detection** | Scans the workspace for `slides.md` entries (configurable globs); multiple slide decks per project, with an active-entry switcher |
+| ▶️ **Dev server** | Start/stop from the IDE, or adopt a server you started in a terminal; automatic port allocation; output in the Run tool window |
+| 🖥 **Embedded preview** | JCEF-based side-by-side preview with bidirectional editor ↔ preview navigation sync, click stepping, and slide/overview modes; follows the IDE light/dark theme |
+| 📰 **Split editor** | Deck entry files open with an editor/preview split (like the Markdown preview), embedding the same live preview; layout is remembered per file |
+| 🧭 **Navigation** | <kbd>Alt</kbd>+<kbd>↑</kbd>/<kbd>↓</kbd> jumps between slides in the editor; clicking a slide in the overview jumps to its source |
+| 🌲 **Slides tree** | Slide outline with titles, caret sync, and drag-and-drop slide reordering |
+| ✏️ **Editor decorations** | Slide-number annotations on dividers, frontmatter tint, virtual line numbers in fenced code blocks, per-slide folding |
+| 📑 **Frontmatter intelligence** | Schema-driven completion, quick documentation, and validation for headmatter and per-slide frontmatter (layouts, transitions, …) |
+| 🚀 **New Project wizard** | *File → New → Project → Slidev* scaffolds the official starter template (demo deck, components, deploy configs) with your package manager of choice and an optional dependency install |
 
+## Installation (alpha)
+
+The plugin is in **alpha** — the feature set is complete, but it hasn't seen broad
+real-world use yet. Two ways to install:
+
+- **From a GitHub release:** download the `.zip` from the
+  [latest release](../../releases/latest), then in the IDE go to
+  *Settings | Plugins | ⚙ | Install Plugin from Disk…* and pick the zip.
+- **From the Marketplace alpha channel** (once listed): add
+  `https://plugins.jetbrains.com/plugins/alpha/list` as a
+  [custom plugin repository](https://www.jetbrains.com/help/idea/managing-plugins.html#repos)
+  under *Settings | Plugins | ⚙ | Manage Plugin Repositories…*, then install **Slidev**
+  from the Marketplace tab.
+
+Found a bug? Please [open an issue](../../issues).
+
+## Getting started
+
+1. Open a project containing a Slidev deck (e.g. created with `npm create slidev@latest`),
+   or create one via **File → New → Project → Slidev**.
+2. Open the **Slidev** tool window (right sidebar). The **Projects** tab lists detected entries;
+   the first one is activated automatically.
+3. In the **Preview** tab, hit **Start Server**. The plugin runs the configured dev command
+   (default: `npm exec -c 'slidev ${args}'`) and embeds the result. If a Slidev server is
+   already running on the configured port, it is adopted instead of spawning a new one.
+
+## Settings
+
+`Settings | Tools | Slidev` (stored per project in `.idea/slidev.xml`):
+
+| Setting | Default | Description |
+|---|---|---|
+| Port | `3030` | Preferred dev-server port; additional entries get the next free ports |
+| Dev command | `npm exec -c 'slidev ${args}'` | Command template; `${args}` and `${port}` are substituted |
+| Include globs | `**/slides.md` | Where to look for slide entries |
+| Exclude glob | `**/node_modules/**` | Paths to skip while scanning |
+| Annotations | on | Slide-number annotations and frontmatter tint in the editor |
+| Code-block line numbers | on | Virtual line numbers inside fenced code blocks |
+| Preview sync | on | Bidirectional editor ↔ preview navigation sync (also toggleable from the preview toolbar) |
+
+## Requirements
+
+- IntelliJ-based IDE 2025.3+ (build 253+)
+- Node.js with Slidev available in the project (`@slidev/cli`)
+- JCEF-capable IDE runtime for the embedded preview (otherwise an *Open in Browser* fallback is offered)
+- The bundled Markdown plugin (optional — enables per-slide folding; everything else works without it)
+
+## Development
+
+```bash
+./gradlew runIde        # launch a sandbox IDE with the plugin
+./gradlew test          # unit + platform tests
+./gradlew verifyPlugin  # Plugin Verifier against the recommended IDE set
+./gradlew buildPlugin   # distributable zip under build/distributions
 ```
-.
-├── .run/                   Predefined Run/Debug Configurations
-├── build/                  Output build directory
-├── gradle
-│   ├── wrapper/            Gradle Wrapper
-│   ├── libs.versions.toml  Version catalog
-├── src                     Plugin sources
-│   ├── main
-│   │   ├── kotlin/         Kotlin production sources
-│   │   └── resources/      Resources - plugin.xml, icons, messages
-├── .gitignore              Git ignoring rules
-├── build.gradle.kts        Gradle build configuration
-├── gradle.properties       Gradle configuration properties
-├── gradlew                 *nix Gradle Wrapper script
-├── gradlew.bat             Windows Gradle Wrapper script
-├── README.md               README
-└── settings.gradle.kts     Gradle project settings
-```
 
-In addition to the configuration files, the most crucial part is the `src` directory, which contains our implementation
-and the manifest for our plugin – [plugin.xml][file:plugin.xml].
+See [`docs/manual-test-matrix.md`](docs/manual-test-matrix.md) for the manual QA checklist and
+[`plan.md`](plan.md) for the port plan and feature-parity mapping against the VS Code extension.
 
-> [!NOTE]
-> To use Java in your plugin, create the `/src/main/java` directory.
+## Credits
 
-## Plugin configuration file
+Built on the [IntelliJ Platform Plugin Template][template]. Slidev is created by
+[Anthony Fu](https://github.com/antfu) and the [Slidev team](https://github.com/slidevjs).
 
-The plugin configuration file is a [plugin.xml][file:plugin.xml] file located in the `src/main/resources/META-INF`
-directory. It provides general information about the plugin, its dependencies, extensions, and listeners.
-
-You can read more about this file in the [Plugin Configuration File][docs:plugin.xml] section of our documentation.
-
-If you're still not quite sure what this is all about, read [Introduction to IntelliJ Platform][docs:intro].
-
-## Predefined Run/Debug configurations
-
-Within the default project structure, there is a `.run` directory provided containing predefined *Run/Debug
-configurations* that expose corresponding Gradle tasks:
-
-| Configuration name | Description                                                                                                                                                                         |
-|--------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Run Plugin         | Runs [`:runIde`][gh:intellij-platform-gradle-plugin-runIde] IntelliJ Platform Gradle Plugin task. Use the *Debug* icon for plugin debugging.                                        |
-| Run Tests          | Runs [`:test`][gradle:lifecycle-tasks] Gradle task.                                                                                                                                 |
-| Run Verifications  | Runs [`:verifyPlugin`][gh:intellij-platform-gradle-plugin-verifyPlugin] IntelliJ Platform Gradle Plugin task to check the plugin compatibility against the specified IntelliJ IDEs. |
-
-> [!NOTE]
-> You can find the logs from the running task in the `idea.log` tab.
-
-## Publishing the plugin
-
-> [!TIP]
-> Make sure to follow all guidelines listed in [Publishing a Plugin][docs:publishing] to follow all recommended and
-> required steps.
-
-Releasing a plugin to [JetBrains Marketplace](https://plugins.jetbrains.com) is a straightforward operation that uses
-the `publishPlugin` Gradle task provided by
-the [intellij-platform-gradle-plugin][gh:intellij-platform-gradle-plugin-docs].
-
-You can also upload the plugin to the [JetBrains Plugin Repository](https://plugins.jetbrains.com/plugin/upload)
-manually via UI.
-
-## Useful links
-
-- [IntelliJ Platform SDK Plugin SDK][docs]
-- [IntelliJ Platform Gradle Plugin Documentation][gh:intellij-platform-gradle-plugin-docs]
-- [IntelliJ Platform Explorer][jb:ipe]
-- [JetBrains Marketplace Quality Guidelines][jb:quality-guidelines]
-- [IntelliJ Platform UI Guidelines][jb:ui-guidelines]
-- [JetBrains Marketplace Paid Plugins][jb:paid-plugins]
-- [IntelliJ SDK Code Samples][gh:code-samples]
-
-[docs]: https://plugins.jetbrains.com/docs/intellij
-[docs:intro]: https://plugins.jetbrains.com/docs/intellij/intellij-platform.html?from=IJPluginTemplate
-[docs:plugin.xml]: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html?from=IJPluginTemplate
-[docs:publishing]: https://plugins.jetbrains.com/docs/intellij/publishing-plugin.html?from=IJPluginTemplate
-
-[file:plugin.xml]: ./src/main/resources/META-INF/plugin.xml
-
-[gh:code-samples]: https://github.com/JetBrains/intellij-sdk-code-samples
-[gh:intellij-platform-gradle-plugin]: https://github.com/JetBrains/intellij-platform-gradle-plugin
-[gh:intellij-platform-gradle-plugin-docs]: https://plugins.jetbrains.com/docs/intellij/tools-intellij-platform-gradle-plugin.html
-[gh:intellij-platform-gradle-plugin-runIde]: https://plugins.jetbrains.com/docs/intellij/tools-intellij-platform-gradle-plugin-tasks.html#runIde
-[gh:intellij-platform-gradle-plugin-verifyPlugin]: https://plugins.jetbrains.com/docs/intellij/tools-intellij-platform-gradle-plugin-tasks.html#verifyPlugin
-
-[gradle:lifecycle-tasks]: https://docs.gradle.org/current/userguide/java_plugin.html#lifecycle_tasks
-
-[jb:github]: https://github.com/JetBrains/.github/blob/main/profile/README.md
-[jb:forum]: https://platform.jetbrains.com/
-[jb:quality-guidelines]: https://plugins.jetbrains.com/docs/marketplace/quality-guidelines.html
-[jb:paid-plugins]: https://plugins.jetbrains.com/docs/marketplace/paid-plugins-marketplace.html
-[jb:quality-guidelines]: https://plugins.jetbrains.com/docs/marketplace/quality-guidelines.html
-[jb:ipe]: https://jb.gg/ipe
-[jb:ui-guidelines]: https://jetbrains.github.io/ui
+[template]: https://github.com/JetBrains/intellij-platform-plugin-template

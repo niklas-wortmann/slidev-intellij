@@ -30,24 +30,14 @@ Port of [slidevjs/slidev `packages/vscode`](https://github.com/slidevjs/slidev/t
 
 The vscode language server does exactly two things worth porting: (a) treat each slide's `---` frontmatter block as an embedded YAML document, (b) bind JSON schemas to it — `headmatter.json` for slide 0, `frontmatter.json` for the rest — giving completion, hover docs, and validation. (Its prettier service is N/A; IntelliJ's YAML formatter covers injected fragments.)
 
-- [ ] **8.1 — Add YAML plugin dependency** (S)
-  - `build.gradle.kts`: `bundledPlugin("org.jetbrains.plugins.yaml")`; new optional `depends` + `slidev-yaml.xml` include (same pattern as `slidev-markdown.xml`).
-  - Accept: plugin still loads in IDEs without YAML support.
-- [ ] **8.2 — YAML injection into frontmatter blocks** (M)
-  - New `editor/SlidevFrontmatterInjector.kt` implementing `MultiHostInjector` (or `LanguageInjectionContributor`) over Markdown PSI; reuse `SlidevParser` slide offsets to find each `frontmatterRaw` range, mirroring `languagePlugin.ts:getEmbeddedCodes`.
-  - Only inject in files belonging to a registered project (reuse the same gate as `SlidevFoldingBuilder`).
-  - Edge cases from the parser tests: frontmatter on first slide vs. `---` separators inside fenced code blocks; CRLF.
-  - Accept: YAML syntax highlighting + structure inside every frontmatter block; no injection inside code fences.
-- [ ] **8.3 — Vendor JSON schemas** (S)
-  - Copy generated `schema/frontmatter.json` + `headmatter.json` into `src/main/resources/schemas/`; document regeneration source (`scripts/schema.ts` / `ts-json-schema-generator` over `@slidev/types`) in CHANGELOG/README.
-- [ ] **8.4 — Spike: JSON-schema binding on injected YAML fragments** (M, ⚠ risk item — do first within this phase)
-  - Try `JsonSchemaProviderFactory` matching the injected fragment's `VirtualFileWindow`; distinguish headmatter (slide index 0) vs frontmatter, matching the language server's priority-3/priority-2 setup.
-  - Fallback if the schema engine ignores injected fragments: custom `CompletionContributor` + `DocumentationProvider` + local-inspection validator driven by the vendored schemas (more work — only if spike fails).
-  - Accept: typing `lay` in a frontmatter block completes `layout` with the doc text from the schema; unknown built-in `transition` values flagged.
-- [ ] **8.5 — Schema-driven value completion polish** (S)
-  - Verify enum completions (`BuiltinLayouts`, `BuiltinSlideTransition`) and hover docs render the `markdownDescription`.
-- [ ] **8.6 — Tests** (M)
-  - Platform tests: injection ranges (per-slide, fence-safe), schema resolution for slide 0 vs n, completion smoke test.
+- [x] **8.4 — Spike: injection + JSON-schema binding** (done first, ⚠ risk item — **spike failed, fallback implemented**)
+  - **Spike outcome:** in the 2025.3 Markdown plugin only `MarkdownFrontMatterHeader` (top-of-file only, setting-gated) and `MarkdownCodeFence` implement `PsiLanguageInjectionHost`. Mid-document `---` frontmatter blocks parse as plain paragraphs/setext headings, which are not injection hosts — so neither `MultiHostInjector` nor `JsonSchemaProviderFactory`-over-injected-YAML can work for per-slide frontmatter.
+  - **Implemented the anticipated fallback instead:** schema-driven `SlidevFrontmatterCompletionContributor` + `SlidevFrontmatterDocumentationProvider` + `SlidevFrontmatterAnnotator` (+ `SlidevFrontmatterTypedHandler` for auto-popup), all driven by the vendored schemas over `SlidevParser` block ranges (`SlidevFrontmatterBlocks`), registered in `slidev-markdown.xml`.
+- [x] **8.1 — YAML plugin dependency** — **not needed**: the fallback path never injects YAML, so no `org.jetbrains.plugins.yaml` dependency. Slidev's alternative ```` ```yaml ```` frontmatter style already gets YAML injection for free from the Markdown plugin's code-fence injection.
+- [x] **8.2 — YAML injection into frontmatter blocks** — superseded by the 8.4 fallback (injection infeasible, see above). Block location logic (per-slide, fence-safe, CRLF) lives in `SlidevFrontmatterBlocks` and is unit-tested.
+- [x] **8.3 — Vendor JSON schemas** (S): `src/main/resources/schemas/frontmatter.json` + `headmatter.json` vendored from `packages/vscode/schema/` (regenerated upstream by `scripts/schema.ts` / ts-json-schema-generator over `@slidev/types` — noted in `SlidevSchemas` kdoc). Parsed with the bundled SnakeYAML (JSON ⊂ YAML), no new dependency.
+- [x] **8.5 — Schema-driven value completion polish** (S): enum completions for `BuiltinLayouts`/`BuiltinSlideTransition` after `key:`; hover docs render the `markdownDescription` (code/lists/links). Note: the schemas give `layout`/`transition` a plain-string branch, so custom values are *not* flagged — matching the real VS Code behavior (the original acceptance criterion overreached).
+- [x] **8.6 — Tests** (M): `SlidevSchemaTest` (schema resolution, enum/type matching), `SlidevFrontmatterBlocksTest` (block ranges per-slide, fence-safe, CRLF, key/value contexts), `SlidevFrontmatterSupportTest` (platform: key/enum completion, headmatter vs frontmatter schema, non-Slidev files ignored, annotator type/YAML errors).
 
 ## Phase 9 — Command parity gaps (small, mechanical)
 
@@ -59,25 +49,25 @@ The vscode language server does exactly two things worth porting: (a) treat each
 
 ## Phase 10 — Preview hardening
 
-- [ ] **10.1 — Compat mode parity** (S): vscode falls back when the server is an older Slidev version (`slidev:preview:compat` hides nav buttons). Verify `ServerDetector` version gate disables nav/overview actions the same way; bundle key `notification.compat` exists — confirm wiring.
-- [ ] **10.2 — JCEF-unavailable fallback** (S): verify the "no JCEF" message path renders + offer "Open in browser" instead (Android Studio / some runtimes).
-- [ ] **10.3 — Manual test matrix** (S): editor↔preview sync both directions, clicks, overview mode, multi-project switching, server adopted-vs-spawned. Run against a real `npm create slidev` project.
+- [x] **10.1 — Compat mode parity** (S): vscode falls back when the server is an older Slidev version (`slidev:preview:compat` hides nav buttons). *(Done: checked upstream `package.json` when-clauses — compat hides the 4 nav buttons + overview toggle, keeps refresh/open-in-browser. Added `hiddenInCompatMode` gate to `SlidevPreviewAction` (set on the 4 nav actions) and a compat check to `SlidevTogglePreviewModeAction`. `notification.compat.mode` was already wired in `SlidevServerManager` on both the adopt and spawn paths.)*
+- [x] **10.2 — JCEF-unavailable fallback** (S): *(Verified in code: `SlidevPreviewPanel` only adds the browser card when `JBCefApp.isSupported()`; otherwise the `preview.unsupported` card with an "Open in Browser instead" `ActionLink` is shown. The card is only reachable when the server is running, so `openInBrowser()` always has a port. Bundle keys present.)*
+- [ ] **10.3 — Manual test matrix** (S): editor↔preview sync both directions, clicks, overview mode, multi-project switching, server adopted-vs-spawned. Run against a real `npm create slidev` project. *(Matrix authored in `docs/manual-test-matrix.md` — 30 cases across 7 areas; execution requires a human in the sandbox IDE, still pending.)*
 
 ## Phase 11 — LM tools (optional / stretch)
 
 The 7 `lmTools.ts` tools (getActiveSlide, getSlideContent, getAllSlideTitles, findSlideNoByTitle, listEntries, getPreviewPort, chooseEntry) have no direct IntelliJ API equivalent.
 
-- [ ] **11.1 — Spike** (S): check whether the JetBrains MCP-server plugin exposes a third-party tool extension point in the target version (2025.3); if yes, the tools are thin wrappers over `SlidevProjectService` — verify the EP exists before committing.
-- [ ] **11.2 — Implement 7 tools** (M, conditional on 11.1): pure delegations; reuse `getSlidesTitle`-equivalent logic already in the slides tree.
-- If no EP: drop with a note; revisit when AI Assistant opens a tool API.
+- [x] **11.1 — Spike** (S): **EP exists.** The MCP server plugin (`com.intellij.mcpServer`, bundled since 2025.2) exposes dynamic EPs `mcpToolset` (reflection over `@McpTool`/`@McpDescription`-annotated suspend methods) and `mcpToolsProvider`; project access via `coroutineContext.project`. Verified against the 2025.3 `mcpserver.jar` via javap.
+- [x] **11.2 — Implement 7 tools** (M): `SlidevMcpToolset` ports all 7 `lmTools.ts` tools (`slidev_get_active_slide`, `slidev_get_slide_content`, `slidev_get_all_slide_titles`, `slidev_find_slide_no_by_title`, `slidev_list_entries`, `slidev_get_preview_port`, `slidev_choose_entry`) as pure delegations to `SlidevProjectService`, including the upstream entry-resolution semantics (`$ACTIVE_SLIDE_ENTRY`/blank → active, exact → unique substring match) and `McpExpectedError` for the upstream error texts. Registered via optional `com.intellij.mcpServer` dependency (`slidev-mcp.xml`) + `bundledPlugin` on the compile classpath.
 
 ## Phase 12 — Release readiness
 
-- [ ] **12.1 — plugin.xml metadata** (S): description (HTML), vendor, `since-build`/`until-build` range, change-notes from CHANGELOG.
-- [ ] **12.2 — Plugin Verifier** (S): `runPluginVerifier` against 2025.3 + latest EAP; fix reported API issues.
-- [ ] **12.3 — README + screenshots** (S): feature table mirroring the vscode README, dev-command docs link.
-- [ ] **12.4 — CI** (M): GitHub Actions — build, test, verifier; `signPlugin`/`publishPlugin` with marketplace token on tag.
+- [x] **12.1 — plugin.xml metadata** (S): description (HTML), vendor, `since-build`/`until-build` range, change-notes from CHANGELOG. *(Done: expanded description to the full feature set; `pluginConfiguration` block in Gradle sets `sinceBuild = "253"`, open-ended until-build, and change-notes rendered from `CHANGELOG.md` [Unreleased] — verified via `patchPluginXml`. Signing/publishing wired to env vars for CI.)*
+- [x] **12.2 — Plugin Verifier** (S): `verifyPlugin` against the recommended set (IU-253.33813.25, IU-261.25134.95, IU-262.7132.23) — **Compatible** on all three. Fixed along the way: plugin ID renamed `dev.slidev.intellij` → `dev.slidev.plugin` (Marketplace forbids "intellij" in IDs), internal-API usage `serviceAsync` in `SlidevStartupActivity` replaced with `getService`, change-notes rendered eagerly to satisfy the Gradle configuration cache. Remaining report items are non-blocking experimental-API warnings (`ToolWindowFactory.getIcon/getAnchor/manage`) and 4 deprecation notes.
+- [ ] **12.3 — README + screenshots** (S): feature table mirroring the vscode README, dev-command docs link. *(README rewritten: feature table, getting-started, settings table, requirements, dev commands. Screenshots still pending — take them during the 10.3 manual sandbox session.)*
+- [x] **12.4 — CI** (M): GitHub Actions — `build.yml` (buildPlugin + check + verifyPlugin with IDE cache, artifacts on failure) and `release.yml` (tests + GitHub release with the zip attached on `v*` tags, pre-release for suffixed tags; `publishPlugin` runs only once the `PUBLISH_TOKEN` secret exists — signing/publishing read `PUBLISH_TOKEN`/`CERTIFICATE_CHAIN`/`PRIVATE_KEY`/`PRIVATE_KEY_PASSWORD` via the Gradle `signing`/`publishing` blocks).
 - [x] **12.5 — Initial commit hygiene** (XS): repo has everything staged but zero commits — commit the scaffold and port as logical chunks before further work. *(Done: 7 logical commits on `main`.)*
+- [x] **12.6 — Alpha release mechanics** (S): version `0.1.0-alpha.1` (gradle.properties), Marketplace channel derived from the version's pre-release suffix (`-alpha.1` → `alpha` channel, none → `default`), CHANGELOG patched, README install-from-disk + alpha-channel instructions. Remaining **human steps**: run the 10.3 manual matrix in the sandbox; optionally create the Marketplace listing (the *first* upload must be manual via the web UI, channel `alpha`), then create a token + `release` environment secrets so future tags publish automatically; screenshots (12.3).
 
 ---
 
