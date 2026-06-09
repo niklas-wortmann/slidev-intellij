@@ -34,6 +34,14 @@ class SlidevDataLoaderTest {
     }
 
     @Test
+    fun `resolveSrcPath mirrors the loader's import resolution`() {
+        assertEquals("/proj/pages/a.md", SlidevDataLoader.resolveSrcPath("./pages/a.md", "/proj/slides.md", "/proj"))
+        assertEquals("/proj/shared/a.md", SlidevDataLoader.resolveSrcPath("../shared/a.md", "/proj/pages/b.md", "/proj"))
+        assertEquals("/proj/pages/a.md", SlidevDataLoader.resolveSrcPath("/pages/a.md", "/elsewhere/c.md", "/proj"))
+        assertEquals("/proj/a.md", SlidevDataLoader.resolveSrcPath("./a.md#2,5-7", "/proj/slides.md", "/proj"))
+    }
+
+    @Test
     fun `src import inlines slides from another file`() {
         val data = SlidevDataLoader.load(
             "/proj",

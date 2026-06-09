@@ -27,7 +27,11 @@ internal object SlidevFrontmatterBlocks {
         class Value(block: Block, val key: String, val prefix: String) : Context(block)
     }
 
+    /** The raw value of a `src:` import line and the value's column range within the line. */
+    data class SrcValue(val value: String, val columns: IntRange)
+
     private val KEY_LINE = Regex("^([A-Za-z0-9_$-]+)\\s*:")
+    private val SRC_LINE = Regex("^src\\s*:\\s*(\\S.*?)\\s*$")
 
     fun blocks(text: String, filepath: String): List<Block> {
         val md = SlidevParser.parse(text, filepath)
@@ -54,6 +58,28 @@ internal object SlidevFrontmatterBlocks {
         block.contentLines.mapNotNullTo(mutableSetOf()) { line ->
             KEY_LINE.find(lines.getOrEmpty(line))?.groupValues?.get(1)
         }
+
+    /**
+     * The `src:` import value on [line] when it lies inside a frontmatter block, or null.
+     * Surrounding YAML quotes are stripped from [SrcValue.value] but stay inside
+     * [SrcValue.columns], so a caret on the quote still counts as "on the value".
+     */
+    fun srcValueAt(lines: List<String>, blocks: List<Block>, line: Int): SrcValue? {
+        if (blockAt(blocks, line) == null) {
+            return null
+        }
+        val text = lines.getOrEmpty(line)
+        val match = SRC_LINE.find(text) ?: return null
+        val group = match.groups[1] ?: return null
+        // A `#` opens a YAML comment only after whitespace; `./a.md#2,5` keeps its range suffix.
+        val comment = Regex("\\s#").find(group.value)?.range?.first
+        val raw = (if (comment != null) group.value.take(comment) else group.value).trimEnd()
+        val value = raw.removeSurrounding("\"").removeSurrounding("'")
+        if (value.isEmpty()) {
+            return null
+        }
+        return SrcValue(value, group.range.first until group.range.first + raw.length)
+    }
 
     fun contextAt(lines: List<String>, blocks: List<Block>, line: Int, column: Int): Context? {
         val block = blockAt(blocks, line) ?: return null

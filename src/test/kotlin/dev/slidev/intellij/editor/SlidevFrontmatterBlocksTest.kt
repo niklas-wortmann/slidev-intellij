@@ -92,6 +92,35 @@ class SlidevFrontmatterBlocksTest {
     }
 
     @Test
+    fun `src value with columns`() {
+        val text = listOf("# A", "", "---", "src: ./pages/imported.md", "---").joinToString("\n")
+        val src = SlidevFrontmatterBlocks.srcValueAt(text.lines(), blocks(text), 3)!!
+        assertEquals("./pages/imported.md", src.value)
+        assertEquals(5 until 24, src.columns)
+    }
+
+    @Test
+    fun `src value keeps range suffix and strips quotes and comments`() {
+        fun srcAt(line: String): SlidevFrontmatterBlocks.SrcValue? {
+            val text = listOf("# A", "", "---", line, "---").joinToString("\n")
+            return SlidevFrontmatterBlocks.srcValueAt(text.lines(), blocks(text), 3)
+        }
+        assertEquals("./a.md#2,5-7", srcAt("src: ./a.md#2,5-7")?.value)
+        assertEquals("./a.md", srcAt("src: './a.md'")?.value)
+        assertEquals(5 until 13, srcAt("src: \"./a.md\"")?.columns) // quotes stay clickable
+        assertEquals("./a.md", srcAt("src: ./a.md # reused")?.value)
+        assertEquals(5 until 11, srcAt("src: ./a.md # reused")?.columns)
+        assertNull(srcAt("src:"))
+        assertNull(srcAt("layout: cover"))
+    }
+
+    @Test
+    fun `no src value outside frontmatter blocks`() {
+        val text = listOf("src: ./a.md", "", "---", "layout: cover", "---").joinToString("\n")
+        assertNull(SlidevFrontmatterBlocks.srcValueAt(text.lines(), blocks(text), 0))
+    }
+
+    @Test
     fun `present keys and key line lookup`() {
         val lines = deck.lines()
         val first = blocks().first()

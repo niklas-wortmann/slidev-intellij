@@ -14,7 +14,14 @@
                                     implementationClass="dev.slidev.intellij.editor.SlidevFrontmatterDocumentationProvider"/>
         <annotator language="Markdown"
                    implementationClass="dev.slidev.intellij.editor.SlidevFrontmatterAnnotator"/>
+        <!-- Ctrl+Click / Go to Declaration from `src:` import values to the imported slides file. -->
+        <gotoDeclarationHandler
+                implementation="dev.slidev.intellij.editor.SlidevFrontmatterSrcGotoDeclarationHandler"/>
         <typedHandler implementation="dev.slidev.intellij.editor.SlidevFrontmatterTypedHandler"/>
+        <!-- Keeps the src-path lookup open on '/', '.' and '-' — DefaultCharFilter would
+             hide it on any non-identifier character. -->
+        <lookup.charFilter implementation="dev.slidev.intellij.editor.SlidevSrcPathCharFilter"
+                           order="first"/>
     </extensions>
 
     <extensions defaultExtensionNs="org.intellij.markdown">

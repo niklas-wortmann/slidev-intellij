@@ -20,6 +20,24 @@ object SlidevDataLoader {
     fun load(userRoot: String, filepath: String, provider: FileTextProvider): LoadedSlidevData =
         Loader(userRoot, provider).load(filepath)
 
+    /**
+     * Resolves a frontmatter `src` value (an optional `#1-3` range suffix is dropped) the
+     * way [Loader.loadSlide] does: a leading `/` is relative to [userRoot], anything else
+     * to the directory of [importerPath]. Returns the normalized, slash-separated path.
+     */
+    fun resolveSrcPath(src: String, importerPath: String, userRoot: String): String {
+        val rawPath = src.substringBefore('#')
+        return slash(
+            if (rawPath.startsWith("/")) {
+                Paths.get(userRoot).resolve(rawPath.substring(1)).normalize().toString()
+            }
+            else {
+                val parent = Paths.get(importerPath).parent
+                (parent?.resolve(rawPath) ?: Paths.get(rawPath)).normalize().toString()
+            },
+        )
+    }
+
     private class Loader(private val userRoot: String, private val provider: FileTextProvider) {
         private val markdownFiles = LinkedHashMap<String, SlidevMarkdown>()
         private val errors = LinkedHashMap<String, MutableList<SlideError>>()
@@ -81,18 +99,8 @@ object SlidevDataLoader {
                     return
                 }
 
-                val parts = src.split('#')
-                val rawPath = parts[0]
-                val rangeRaw = parts.getOrNull(1)
-                val path = slash(
-                    if (rawPath.startsWith("/")) {
-                        Paths.get(userRoot).resolve(rawPath.substring(1)).normalize().toString()
-                    }
-                    else {
-                        val parent = Paths.get(slide.filepath).parent
-                        (parent?.resolve(rawPath) ?: Paths.get(rawPath)).normalize().toString()
-                    },
-                )
+                val rangeRaw = src.split('#').getOrNull(1)
+                val path = resolveSrcPath(src, slide.filepath, userRoot)
 
                 val override = (slide.frontmatter + (frontmatterOverride ?: emptyMap())).toMutableMap()
                 override.remove("src")
