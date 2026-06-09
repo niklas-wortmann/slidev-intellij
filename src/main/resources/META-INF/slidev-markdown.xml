@@ -22,6 +22,34 @@
              hide it on any non-identifier character. -->
         <lookup.charFilter implementation="dev.slidev.intellij.editor.SlidevSrcPathCharFilter"
                            order="first"/>
+
+        <!-- Component & HTML support in slide content (plan.md, Phase 14). The Vue plugin only
+             exists in paid IDEs and the Markdown plugin offers nothing for inline HTML tags, so
+             completion/docs/navigation are text-offset-based over the shared component index,
+             the same house style as the frontmatter support above. -->
+        <!-- language="any": inside recognized inline HTML the platform completes against the
+             HTML PSI root of the markdown file, not the Markdown one, so a Markdown-only
+             registration never fires there; the contributor guards itself to Slidev decks. -->
+        <completion.contributor language="any"
+                                implementationClass="dev.slidev.intellij.editor.SlidevComponentCompletionContributor"/>
+        <!-- Lookup-item docs in the completion popup; hover docs come from the V2 EP below.
+             Registered for both PSI roots of a markdown file ("any" is not honored on this
+             legacy EP): Markdown for plain-text positions, HTML for inline-HTML ones. -->
+        <lang.documentationProvider language="Markdown"
+                                    implementationClass="dev.slidev.intellij.editor.SlidevComponentDocumentationProvider"/>
+        <lang.documentationProvider language="HTML"
+                                    implementationClass="dev.slidev.intellij.editor.SlidevComponentDocumentationProvider"/>
+        <platform.backend.documentation.targetProvider
+                implementation="dev.slidev.intellij.editor.SlidevComponentDocumentationTargetProvider"/>
+        <!-- Ctrl+Click / Go to Declaration from component tags to their .vue files (built-ins
+             open their docs page). -->
+        <gotoDeclarationHandler
+                implementation="dev.slidev.intellij.editor.SlidevComponentGotoDeclarationHandler"/>
+        <typedHandler implementation="dev.slidev.intellij.editor.SlidevComponentTypedHandler"/>
+        <!-- Keeps the tag/attribute lookup open on '-', ':', '@' and '.' (v-click, :size, @event,
+             v-mark.red) — DefaultCharFilter would hide it on any non-identifier character. -->
+        <lookup.charFilter implementation="dev.slidev.intellij.editor.SlidevComponentTagCharFilter"
+                           order="first"/>
     </extensions>
 
     <extensions defaultExtensionNs="org.intellij.markdown">

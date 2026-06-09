@@ -82,12 +82,12 @@ Slides mix Markdown, Vue components ([docs](https://sli.dev/guide/component)), i
 
 The Vue plugin only exists in paid IDEs, so the baseline is text-offset-based over `SlidevParser` ranges — the same house style as Phase 8's fallback. Works everywhere, including Community.
 
-- [ ] **14.1 — Tag completion** (M): `<` in slide content → component names from the index, with self-closing-tag insertion. First verify what the bundled Markdown plugin already provides for plain HTML tags and only fill gaps.
-- [ ] **14.2 — Attribute completion** (M): inside an open component tag, offer props from the index in plain / `:`-bound / `@event` variants, plus the global Slidev directives (`v-click`, `v-after`, `v-motion`, `v-mark`, `v-drag`).
-- [ ] **14.3 — Hover docs** (S): component names/props via `platform.backend.documentation.targetProvider` (v2 API — same lesson as frontmatter: the legacy `lang.documentationProvider` gets shadowed).
-- [ ] **14.4 — Goto declaration** (S): local/theme/addon component tag → its `.vue` file; built-ins → external docs URL.
-- [ ] **14.5 — Typed handler** (XS): auto-popup on `<` and space-inside-tag (extend the `SlidevFrontmatterTypedHandler` pattern).
-- [ ] **14.6 — Tests** (M): index resolution (built-in/local/theme precedence), tag + attribute completion, docs, navigation; non-Slidev markdown unaffected.
+- [x] **14.1 — Tag completion** (M): `<` in slide content → component names from the index, with self-closing-tag insertion. First verify what the bundled Markdown plugin already provides for plain HTML tags and only fill gaps. *(Verified: the Markdown plugin contributes nothing for inline tags itself, but inside recognized inline HTML the platform completes against the markdown file's HTML PSI root — so the contributor is registered `language="any"` and guards itself.)*
+- [x] **14.2 — Attribute completion** (M): inside an open component tag, offer props from the index in plain / `:`-bound variants, plus the global Slidev directives (`v-click`, `v-after`, `v-motion`, `v-mark`, `v-drag`). *(`@event` variants dropped: neither the vendored built-in metadata nor the `.vue` scanner carries emit data, so there is nothing real to offer; the char filter still keeps the lookup open while typing `@…` by hand.)*
+- [x] **14.3 — Hover docs** (S): component names/props via `platform.backend.documentation.targetProvider` (v2 API — same lesson as frontmatter: the legacy `lang.documentationProvider` gets shadowed).
+- [x] **14.4 — Goto declaration** (S): local/theme/addon component tag → its `.vue` file; built-ins → external docs URL.
+- [x] **14.5 — Typed handler** (XS): auto-popup on `<` and space-inside-tag (extend the `SlidevFrontmatterTypedHandler` pattern).
+- [x] **14.6 — Tests** (M): index resolution (built-in/local/theme precedence), tag + attribute completion, docs, navigation; non-Slidev markdown unaffected.
 
 ## Phase 15 — Highlighting for component tags & Vue attributes
 

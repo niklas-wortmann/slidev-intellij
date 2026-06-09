@@ -87,8 +87,11 @@ internal object SlidevFrontmatterDocs {
         }
     }
 
-    /** Just enough markdown for the schema texts: paragraphs, bullet lists, inline code, bare links. */
-    private fun renderMarkdown(text: String): String {
+    /**
+     * Just enough markdown for the schema texts: paragraphs, bullet lists, inline code,
+     * bare links. Also used for the component/directive descriptions of [SlidevComponentDocs].
+     */
+    internal fun renderMarkdown(text: String): String {
         val escaped = StringUtil.escapeXmlEntities(text)
             .replace(Regex("`([^`]+)`"), "<code>$1</code>")
             .replace(Regex("(https?://\\S+?)([.,)]?)(\\s|$)"), "<a href=\"$1\">$1</a>$2$3")
