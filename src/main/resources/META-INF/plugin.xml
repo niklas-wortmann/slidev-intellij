@@ -17,6 +17,9 @@
         ]]></description>
 
     <depends>com.intellij.modules.platform</depends>
+    <!-- WebProjectTemplate and the moduleBuilder EP (New Project wizard) live in the lang module,
+         which every IntelliJ-based IDE ships. -->
+    <depends>com.intellij.modules.lang</depends>
     <!-- The "Markdown" language is defined by this plugin; folding registration is optional so the
          rest of the plugin works in IDEs where Markdown support is disabled or absent. -->
     <depends optional="true" config-file="slidev-markdown.xml">org.intellij.plugins.markdown</depends>
@@ -47,6 +50,10 @@
                 implementation="dev.slidev.intellij.editor.SlidevFrontmatterDocumentationTargetProvider"/>
         <fileEditorProvider implementation="dev.slidev.intellij.ui.preview.SlidevSplitEditorProvider"/>
         <fileIconProvider implementation="dev.slidev.intellij.ui.SlidevFileIconProvider"/>
+        <!-- New Project wizard, twice for the two wizard flavors: directoryProjectGenerator is read
+             by WebStorm-style dialogs, moduleBuilder by IntelliJ IDEA's unified wizard. -->
+        <directoryProjectGenerator implementation="dev.slidev.intellij.generator.SlidevProjectGenerator"/>
+        <moduleBuilder builderClass="dev.slidev.intellij.generator.SlidevModuleBuilder"/>
     </extensions>
 
     <projectListeners>
