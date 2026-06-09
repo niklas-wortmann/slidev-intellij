@@ -20,6 +20,9 @@
     <!-- The "Markdown" language is defined by this plugin; folding registration is optional so the
          rest of the plugin works in IDEs where Markdown support is disabled or absent. -->
     <depends optional="true" config-file="slidev-markdown.xml">org.intellij.plugins.markdown</depends>
+    <!-- The headmatter is a YAML injection host (Markdown front-matter support), so docs and
+         completion there must also be registered against the YAML language. -->
+    <depends optional="true" config-file="slidev-yaml.xml">org.jetbrains.plugins.yaml</depends>
 
     <resource-bundle>messages.SlidevBundle</resource-bundle>
 
@@ -34,6 +37,12 @@
                              instance="dev.slidev.intellij.settings.SlidevSettingsConfigurable"/>
         <notificationGroup id="Slidev" displayType="BALLOON" key="notification.group.slidev"/>
         <editor.linePainter implementation="dev.slidev.intellij.editor.SlidevSlideLinePainter"/>
+        <!-- Hover/caret quick docs for frontmatter keys. Offset-based and language-independent,
+             so it covers both the injected-YAML headmatter and plain-Markdown slide blocks; must
+             be this V2 EP because hover resolves YAML key declarations before ever reaching the
+             legacy lang.documentationProvider registrations. -->
+        <platform.backend.documentation.targetProvider
+                implementation="dev.slidev.intellij.editor.SlidevFrontmatterDocumentationTargetProvider"/>
     </extensions>
 
     <projectListeners>

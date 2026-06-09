@@ -2,5 +2,18 @@
     <extensions defaultExtensionNs="com.intellij">
         <lang.foldingBuilder language="Markdown"
                              implementationClass="dev.slidev.intellij.editor.SlidevFoldingBuilder"/>
+
+        <!-- Schema-driven frontmatter support (port of the VS Code language server's YAML-schema
+             binding). Implemented directly on the document text: mid-document frontmatter blocks
+             are plain Markdown paragraphs and not language-injection hosts. -->
+        <completion.contributor language="Markdown"
+                                implementationClass="dev.slidev.intellij.editor.SlidevFrontmatterCompletionContributor"/>
+        <!-- Lookup-item docs in the completion popup; hover docs come from the
+             platform.backend.documentation.targetProvider in plugin.xml. -->
+        <lang.documentationProvider language="Markdown"
+                                    implementationClass="dev.slidev.intellij.editor.SlidevFrontmatterDocumentationProvider"/>
+        <annotator language="Markdown"
+                   implementationClass="dev.slidev.intellij.editor.SlidevFrontmatterAnnotator"/>
+        <typedHandler implementation="dev.slidev.intellij.editor.SlidevFrontmatterTypedHandler"/>
     </extensions>
 </idea-plugin>

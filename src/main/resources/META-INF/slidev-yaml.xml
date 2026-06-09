@@ -1,0 +1,14 @@
+<idea-plugin>
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- The headmatter (the triple-dash block at file start) is parsed by the Markdown plugin as a
+             front-matter header hosting an injected YAML fragment, so hover/completion there are
+             dispatched by the YAML language, not Markdown. Mid-document frontmatter blocks remain
+             plain Markdown paragraphs and are covered by the registrations in slidev-markdown.xml. -->
+        <completion.contributor language="yaml"
+                                implementationClass="dev.slidev.intellij.editor.SlidevFrontmatterCompletionContributor"/>
+        <!-- Lookup-item docs in the completion popup; hover docs come from the
+             platform.backend.documentation.targetProvider in plugin.xml. -->
+        <lang.documentationProvider language="yaml"
+                                    implementationClass="dev.slidev.intellij.editor.SlidevFrontmatterDocumentationProvider"/>
+    </extensions>
+</idea-plugin>
