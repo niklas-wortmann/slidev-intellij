@@ -58,6 +58,26 @@
         <annotator language="Markdown"
                    implementationClass="dev.slidev.intellij.editor.SlidevComponentAnnotator"/>
         <colorSettingsPage implementation="dev.slidev.intellij.editor.SlidevColorSettingsPage"/>
+
+        <!-- The markdown file's HTML template-data root is checked by the platform's HTML
+             inspections, which flag Slidev component tags as unknown tags and Vue directives /
+             UnoCSS attributify utilities as unknown attributes. Registered for XML so it is
+             consulted for both XML- and HTML-language elements of that root (and of injected
+             ```html fences); guarded to Slidev decks. -->
+        <lang.inspectionSuppressor language="XML"
+                                   implementationClass="dev.slidev.intellij.editor.SlidevHtmlInspectionSuppressor"/>
+
+        <!-- Per-step language injection into Shiki Magic Move blocks (plan.md, 19.4).
+             order="first": injection is first-wins per host, and the markdown plugin's own
+             CodeFenceInjector resolves `md magic-move` to a whole-fence Markdown injection
+             that would otherwise shadow the per-step ones. -->
+        <multiHostInjector implementation="dev.slidev.intellij.editor.SlidevMagicMoveInjector"
+                           order="first"/>
+
+        <!-- Magic-move steps are intentionally incomplete code mid-animation; their parse
+             errors are suppressed unconditionally (plan.md, 19.5) — the markdown plugin's
+             own fence filter is gated on a setting that defaults to showing problems. -->
+        <highlightErrorFilter implementation="dev.slidev.intellij.editor.SlidevMagicMoveErrorFilter"/>
     </extensions>
 
     <extensions defaultExtensionNs="org.intellij.markdown">

@@ -94,6 +94,15 @@ class SlidevParserTest {
     }
 
     @Test
+    fun `separator inside a magic-move block does not split slides`() {
+        // 19.6 regression pin: the fence-skip tracks the leading-backtick run, so the
+        // `---` lines between magic-move steps stay inside slide one.
+        val md = parse("# One\n\n````md magic-move {at:4} [app.js]\n```js\n---\n```\n---\n```ts\nlet b\n```\n````\n\n---\n\n# Two")
+        assertEquals(2, md.slides.size)
+        assertEquals("Two", md.slides[1].title)
+    }
+
+    @Test
     fun `unclosed code fence does not protect later separators`() {
         // upstream only skips past a fence when it is closed; an unclosed fence
         // leaves the following lines subject to normal separator handling

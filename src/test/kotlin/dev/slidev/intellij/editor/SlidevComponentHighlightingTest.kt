@@ -40,6 +40,13 @@ class SlidevComponentHighlightingTest : BasePlatformTestCase() {
         assertEmpty(infos.unknownComponentWarnings())
     }
 
+    fun `test kebab-case component tags are colored`() {
+        // Vue resolves kebab-case tags to PascalCase components: <v-click> → VClick.
+        val infos = highlight("# Title\n\n<v-click>\n\nstep\n\n</v-click>")
+        assertEquals(listOf("v-click", "v-click"), infos.texts(SlidevHighlightColors.COMPONENT_TAG))
+        assertEmpty(infos.unknownComponentWarnings())
+    }
+
     fun `test local component is recognized`() {
         val infos = highlight(
             "# Title\n\n<Counter :count=\"1\" />",

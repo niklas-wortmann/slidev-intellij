@@ -93,6 +93,7 @@ The Vue plugin only exists in paid IDEs, so the baseline is text-offset-based ov
 
 - [x] **15.1 — Annotator-based semantic coloring** (M): `SlidevComponentAnnotator` + `SlidevHighlightColors` (3 `TextAttributesKey`s: component tag, `v-` directive attr, `:`/`@` bound attr) + `SlidevColorSettingsPage` (Settings | Editor | Color Scheme | Slidev). Known component names colored on open *and* close tags; unknown PascalCase tags get a weak warning (typo-catcher, opening tag only — lowercase HTML untouched). Driven by a new `SlidevSlideTags.tokens()` full-document scan (the per-caret `tokenAt` was refactored onto the same collector); fresh re-parse per pass like `SlidevFoldingBuilder`. Tested (`SlidevComponentHighlightingTest` + `tokens()` unit tests).
 - [x] **15.2 — Spike: HTML injection into HTML blocks** (S, ⚠ optional): **spike failed, as anticipated** — verified against the 2025.3 `markdown.jar`: `MarkdownHtmlBlock` extends `ASTWrapperPsiElement` and implements only `MarkdownPsiElement`, not `PsiLanguageInjectionHost`; the plugin's only injection hosts remain `MarkdownFrontMatterHeader` and `MarkdownCodeFenceImpl` (same as the 8.4 outcome). No host → no `MultiHostInjector`/`LanguageInjectionContributor` path. Moot in practice anyway: recognized inline HTML already completes against the markdown file's HTML PSI root (the 14.1 finding), so Community gets baseline HTML completion without injection. 15.1 stands as the committed approach.
+- [x] **15.3 — Unknown-tag/attribute false-positive suppression + kebab-case tags** (S): the platform's HTML inspections (and, in full IDEs, the Vue plugin / web-symbols layer) run on the markdown file's HTML template-data root and flagged Slidev syntax — `<v-click>` as an unknown tag, `v-click.fade` / `v-mark.circle.orange` / attributify `mt-12` as unknown attributes. `SlidevHtmlInspectionSuppressor` (`lang.inspectionSuppressor language="XML"`, slidev-markdown.xml) suppresses `HtmlUnknownAttribute`/`HtmlUnknownBooleanAttribute`/`VueUnrecognizedDirective` wholesale in deck HTML (incl. injected ```html fences) — directives + UnoCSS attributify make any attribute name legitimate — and `HtmlUnknownTag` only for tags the component index resolves. Kebab-case tag resolution (`<v-click>` → `VClick`, Vue semantics) added via `componentForTag()` and wired through `componentFor()`, so the annotator now colors kebab component tags and docs/goto/attr-completion work on them too. Tested (`SlidevHtmlInspectionSuppressionTest`; note: `HtmlUnknownTag` itself never fires on markdown HTML roots in the test platform — the unknown-tag squiggle in the real IDE comes from web-symbols under the same toolId).
 
 ## Phase 16 — Comark support (gated on `comark: true` / deprecated `mdc: true` headmatter)
 
@@ -108,6 +109,122 @@ Greenfield: no IntelliJ support for Comark exists anywhere. Custom scanner + ann
 ## Phase 17 — Deep Vue integration (optional, paid-IDE only, stretch)
 
 - [ ] **17.1 — Spike: Polysymbols contribution** (M, ⚠): optional dependency on `JavaScript` + `org.jetbrains.plugins.vue` in a separate `slidev-vue.xml` (same pattern as `slidev-mcp.xml`). Contribute the Phase 13 index through the Polysymbols API (Web Symbols, renamed 2025.2+) so the platform's HTML/Vue machinery does type-aware prop completion, rename, and find-usages. The 13–16 baseline must stand alone without this.
+
+## Phase 18 — JS/TS support for slide script blocks & Vue expressions ✅
+
+Inline HTML blocks of a slide are fully re-parsed in the markdown file's HTML
+template-data root (`DefaultMarkdownFileViewProvider`) — unlike the Markdown root
+(8.4/15.2 outcomes). Optional `JavaScript` plugin dependency, same pattern as
+slidev-mcp.xml.
+
+- [x] **18.1 — Spike: HTML-root script-body shape** (S, ⚠ risk): **outcome was Path B** —
+  the JS plugin's `HtmlEmbeddedContentSupport` lexer-embeds `<script>` bodies as real JS
+  PSI in the HTML root, so completion works for free and script-body *injection* is
+  impossible/unneeded. Two gaps found: the embedded parse is always a plain-JS dialect
+  (`lang="ts"` ignored) and reports phantom "Newline or semicolon expected" errors
+  (newlines are swallowed into `MARKDOWN_OUTER_BLOCK`). Attribute values are plain
+  `XmlAttributeValue` hosts (Path A) as planned. Probe kept as a regression test.
+- [x] **18.2 — Implementation** (M), three pieces in `editor/` sharing the
+  `SlidevScriptSupport` guards (HTML root → `.md` → Markdown base language →
+  `stateContaining`; language lookup by stable ID strings, no JS-plugin classes):
+  - `SlidevScriptInjector`: MultiHostInjector over `XmlAttributeValue` only — `:`/`v-bind`
+    wrapped in parens (object-literal vs block-statement ambiguity), `@`/`v-on` bare,
+    `v-*` expressions minus v-else/v-pre/v-cloak/v-once/v-for/v-slot. Always JS, never TS.
+  - `SlidevScriptBodyAnnotator`: lexer-driven coloring of embedded script bodies (the
+    editor highlighter is the Markdown lexer, so the embedded JS PSI has no colors);
+    honors `lang="ts"` by lexing with the TypeScript highlighter.
+  - `SlidevScriptErrorFilter`: suppresses the phantom embedded-parse errors in decks.
+- [x] **18.3 — Registration** (XS): `<depends optional config-file="slidev-javascript.xml">JavaScript`
+  + `multiHostInjector`/`annotator`/`highlightErrorFilter` EPs; `bundledPlugin("JavaScript")`
+  for sandbox/tests.
+- [x] **18.4 — Tests** (M): `SlidevScriptInjectionTest` — probe, completion through the
+  embedded body, keyword-coloring annotation, error suppression (and non-suppression in
+  non-Slidev markdown), paren-wrap fragment text per attribute kind, negatives (v-for,
+  plain attrs, fenced code, non-Slidev file), no component-completion noise in script
+  bodies. Note: when the caret is inside an injected fragment, `myFixture.file` *is* the
+  fragment file.
+- [ ] **18.5 — Stretch (follow-up, not core)**: script-setup-aware attribute fragments —
+  the script body as injection *prefix* of each expression fragment so `:enter="final"`
+  resolves against script consts. Perf/invalidations need care.
+
+## Phase 19 — Syntax highlighting in Shiki Magic Move blocks & their nested code fences ✅
+
+[Magic Move](https://sli.dev/features/shiki-magic-move) syntax: a **4-backtick** outer fence
+with info string `md magic-move`, optionally followed by options (`{at:4, lines:true}`) and a
+title (`[app.js]`, v0.52+). Each animation step is a normal 3-backtick fence inside, with its
+own language and optional Shiki meta — click ranges `{*|1|2-5}` and per-step options
+`{*}{lines:false}`; non-code text between steps is ignored (comments). Today the IDE shows the
+whole block as plain text: the Markdown plugin's `CodeFenceInjector` asks
+`CodeFenceLanguageGuesser` to resolve the info string, and neither `md magic-move` nor
+`js {*|2}`-style inner strings resolve cleanly. The outer fence *is* a `MarkdownCodeFenceImpl`
+— the plugin's one reliable injection host (8.4/15.2 outcomes) — which is the hook.
+
+Two candidate designs; **19.1 decides which**:
+
+- **Design A — `fenceLanguageProvider`**: register the public dynamic EP
+  `org.intellij.markdown.fenceLanguageProvider` (verified present in 262's markdown
+  plugin.xml; providers receive the *full* info string before the alias lookup, same hook
+  PlantUML/Mermaid use). Map `md magic-move…` → Markdown so the outer fence becomes injected
+  markdown and the *nested* fences get the plugin's normal per-fence injection recursively.
+  Low code, matches upstream's intent (the `md` prefix exists so editors treat the body as
+  markdown). Caveats: `getLanguageByInfoString(String)` has **no file context** → global
+  mapping in all markdown files (acceptable: the info string is Slidev-specific); depends on
+  recursive injection inside injected markdown actually rendering (spike question).
+- **Design B — own `MultiHostInjector`** over the outer `MarkdownCodeFenceImpl`, guarded to
+  Slidev decks (`stateContaining`, the `SlidevScriptSupport` house pattern): scan the fence
+  body for the step blocks and run one `startInjecting(language)` session per step (multiple
+  injections into one host are supported). Full control — deck-scoped, exact inner-language
+  resolution with meta stripped, no recursion question. More code; must coexist with the
+  markdown plugin's own `CodeFenceInjector` on the same host (if the guesser's
+  suffix-stripping happens to resolve `md magic-move` → `md` → Markdown today, suppress its
+  injection by having a `fenceLanguageProvider` return `PlainTextLanguage` for magic-move).
+
+- [x] **19.1 — Spike: what the platform already does** (S, ⚠ decides A vs B): **outcome was
+  Design B.** (a) The guesser space-chops `md magic-move` to `md`, so the bundled plugin
+  *does* inject — a whole-fence Markdown injection; (b) but fences nested inside *injected*
+  markdown never get recursive injection, so the steps stayed plain text → **B**; (c) a plain
+  top-level ` ```js {*|2|5-6} ` fence already resolves to JavaScript via the same
+  space-chopping — **19.8 is moot**. All three pins kept as regression tests in
+  `SlidevMagicMoveInjectionTest`.
+- [x] **19.2 — Magic-move scanner** (S): `MagicMoveBlocks` in `parser/` (sibling of
+  `CodeBlocks.kt`): 4+-backtick `md`/`markdown magic-move` fences with options `{…}` /
+  title `[…]`, steps as (language, meta, content range) — meta split covers `{*|2|5-6}`,
+  `{*}{lines:false}` and the space-less ` ```ts{2,3} ` form. CRLF-safe, non-code text
+  between steps ignored, foreign fences skipped (quoted examples don't match), closing
+  fences with info strings are content (CommonMark), unclosed fences swallow to EOF.
+  Unit-tested (`MagicMoveBlocksTest`, 17 cases).
+- [x] **19.3 — Language resolver without internal API** (S): `SlidevFenceLanguages` —
+  alias table for the common Slidev tokens → case-insensitive `Language.findLanguageByID`
+  → file-type-by-extension fallback, gated on `LanguageUtil.isInjectableLanguage` and
+  never plain-text. Missing plugin (e.g. `ts`/`vue` in Community) → null → that step is
+  skipped, never an error.
+- [x] **19.4 — Implementation** (M): **Design B** — `SlidevMagicMoveInjector`
+  (`com.intellij.multiHostInjector` in `slidev-markdown.xml`) over `MarkdownCodeFence`,
+  one injection session per step using 19.2 + 19.3; shared guards in
+  `SlidevMagicMoveSupport` (deck-scoped via `stateContaining`, through `originalFile` so
+  completion copies keep their injection). Registered `order="first"`: injection is
+  first-wins per host, and the markdown plugin's own `CodeFenceInjector` would otherwise
+  shadow the step injections with its whole-fence Markdown fallback (19.1(a)) — which is
+  also why no `fenceLanguageProvider` suppression is needed.
+- [x] **19.5 — Error-noise control** (S): the markdown plugin's `CodeFenceHighlightInfoFilter`
+  does cover the step fragments (their host is a markdown code fence) but is gated on the
+  "show problems in fences" setting whose default is to *show* — so
+  `SlidevMagicMoveErrorFilter` (the `SlidevScriptErrorFilter` pattern) suppresses parse
+  errors in magic-move step fragments unconditionally; regular fences keep their errors.
+- [x] **19.6 — Parser & decoration interplay** (XS–S): regression pins added —
+  `SlidevParserTest` (`---` lines inside a magic-move block don't split slides; the
+  fence-skip tracks the leading-backtick run) and `CodeBlocksTest` (only the inner
+  3-backtick steps get line numbers, the outer fence doesn't — matches the VS Code
+  annotator).
+- [x] **19.7 — Tests** (M): `SlidevMagicMoveInjectionTest` (13 cases): per-step injection
+  presence + language (mixed `js`→`ts`), meta-suffixed inner info strings, outer-fence
+  options + `[title]`, empty/unresolvable steps skipped, syntax coloring over step content,
+  completion inside a step, error suppression (and non-suppression outside magic-move),
+  CRLF, scope negatives (non-Slidev markdown keeps the platform Markdown injection; plain
+  ` ````md ` fence untouched), and the 19.1(c) line-highlight-meta pin.
+- [x] **19.8 — Stretch: line-highlight meta on regular fences** — **moot**: per 19.1(c) the
+  guesser's space-chopping already resolves ` ```ts {2-3|5} ` today; pinned as a regression
+  test so a platform change would surface.
 
 ### Phase 13–17 risks & notes
 
@@ -132,6 +249,8 @@ Greenfield: no IntelliJ support for Comark exists anywhere. Custom scanner + ann
 | 8 | Phase 14 + 15 (component completion/docs + highlighting, parallelizable) | ~3–5 days |
 | 9 | Phase 16 (comark) | ~3–5 days, 16.1 scanner is the bulk |
 | 10 | Phase 17 (Polysymbols/Vue) | ~1 week+, spike-gated, optional |
+| 11 | Phase 18 (JS/TS in script blocks & Vue expressions) | ~2–3 days, 18.1 was the risk — done |
+| 12 | Phase 19 (Magic Move highlighting) | ~1–2 days, 19.1 spike decided Design B — done |
 
 The only genuinely uncertain task is **8.4** (JSON-schema over injected YAML) — do that spike first within Phase 8, since its outcome decides whether 8.5 is free or becomes a hand-rolled completion contributor. For the language-support phases, the equivalent risk items are **15.2** (HTML injection spike — fallback already committed as 15.1) and **17.1** (Polysymbols spike — entire phase is optional).
 

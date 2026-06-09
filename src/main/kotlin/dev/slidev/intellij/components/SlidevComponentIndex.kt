@@ -75,7 +75,8 @@ class SlidevComponentIndex(private val project: Project, private val scope: Coro
         return computed
     }
 
-    fun componentFor(path: String, tagName: String): SlidevComponent? = componentsFor(path)[tagName]
+    fun componentFor(path: String, tagName: String): SlidevComponent? =
+        componentsFor(path).componentForTag(tagName)
 
     // ---------------------------------------------------------------- computation
 

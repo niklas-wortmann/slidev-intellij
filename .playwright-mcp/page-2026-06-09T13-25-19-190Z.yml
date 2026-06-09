@@ -1,0 +1,1451 @@
+- generic [active] [ref=e1]:
+  - link "Skip to main content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+    - generic [ref=e4]: Skip to main content
+  - generic [ref=e6]:
+    - generic:
+      - generic [ref=e7]:
+        - generic: "So I'm going to have to see this AI garbage every day until the next major release? : r/Jetbrains"
+      - banner [ref=e10]:
+        - navigation [ref=e11]:
+          - link "Home" [ref=e15] [cursor=pointer]:
+            - /url: https://www.reddit.com/
+            - img [ref=e17]
+          - search [ref=e34]:
+            - generic [ref=e36]:
+              - img [ref=e39]
+              - generic "Remove r/Jetbrains filter and expand search to all of Reddit" [ref=e42] [cursor=pointer]:
+                - button [pressed] [ref=e43]:
+                  - generic [ref=e47]: r/Jetbrains
+                  - img [ref=e49]
+              - textbox "Remove r/Jetbrains filter and expand search to all of Reddit" [ref=e52]:
+                - /placeholder: Search in ⁨r/Jetbrains⁩
+          - generic [ref=e53]:
+            - link "Sign Up" [ref=e59] [cursor=pointer]:
+              - /url: https://www.reddit.com/register/
+              - generic [ref=e61]: Sign Up
+            - link "Log In" [ref=e65] [cursor=pointer]:
+              - /url: https://www.reddit.com/login/
+              - generic [ref=e67]: Log In
+            - button "Expand user menu" [ref=e72] [cursor=pointer]:
+              - img [ref=e75]
+              - generic [ref=e77]:
+                - generic: Expand user menu
+      - generic [ref=e78]:
+        - generic [ref=e79]:
+          - generic [ref=e80]:
+            - generic:
+              - generic:
+                - link "Skip to Navigation" [ref=e81] [cursor=pointer]:
+                  - /url: "#left-sidebar-container"
+                - link "Skip to Right Sidebar" [ref=e82] [cursor=pointer]:
+                  - /url: "#right-sidebar-container"
+          - generic [ref=e83]:
+            - main [ref=e84]:
+              - 'generic "So I''m going to have to see this AI garbage every day until the next major release? : r/Jetbrains"'
+              - generic [ref=e85]:
+                - generic [ref=e86]:
+                  - generic [ref=e87]:
+                    - button "Back" [ref=e89] [cursor=pointer]:
+                      - img [ref=e92]
+                      - generic [ref=e94]:
+                        - generic: Back
+                    - link "Go to Jetbrains" [ref=e97] [cursor=pointer]:
+                      - /url: https://www.reddit.com/r/Jetbrains/
+                      - generic [ref=e101]:
+                        - generic: Go to Jetbrains
+                    - group [ref=e102]:
+                      - generic [ref=e103]:
+                        - link "r/Jetbrains" [ref=e107] [cursor=pointer]:
+                          - /url: https://www.reddit.com/r/Jetbrains/
+                        - generic [ref=e108]: •
+                        - time [ref=e109]: 7mo ago
+                      - 'link "Author: DrOverbuild" [ref=e115] [cursor=pointer]':
+                        - /url: https://www.reddit.com/user/DrOverbuild/
+                        - generic [ref=e116]: DrOverbuild
+                  - button "Open user actions" [ref=e120] [cursor=pointer]:
+                    - img [ref=e123]
+                - generic [ref=e126]:
+                  - 'heading "Post Title: So I''m going to have to see this AI garbage every day until the next major release?" [level=1] [ref=e127]': So I'm going to have to see this AI garbage every day until the next major release?
+                  - 'link "Flair: IDEs" [ref=e130] [cursor=pointer]':
+                    - /url: /r/Jetbrains/?f=flair_name%3A%22IDEs%22
+                    - 'generic "Flair: IDEs" [ref=e132]': IDEs
+                - img "r/Jetbrains - So I'm going to have to see this AI garbage every day until the next major release?" [ref=e138] [cursor=pointer]
+                - paragraph [ref=e143]: Their splash screens have been decent up until now. Really not looking forward to the coming months if this is what I'm seeing launching Rider everyday...
+                - generic "Actions available for this post" [ref=e145]:
+                  - generic [ref=e148]:
+                    - button "Upvote" [ref=e149] [cursor=pointer]:
+                      - img [ref=e151]
+                      - generic [ref=e153]:
+                        - generic: Upvote
+                    - generic [ref=e155]: "17"
+                    - button "Downvote" [ref=e156] [cursor=pointer]:
+                      - img [ref=e158]
+                      - generic [ref=e160]:
+                        - generic: Downvote
+                  - button "25 Go to comments" [ref=e161] [cursor=pointer]:
+                    - generic [ref=e162]:
+                      - img [ref=e164]
+                      - generic [ref=e167]: "25"
+                    - generic [ref=e168]:
+                      - generic: Go to comments
+                  - button "Give award" [ref=e170] [cursor=pointer]:
+                    - img [ref=e173]
+                  - button "Share" [ref=e178] [cursor=pointer]:
+                    - generic [ref=e179]:
+                      - img [ref=e181]
+                      - generic [ref=e184]: Share
+              - generic "Built for developers. Designed for enterprise delivery." [ref=e185]:
+                - generic [ref=e186]:
+                  - 'generic "Advertisement: Built for developers. Designed for enterprise delivery." [ref=e187]':
+                    - 'link "Advertisement: Built for developers. Designed for enterprise delivery." [ref=e188] [cursor=pointer]':
+                      - /url: https://alb.reddit.com/cr?za=GugtCe0_mCTGJ9uGTiKEIR8fE89C6dV-4wGpZBUGafRJ2zPEktYRHxUHTG2RrSAoPem4eD2WpFdJhNXVPtY2q6bCsEsRy0iMkzAXnlUlrKAVdqol07zQdN5mJvtQ56r78RSJVKywLvzmr3GmW1XmNOD-Wcuc5cxCe5YfXI2aCPqfSWprGVqa1YcrPXzuxzUc_blfNPdYu2l0fjv8fjsN9fOXai4PSJKzxcyhJhQe_CCGQuelm0wRoMbfLNBs8A2YdypEVzufTW1c7i92kxPVitvdhUimPuXhOR0kw48mLwcUb7-LuxHJiKKaUgUPKuIU8iJQSy9kS4d1O1TWkHPA8BPwHl5_9647Q0fdlDs5u6S7rVlkd_sXyuXSRs1zZSlmm1shDBB60i2rnSgTwITGuCe8dPidnSVwD6Uu1es_jt1IWaFvgAxJvbjFrIj_9LOgVyJTv7IWAFeNT9XGjhjJG20fTN4fEe35rhp3DT3AP1EjiN4oteljIyD6Kpop21p43YcTK34SL-3JhnH1cjBsa4CPfXcpJNqNFl-0v3epZuJqGbn22HyN8ayVIAjox6MrMRiTM44yOyZty03JUjM-hDBexfbTpYmGpdtNivKyVODJKEbBne197Hjy94WZdEcE2RFcKyDtvHwQcR0gtsfMcG_7XrxYNDdtdDzWHR8BJP70poqwEDYwlZd4_kMchlBV1pXrtGY091DJyvrI&zp=l6Nvy2KRohkBeBKv8KY1zB8Ub5uaQXWp71kXSaamrFDgwmf_dereuS0OrfZPwwlB8aDBWN85XV-0SXVQTrZTCL51RpTl5tZus5Bl4nsINfesY-KnDTRK1SDDvc74paavxBMv_LdLAtD7G-GjNM89tjrYV6zTFx7gdYM8KASU1yQ1Ryjreeim9LOp9AH0ladg61X5HpjONF2J4ivbBHZXZfYe-NnnY8NdrBtJNzqTAmj6L-357BjKrmjcJ0foeYe1MJLYW04Z0P0HZT3tzj63Cpl2Ooju9jmGXo8
+                  - generic [ref=e189]:
+                    - generic [ref=e190]:
+                      - link "u/ibm avatar ibm" [ref=e193] [cursor=pointer]:
+                        - /url: /user/ibm/
+                        - img "u/ibm avatar" [ref=e196]
+                        - generic [ref=e197]: ibm
+                      - generic [ref=e198]: •
+                      - link "Promoted" [ref=e200] [cursor=pointer]:
+                        - /url: /user/ibm/
+                        - generic [ref=e201]: Promoted
+                      - link [ref=e203] [cursor=pointer]:
+                        - /url: https://alb.reddit.com/cr?za=GugtCe0_mCTGJ9uGTiKEIR8fE89C6dV-4wGpZBUGafRJ2zPEktYRHxUHTG2RrSAoPem4eD2WpFdJhNXVPtY2q6bCsEsRy0iMkzAXnlUlrKAVdqol07zQdN5mJvtQ56r78RSJVKywLvzmr3GmW1XmNOD-Wcuc5cxCe5YfXI2aCPqfSWprGVqa1YcrPXzuxzUc_blfNPdYu2l0fjv8fjsN9fOXai4PSJKzxcyhJhQe_CCGQuelm0wRoMbfLNBs8A2YdypEVzufTW1c7i92kxPVitvdhUimPuXhOR0kw48mLwcUb7-LuxHJiKKaUgUPKuIU8iJQSy9kS4d1O1TWkHPA8BPwHl5_9647Q0fdlDs5u6S7rVlkd_sXyuXSRs1zZSlmm1shDBB60i2rnSgTwITGuCe8dPidnSVwD6Uu1es_jt1IWaFvgAxJvbjFrIj_9LOgVyJTv7IWAFeNT9XGjhjJG20fTN4fEe35rhp3DT3AP1EjiN4oteljIyD6Kpop21p43YcTK34SL-3JhnH1cjBsa4CPfXcpJNqNFl-0v3epZuJqGbn22HyN8ayVIAjox6MrMRiTM44yOyZty03JUjM-hDBexfbTpYmGpdtNivKyVODJKEbBne197Hjy94WZdEcE2RFcKyDtvHwQcR0gtsfMcG_7XrxYNDdtdDzWHR8BJP70poqwEDYwlZd4_kMchlBV1pXrtGY091DJyvrI&zp=l6Nvy2KRohkBeBKv8KY1zB8Ub5uaQXWp71kXSaamrFDgwmf_dereuS0OrfZPwwlB8aDBWN85XV-0SXVQTrZTCL51RpTl5tZus5Bl4nsINfesY-KnDTRK1SDDvc74paavxBMv_LdLAtD7G-GjNM89tjrYV6zTFx7gdYM8KASU1yQ1Ryjreeim9LOp9AH0ladg61X5HpjONF2J4ivbBHZXZfYe-NnnY8NdrBtJNzqTAmj6L-357BjKrmjcJ0foeYe1MJLYW04Z0P0HZT3tzj63Cpl2Ooju9jmGXo8
+                    - button "Open user actions" [ref=e208] [cursor=pointer]:
+                      - img [ref=e211]
+                  - generic [ref=e214]:
+                    - generic [ref=e215]:
+                      - link "Built for developers. Designed for enterprise delivery." [ref=e217] [cursor=pointer]:
+                        - /url: https://alb.reddit.com/cr?za=GugtCe0_mCTGJ9uGTiKEIR8fE89C6dV-4wGpZBUGafRJ2zPEktYRHxUHTG2RrSAoPem4eD2WpFdJhNXVPtY2q6bCsEsRy0iMkzAXnlUlrKAVdqol07zQdN5mJvtQ56r78RSJVKywLvzmr3GmW1XmNOD-Wcuc5cxCe5YfXI2aCPqfSWprGVqa1YcrPXzuxzUc_blfNPdYu2l0fjv8fjsN9fOXai4PSJKzxcyhJhQe_CCGQuelm0wRoMbfLNBs8A2YdypEVzufTW1c7i92kxPVitvdhUimPuXhOR0kw48mLwcUb7-LuxHJiKKaUgUPKuIU8iJQSy9kS4d1O1TWkHPA8BPwHl5_9647Q0fdlDs5u6S7rVlkd_sXyuXSRs1zZSlmm1shDBB60i2rnSgTwITGuCe8dPidnSVwD6Uu1es_jt1IWaFvgAxJvbjFrIj_9LOgVyJTv7IWAFeNT9XGjhjJG20fTN4fEe35rhp3DT3AP1EjiN4oteljIyD6Kpop21p43YcTK34SL-3JhnH1cjBsa4CPfXcpJNqNFl-0v3epZuJqGbn22HyN8ayVIAjox6MrMRiTM44yOyZty03JUjM-hDBexfbTpYmGpdtNivKyVODJKEbBne197Hjy94WZdEcE2RFcKyDtvHwQcR0gtsfMcG_7XrxYNDdtdDzWHR8BJP70poqwEDYwlZd4_kMchlBV1pXrtGY091DJyvrI&zp=l6Nvy2KRohkBeBKv8KY1zB8Ub5uaQXWp71kXSaamrFDgwmf_dereuS0OrfZPwwlB8aDBWN85XV-0SXVQTrZTCL51RpTl5tZus5Bl4nsINfesY-KnDTRK1SDDvc74paavxBMv_LdLAtD7G-GjNM89tjrYV6zTFx7gdYM8KASU1yQ1Ryjreeim9LOp9AH0ladg61X5HpjONF2J4ivbBHZXZfYe-NnnY8NdrBtJNzqTAmj6L-357BjKrmjcJ0foeYe1MJLYW04Z0P0HZT3tzj63Cpl2Ooju9jmGXo8
+                        - generic: Built for developers. Designed for enterprise delivery.
+                      - generic [ref=e218]:
+                        - link [ref=e220] [cursor=pointer]:
+                          - /url: https://alb.reddit.com/cr?za=GugtCe0_mCTGJ9uGTiKEIR8fE89C6dV-4wGpZBUGafRJ2zPEktYRHxUHTG2RrSAoPem4eD2WpFdJhNXVPtY2q6bCsEsRy0iMkzAXnlUlrKAVdqol07zQdN5mJvtQ56r78RSJVKywLvzmr3GmW1XmNOD-Wcuc5cxCe5YfXI2aCPqfSWprGVqa1YcrPXzuxzUc_blfNPdYu2l0fjv8fjsN9fOXai4PSJKzxcyhJhQe_CCGQuelm0wRoMbfLNBs8A2YdypEVzufTW1c7i92kxPVitvdhUimPuXhOR0kw48mLwcUb7-LuxHJiKKaUgUPKuIU8iJQSy9kS4d1O1TWkHPA8BPwHl5_9647Q0fdlDs5u6S7rVlkd_sXyuXSRs1zZSlmm1shDBB60i2rnSgTwITGuCe8dPidnSVwD6Uu1es_jt1IWaFvgAxJvbjFrIj_9LOgVyJTv7IWAFeNT9XGjhjJG20fTN4fEe35rhp3DT3AP1EjiN4oteljIyD6Kpop21p43YcTK34SL-3JhnH1cjBsa4CPfXcpJNqNFl-0v3epZuJqGbn22HyN8ayVIAjox6MrMRiTM44yOyZty03JUjM-hDBexfbTpYmGpdtNivKyVODJKEbBne197Hjy94WZdEcE2RFcKyDtvHwQcR0gtsfMcG_7XrxYNDdtdDzWHR8BJP70poqwEDYwlZd4_kMchlBV1pXrtGY091DJyvrI&zp=l6Nvy2KRohkBeBKv8KY1zB8Ub5uaQXWp71kXSaamrFDgwmf_dereuS0OrfZPwwlB8aDBWN85XV-0SXVQTrZTCL51RpTl5tZus5Bl4nsINfesY-KnDTRK1SDDvc74paavxBMv_LdLAtD7G-GjNM89tjrYV6zTFx7gdYM8KASU1yQ1Ryjreeim9LOp9AH0ladg61X5HpjONF2J4ivbBHZXZfYe-NnnY8NdrBtJNzqTAmj6L-357BjKrmjcJ0foeYe1MJLYW04Z0P0HZT3tzj63Cpl2Ooju9jmGXo8
+                        - generic [ref=e221]:
+                          - link "Learn More" [ref=e223] [cursor=pointer]:
+                            - /url: https://alb.reddit.com/cr?za=GugtCe0_mCTGJ9uGTiKEIR8fE89C6dV-4wGpZBUGafRJ2zPEktYRHxUHTG2RrSAoPem4eD2WpFdJhNXVPtY2q6bCsEsRy0iMkzAXnlUlrKAVdqol07zQdN5mJvtQ56r78RSJVKywLvzmr3GmW1XmNOD-Wcuc5cxCe5YfXI2aCPqfSWprGVqa1YcrPXzuxzUc_blfNPdYu2l0fjv8fjsN9fOXai4PSJKzxcyhJhQe_CCGQuelm0wRoMbfLNBs8A2YdypEVzufTW1c7i92kxPVitvdhUimPuXhOR0kw48mLwcUb7-LuxHJiKKaUgUPKuIU8iJQSy9kS4d1O1TWkHPA8BPwHl5_9647Q0fdlDs5u6S7rVlkd_sXyuXSRs1zZSlmm1shDBB60i2rnSgTwITGuCe8dPidnSVwD6Uu1es_jt1IWaFvgAxJvbjFrIj_9LOgVyJTv7IWAFeNT9XGjhjJG20fTN4fEe35rhp3DT3AP1EjiN4oteljIyD6Kpop21p43YcTK34SL-3JhnH1cjBsa4CPfXcpJNqNFl-0v3epZuJqGbn22HyN8ayVIAjox6MrMRiTM44yOyZty03JUjM-hDBexfbTpYmGpdtNivKyVODJKEbBne197Hjy94WZdEcE2RFcKyDtvHwQcR0gtsfMcG_7XrxYNDdtdDzWHR8BJP70poqwEDYwlZd4_kMchlBV1pXrtGY091DJyvrI&zp=l6Nvy2KRohkBeBKv8KY1zB8Ub5uaQXWp71kXSaamrFDgwmf_dereuS0OrfZPwwlB8aDBWN85XV-0SXVQTrZTCL51RpTl5tZus5Bl4nsINfesY-KnDTRK1SDDvc74paavxBMv_LdLAtD7G-GjNM89tjrYV6zTFx7gdYM8KASU1yQ1Ryjreeim9LOp9AH0ladg61X5HpjONF2J4ivbBHZXZfYe-NnnY8NdrBtJNzqTAmj6L-357BjKrmjcJ0foeYe1MJLYW04Z0P0HZT3tzj63Cpl2Ooju9jmGXo8
+                            - generic [ref=e225]:
+                              - generic: Learn More
+                          - link "ibm.com" [ref=e228] [cursor=pointer]:
+                            - /url: https://alb.reddit.com/cr?za=GugtCe0_mCTGJ9uGTiKEIR8fE89C6dV-4wGpZBUGafRJ2zPEktYRHxUHTG2RrSAoPem4eD2WpFdJhNXVPtY2q6bCsEsRy0iMkzAXnlUlrKAVdqol07zQdN5mJvtQ56r78RSJVKywLvzmr3GmW1XmNOD-Wcuc5cxCe5YfXI2aCPqfSWprGVqa1YcrPXzuxzUc_blfNPdYu2l0fjv8fjsN9fOXai4PSJKzxcyhJhQe_CCGQuelm0wRoMbfLNBs8A2YdypEVzufTW1c7i92kxPVitvdhUimPuXhOR0kw48mLwcUb7-LuxHJiKKaUgUPKuIU8iJQSy9kS4d1O1TWkHPA8BPwHl5_9647Q0fdlDs5u6S7rVlkd_sXyuXSRs1zZSlmm1shDBB60i2rnSgTwITGuCe8dPidnSVwD6Uu1es_jt1IWaFvgAxJvbjFrIj_9LOgVyJTv7IWAFeNT9XGjhjJG20fTN4fEe35rhp3DT3AP1EjiN4oteljIyD6Kpop21p43YcTK34SL-3JhnH1cjBsa4CPfXcpJNqNFl-0v3epZuJqGbn22HyN8ayVIAjox6MrMRiTM44yOyZty03JUjM-hDBexfbTpYmGpdtNivKyVODJKEbBne197Hjy94WZdEcE2RFcKyDtvHwQcR0gtsfMcG_7XrxYNDdtdDzWHR8BJP70poqwEDYwlZd4_kMchlBV1pXrtGY091DJyvrI&zp=l6Nvy2KRohkBeBKv8KY1zB8Ub5uaQXWp71kXSaamrFDgwmf_dereuS0OrfZPwwlB8aDBWN85XV-0SXVQTrZTCL51RpTl5tZus5Bl4nsINfesY-KnDTRK1SDDvc74paavxBMv_LdLAtD7G-GjNM89tjrYV6zTFx7gdYM8KASU1yQ1Ryjreeim9LOp9AH0ladg61X5HpjONF2J4ivbBHZXZfYe-NnnY8NdrBtJNzqTAmj6L-357BjKrmjcJ0foeYe1MJLYW04Z0P0HZT3tzj63Cpl2Ooju9jmGXo8
+                            - generic: ibm.com
+                    - 'link "Thumbnail image: Built for developers. Designed for enterprise delivery." [ref=e231] [cursor=pointer]':
+                      - /url: https://alb.reddit.com/cr?za=GugtCe0_mCTGJ9uGTiKEIR8fE89C6dV-4wGpZBUGafRJ2zPEktYRHxUHTG2RrSAoPem4eD2WpFdJhNXVPtY2q6bCsEsRy0iMkzAXnlUlrKAVdqol07zQdN5mJvtQ56r78RSJVKywLvzmr3GmW1XmNOD-Wcuc5cxCe5YfXI2aCPqfSWprGVqa1YcrPXzuxzUc_blfNPdYu2l0fjv8fjsN9fOXai4PSJKzxcyhJhQe_CCGQuelm0wRoMbfLNBs8A2YdypEVzufTW1c7i92kxPVitvdhUimPuXhOR0kw48mLwcUb7-LuxHJiKKaUgUPKuIU8iJQSy9kS4d1O1TWkHPA8BPwHl5_9647Q0fdlDs5u6S7rVlkd_sXyuXSRs1zZSlmm1shDBB60i2rnSgTwITGuCe8dPidnSVwD6Uu1es_jt1IWaFvgAxJvbjFrIj_9LOgVyJTv7IWAFeNT9XGjhjJG20fTN4fEe35rhp3DT3AP1EjiN4oteljIyD6Kpop21p43YcTK34SL-3JhnH1cjBsa4CPfXcpJNqNFl-0v3epZuJqGbn22HyN8ayVIAjox6MrMRiTM44yOyZty03JUjM-hDBexfbTpYmGpdtNivKyVODJKEbBne197Hjy94WZdEcE2RFcKyDtvHwQcR0gtsfMcG_7XrxYNDdtdDzWHR8BJP70poqwEDYwlZd4_kMchlBV1pXrtGY091DJyvrI&zp=l6Nvy2KRohkBeBKv8KY1zB8Ub5uaQXWp71kXSaamrFDgwmf_dereuS0OrfZPwwlB8aDBWN85XV-0SXVQTrZTCL51RpTl5tZus5Bl4nsINfesY-KnDTRK1SDDvc74paavxBMv_LdLAtD7G-GjNM89tjrYV6zTFx7gdYM8KASU1yQ1Ryjreeim9LOp9AH0ladg61X5HpjONF2J4ivbBHZXZfYe-NnnY8NdrBtJNzqTAmj6L-357BjKrmjcJ0foeYe1MJLYW04Z0P0HZT3tzj63Cpl2Ooju9jmGXo8
+                      - 'img "Thumbnail image: Built for developers. Designed for enterprise delivery." [ref=e232]'
+              - generic [ref=e234]:
+                - generic:
+                  - generic [ref=e235]:
+                    - button "Button to add a comment" [disabled]:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - textbox [disabled]:
+                                  - /placeholder: Join the conversation
+                  - generic [ref=e240]:
+                    - generic [ref=e242]:
+                      - generic [ref=e243]: "Sort by:"
+                      - button "Sort by Best" [ref=e248] [cursor=pointer]:
+                        - generic [ref=e250]: Best
+                    - button "Search Comments Expand comment search" [ref=e257] [cursor=pointer]:
+                      - generic [ref=e258]:
+                        - img [ref=e261]
+                        - generic [ref=e264]: Search Comments
+                      - generic [ref=e265]:
+                        - generic: Expand comment search
+              - region "Comments" [ref=e268]:
+                - heading "Comments Section" [level=1] [ref=e269]
+                - generic:
+                  - article "Comment from Osirus1156 7 months ago" [ref=e271]:
+                    - generic "Metadata for Osirus1156's comment" [ref=e272]:
+                      - link "Osirus1156's profile --- avatar" [ref=e278] [cursor=pointer]:
+                        - /url: https://www.reddit.com/user/Osirus1156/
+                        - generic [ref=e280]:
+                          - img [ref=e282]
+                          - img [ref=e286]
+                          - img [ref=e289]
+                      - generic [ref=e295]:
+                        - link "Osirus1156's profile" [ref=e299] [cursor=pointer]:
+                          - /url: https://www.reddit.com/user/Osirus1156/
+                          - text: Osirus1156
+                        - generic [ref=e300]: •
+                        - link "7mo ago" [ref=e302] [cursor=pointer]:
+                          - /url: https://www.reddit.com/r/Jetbrains/comments/1owz7vq/comment/nou1g0m/
+                          - time [ref=e303]: 7mo ago
+                    - generic [ref=e310]:
+                      - paragraph [ref=e311]: I think it looks nice and I liked it but it would be better if JB ran like quarterly art contests for splash screens and people could vote for them. That’d be so fun to see your splash screen art in a version.
+                      - paragraph [ref=e312]: Then, in a few years, you open up the marketplace of splash screens with all the winners and you can pick whichever one you want or keep the newest one.
+                  - article "Comment from K0singas 7 months ago" [ref=e318]:
+                    - generic "Metadata for K0singas's comment" [ref=e319]:
+                      - link "K0singas's profile --- avatar" [ref=e325] [cursor=pointer]:
+                        - /url: https://www.reddit.com/user/K0singas/
+                        - img [ref=e330]
+                      - generic [ref=e336]:
+                        - link "K0singas's profile" [ref=e340] [cursor=pointer]:
+                          - /url: https://www.reddit.com/user/K0singas/
+                          - text: K0singas
+                        - generic [ref=e341]: •
+                        - link "7mo ago" [ref=e343] [cursor=pointer]:
+                          - /url: https://www.reddit.com/r/Jetbrains/comments/1owz7vq/comment/notu7es/
+                          - time [ref=e344]: 7mo ago
+                    - paragraph [ref=e352]: Stay strong! I pray that you survive 🙏
+                  - article "Comment from AleksandarStefanovic 7 months ago" [ref=e358]:
+                    - generic "Metadata for AleksandarStefanovic's comment" [ref=e359]:
+                      - link "AleksandarStefanovic's profile --- avatar" [ref=e365] [cursor=pointer]:
+                        - /url: https://www.reddit.com/user/AleksandarStefanovic/
+                        - img "u/AleksandarStefanovic avatar" [ref=e368]
+                      - generic [ref=e373]:
+                        - link "AleksandarStefanovic's profile" [ref=e377] [cursor=pointer]:
+                          - /url: https://www.reddit.com/user/AleksandarStefanovic/
+                          - text: AleksandarStefanovic
+                        - generic [ref=e378]: •
+                        - link "7mo ago" [ref=e380] [cursor=pointer]:
+                          - /url: https://www.reddit.com/r/Jetbrains/comments/1owz7vq/comment/notobhp/
+                          - time [ref=e381]: 7mo ago
+                    - paragraph [ref=e389]: Sending thoughts and prayers your way, I think you'll pull through this one! Stay strong!
+                  - article "Comment from JetSerge 7 months ago" [ref=e395]:
+                    - generic "Metadata for JetSerge's comment" [ref=e396]:
+                      - link "JetSerge's profile --- avatar" [ref=e402] [cursor=pointer]:
+                        - /url: https://www.reddit.com/user/JetSerge/
+                        - generic [ref=e404]:
+                          - img [ref=e406]
+                          - img [ref=e410]
+                          - img [ref=e413]
+                      - generic [ref=e419]:
+                        - link "JetSerge's profile" [ref=e423] [cursor=pointer]:
+                          - /url: https://www.reddit.com/user/JetSerge/
+                          - text: JetSerge
+                        - generic [ref=e424]: •
+                        - link "7mo ago" [ref=e426] [cursor=pointer]:
+                          - /url: https://www.reddit.com/r/Jetbrains/comments/1owz7vq/comment/nott8tc/
+                          - time [ref=e427]: 7mo ago
+                        - generic [ref=e428]: •
+                        - generic [ref=e429]:
+                          - text: Edited
+                          - time [ref=e430]: 7mo ago
+                    - generic [ref=e431]:
+                      - generic [ref=e439]:
+                        - paragraph [ref=e440]:
+                          - text: Sorry you didn't like it. Feel free to disable by adding
+                          - code [ref=e441]: "-Dnosplash=true"
+                          - text: in Help | Edit Custom VM Options.
+                        - paragraph [ref=e442]:
+                          - text: Some users liked it so much that they specifically
+                          - link "requested a high resolution version" [ref=e443] [cursor=pointer]:
+                            - /url: https://www.reddit.com/r/Jetbrains/comments/1ouzz04/comment/noiad13/
+                          - text: .
+                        - paragraph [ref=e444]: "Please also note that we've been using AI for splashes for the last 5 years:"
+                        - list [ref=e445]:
+                          - listitem [ref=e446]:
+                            - paragraph [ref=e447]:
+                              - link "https://blog.jetbrains.com/blog/2023/10/16/ai-graphics-at-jetbrains-story/" [ref=e448] [cursor=pointer]:
+                                - /url: https://blog.jetbrains.com/blog/2023/10/16/ai-graphics-at-jetbrains-story/
+                          - listitem [ref=e449]:
+                            - paragraph [ref=e450]:
+                              - link "https://blog.jetbrains.com/blog/2020/09/29/intelligent-code-art/" [ref=e451] [cursor=pointer]:
+                                - /url: https://blog.jetbrains.com/blog/2020/09/29/intelligent-code-art/
+                      - button "Toggle Comment Thread" [expanded] [ref=e454] [cursor=pointer]:
+                        - img [ref=e457]
+                      - generic [ref=e461]:
+                        - 'article "Comment thread level 1: Reply from CSEliot 7 months ago" [ref=e463]':
+                          - generic "Metadata for CSEliot's comment" [ref=e464]:
+                            - link "CSEliot's profile --- avatar" [ref=e470] [cursor=pointer]:
+                              - /url: https://www.reddit.com/user/CSEliot/
+                              - img [ref=e475]
+                            - generic [ref=e481]:
+                              - link "CSEliot's profile" [ref=e485] [cursor=pointer]:
+                                - /url: https://www.reddit.com/user/CSEliot/
+                                - text: CSEliot
+                              - generic [ref=e486]: •
+                              - link "7mo ago" [ref=e488] [cursor=pointer]:
+                                - /url: https://www.reddit.com/r/Jetbrains/comments/1owz7vq/comment/nou002q/
+                                - time [ref=e489]: 7mo ago
+                          - generic [ref=e496]:
+                            - paragraph [ref=e497]: This is a little disingenuous, don't you think? Previous art was little more than a visualizer. Cool yes and technically impressive, but ultimately forgettable after 5 seconds like most abstract art (no offense to any abstract artists out there).
+                            - paragraph [ref=e498]: This time, it's mimicing a portrayal of work by an impressionist artist. It's very 'uncanny valley' feeling.
+                            - paragraph [ref=e499]: Furthermore, it's 2025 and we should know better by now. Millions of dollars have been payed out to artists as apology for training on art without permission, artists not knowing this technology was available. In other words, industry heads admitted to unethical behavior and the law has even forced their hand.
+                            - paragraph [ref=e500]: AI art and AI code are 2 very different topics here btw and i am explicitly speaking on the art side here.
+                        - 'article "Comment thread level 1: Reply from Natural_Savings2632 6 months ago" [ref=e508]':
+                          - generic "Metadata for Natural_Savings2632's comment" [ref=e509]:
+                            - link "Natural_Savings2632's profile --- avatar" [ref=e515] [cursor=pointer]:
+                              - /url: https://www.reddit.com/user/Natural_Savings2632/
+                              - img [ref=e520]
+                            - generic [ref=e526]:
+                              - link "Natural_Savings2632's profile" [ref=e530] [cursor=pointer]:
+                                - /url: https://www.reddit.com/user/Natural_Savings2632/
+                                - text: Natural_Savings2632
+                              - generic [ref=e531]: •
+                              - link "6mo ago" [ref=e533] [cursor=pointer]:
+                                - /url: https://www.reddit.com/r/Jetbrains/comments/1owz7vq/comment/nufvzqw/
+                                - time [ref=e534]: 6mo ago
+                          - generic [ref=e541]:
+                            - paragraph [ref=e542]: "Unbelievable level of rage baiting:"
+                            - list [ref=e543]:
+                              - listitem [ref=e544]:
+                                - paragraph [ref=e545]: I WILL feel free to disable it, no worries.
+                              - listitem [ref=e546]:
+                                - paragraph [ref=e547]: I don't care about "SOME USERS". Some people will always do "something", it is not an argument or have any value in discussion.
+                              - listitem [ref=e548]:
+                                - paragraph [ref=e549]: AI splashes were just some abstract forms and gradients, but this one is literal slop from the slopmachine, and you definitely understand the difference.
+                  - article "Comment from Dry-Jelly-8005 7 months ago" [ref=e555]:
+                    - generic "Metadata for Dry-Jelly-8005's comment" [ref=e556]:
+                      - link "Dry-Jelly-8005's profile --- avatar" [ref=e562] [cursor=pointer]:
+                        - /url: https://www.reddit.com/user/Dry-Jelly-8005/
+                        - img [ref=e567]
+                      - generic [ref=e573]:
+                        - link "Dry-Jelly-8005's profile" [ref=e577] [cursor=pointer]:
+                          - /url: https://www.reddit.com/user/Dry-Jelly-8005/
+                          - text: Dry-Jelly-8005
+                        - generic [ref=e578]: •
+                        - link "7mo ago" [ref=e580] [cursor=pointer]:
+                          - /url: https://www.reddit.com/r/Jetbrains/comments/1owz7vq/comment/nouu3ms/
+                          - time [ref=e581]: 7mo ago
+                    - generic [ref=e582]:
+                      - generic [ref=e590]:
+                        - paragraph [ref=e591]: With all due respect, I’ve also criticized JetBrains for some things regarding their products but come on… a splashscreen. Critique and feedback is important but please for god sake don’t blame JB for everything they do.
+                        - paragraph [ref=e592]: Sometimes it kinda feels like everything they do is deemed wrong, which isn’t the case
+                      - button "Toggle Comment Thread" [expanded] [ref=e595] [cursor=pointer]:
+                        - img [ref=e598]
+                      - generic [ref=e602]:
+                        - 'article "Comment thread level 1: Reply from beefnboof 4 months ago" [ref=e604]':
+                          - generic "Metadata for beefnboof's comment" [ref=e605]:
+                            - link "beefnboof's profile --- avatar" [ref=e611] [cursor=pointer]:
+                              - /url: https://www.reddit.com/user/beefnboof/
+                              - img "u/beefnboof avatar" [ref=e614]
+                            - generic [ref=e619]:
+                              - link "beefnboof's profile" [ref=e623] [cursor=pointer]:
+                                - /url: https://www.reddit.com/user/beefnboof/
+                                - text: beefnboof
+                              - generic [ref=e624]: •
+                              - link "4mo ago" [ref=e626] [cursor=pointer]:
+                                - /url: https://www.reddit.com/r/Jetbrains/comments/1owz7vq/comment/o6ptngr/
+                                - time [ref=e627]: 4mo ago
+                          - paragraph [ref=e635]: It's just another place where an artist was deprived of work for no reason. This "come on" mentality is how we slowly lose work for artists, bit by bit. It's everywhere now because too many people said "come on it's not a big deal."
+                        - 'article "Comment thread level 1: Reply from sxrions 3 months ago" [ref=e643]':
+                          - generic "Metadata for sxrions's comment" [ref=e644]:
+                            - link "sxrions's profile --- avatar" [ref=e650] [cursor=pointer]:
+                              - /url: https://www.reddit.com/user/sxrions/
+                              - img "u/sxrions avatar" [ref=e653]
+                            - generic [ref=e658]:
+                              - link "sxrions's profile" [ref=e662] [cursor=pointer]:
+                                - /url: https://www.reddit.com/user/sxrions/
+                                - text: sxrions
+                              - generic [ref=e663]: •
+                              - link "3mo ago" [ref=e665] [cursor=pointer]:
+                                - /url: https://www.reddit.com/r/Jetbrains/comments/1owz7vq/comment/o8snljx/
+                                - time [ref=e666]: 3mo ago
+                          - paragraph [ref=e674]: i like jetbrains. I also hate that ugly ass splashscreen
+                  - article "Comment from blowupnekomaid 7 months ago" [ref=e680]:
+                    - generic "Metadata for blowupnekomaid's comment" [ref=e681]:
+                      - link "blowupnekomaid's profile --- avatar" [ref=e687] [cursor=pointer]:
+                        - /url: https://www.reddit.com/user/blowupnekomaid/
+                        - img [ref=e692]
+                      - generic [ref=e698]:
+                        - link "blowupnekomaid's profile" [ref=e702] [cursor=pointer]:
+                          - /url: https://www.reddit.com/user/blowupnekomaid/
+                          - text: blowupnekomaid
+                        - generic [ref=e703]: •
+                        - link "7mo ago" [ref=e705] [cursor=pointer]:
+                          - /url: https://www.reddit.com/r/Jetbrains/comments/1owz7vq/comment/np9hl3s/
+                          - time [ref=e706]: 7mo ago
+                    - paragraph [ref=e714]: Yeah it's irritating as hell. Don't they realize not everyone is part of their AI cult? Isn't it a little odd that if this "Art" was so great why was I able to tell it's AI in the 0.5 seconds that the image displays?
+                  - article "Comment from hawseepoo 7 months ago" [ref=e720]:
+                    - generic "Metadata for hawseepoo's comment" [ref=e721]:
+                      - link "hawseepoo's profile --- avatar" [ref=e727] [cursor=pointer]:
+                        - /url: https://www.reddit.com/user/hawseepoo/
+                        - generic [ref=e729]:
+                          - img [ref=e731]
+                          - img [ref=e735]
+                          - img [ref=e738]
+                      - generic [ref=e744]:
+                        - link "hawseepoo's profile" [ref=e748] [cursor=pointer]:
+                          - /url: https://www.reddit.com/user/hawseepoo/
+                          - text: hawseepoo
+                        - generic [ref=e749]: •
+                        - link "7mo ago" [ref=e751] [cursor=pointer]:
+                          - /url: https://www.reddit.com/r/Jetbrains/comments/1owz7vq/comment/notsf4q/
+                          - time [ref=e752]: 7mo ago
+                    - generic [ref=e753]:
+                      - generic [ref=e761]:
+                        - paragraph [ref=e762]: I’m sorry, but this post made me laugh. “Oh no, I have to look at a splash screen I don’t like for 2 seconds while my IDE boots up. My month is ruined 😱”
+                        - paragraph [ref=e763]: I think you’ll live
+                      - button "Toggle Comment Thread" [expanded] [ref=e766] [cursor=pointer]:
+                        - img [ref=e769]
+                      - 'article "Comment thread level 1: Reply from CSEliot 7 months ago" [ref=e777]':
+                        - generic "Metadata for CSEliot's comment" [ref=e778]:
+                          - link "CSEliot's profile --- avatar" [ref=e784] [cursor=pointer]:
+                            - /url: https://www.reddit.com/user/CSEliot/
+                            - img [ref=e789]
+                          - generic [ref=e795]:
+                            - link "CSEliot's profile" [ref=e799] [cursor=pointer]:
+                              - /url: https://www.reddit.com/user/CSEliot/
+                              - text: CSEliot
+                            - generic [ref=e800]: •
+                            - link "7mo ago" [ref=e802] [cursor=pointer]:
+                              - /url: https://www.reddit.com/r/Jetbrains/comments/1owz7vq/comment/nou30u9/
+                              - time [ref=e803]: 7mo ago
+                        - generic [ref=e804]:
+                          - paragraph [ref=e813]: It's the idea that counts. Letting companies get away with this is not good.
+                          - button "Toggle Comment Thread" [expanded] [ref=e816] [cursor=pointer]:
+                            - img [ref=e819]
+                          - 'article "Comment thread level 2: Reply from hawseepoo 7 months ago" [ref=e827]':
+                            - generic "Metadata for hawseepoo's comment" [ref=e828]:
+                              - link "hawseepoo's profile --- avatar" [ref=e834] [cursor=pointer]:
+                                - /url: https://www.reddit.com/user/hawseepoo/
+                                - generic [ref=e836]:
+                                  - img [ref=e838]
+                                  - img [ref=e842]
+                                  - img [ref=e845]
+                              - generic [ref=e851]:
+                                - link "hawseepoo's profile" [ref=e855] [cursor=pointer]:
+                                  - /url: https://www.reddit.com/user/hawseepoo/
+                                  - text: hawseepoo
+                                - generic [ref=e856]: •
+                                - link "7mo ago" [ref=e858] [cursor=pointer]:
+                                  - /url: https://www.reddit.com/r/Jetbrains/comments/1owz7vq/comment/nouj8jg/
+                                  - time [ref=e859]: 7mo ago
+                            - generic [ref=e860]:
+                              - paragraph [ref=e869]: Get away with what tho? It’s a splash screen. I’d literally be fine if they built splash screen generation into the deployment pipeline and let an LLM come up with the theme/image generation prompt too.
+                              - button "2 more replies" [ref=e881] [cursor=pointer]:
+                                - img [ref=e883]
+                                - generic [ref=e886]:
+                                  - generic [ref=e887]: "2"
+                                  - text: more replies
+                  - article "Comment from jan-niklas-wortmann 7 months ago" [ref=e889]:
+                    - generic "Metadata for jan-niklas-wortmann's comment" [ref=e890]:
+                      - link "jan-niklas-wortmann's profile --- avatar" [ref=e896] [cursor=pointer]:
+                        - /url: https://www.reddit.com/user/jan-niklas-wortmann/
+                        - img "u/jan-niklas-wortmann avatar" [ref=e899]
+                      - generic [ref=e904]:
+                        - link "jan-niklas-wortmann's profile" [ref=e908] [cursor=pointer]:
+                          - /url: https://www.reddit.com/user/jan-niklas-wortmann/
+                          - text: jan-niklas-wortmann
+                        - generic [ref=e909]: •
+                        - link "7mo ago" [ref=e911] [cursor=pointer]:
+                          - /url: https://www.reddit.com/r/Jetbrains/comments/1owz7vq/comment/npffr7m/
+                          - time [ref=e912]: 7mo ago
+                    - generic [ref=e913]:
+                      - paragraph [ref=e922]:
+                        - text: Feels relevant 😬
+                        - link "https://blog.jetbrains.com/blog/2023/10/16/ai-graphics-at-jetbrains-story/" [ref=e923] [cursor=pointer]:
+                          - /url: https://blog.jetbrains.com/blog/2023/10/16/ai-graphics-at-jetbrains-story/
+                      - button "Toggle Comment Thread" [expanded] [ref=e926] [cursor=pointer]:
+                        - img [ref=e929]
+                      - 'article "Comment thread level 1: Reply from BrodatyBear 3 months ago" [ref=e937]':
+                        - generic "Metadata for BrodatyBear's comment" [ref=e938]:
+                          - link "BrodatyBear's profile --- avatar" [ref=e944] [cursor=pointer]:
+                            - /url: https://www.reddit.com/user/BrodatyBear/
+                            - img [ref=e949]
+                          - generic [ref=e955]:
+                            - link "BrodatyBear's profile" [ref=e959] [cursor=pointer]:
+                              - /url: https://www.reddit.com/user/BrodatyBear/
+                              - text: BrodatyBear
+                            - generic [ref=e960]: •
+                            - link "3mo ago" [ref=e962] [cursor=pointer]:
+                              - /url: https://www.reddit.com/r/Jetbrains/comments/1owz7vq/comment/oc5of5o/
+                              - time [ref=e963]: 3mo ago
+                        - generic [ref=e970]:
+                          - paragraph [ref=e971]: With all my respect, it's as relevant as javascript documentation for a Java programmer.
+                          - paragraph [ref=e972]: You used real pictures to create abstract creations, which works. Abstraction has many faces, it's undefined, allows for freedom as long as it feels interesting.
+                          - paragraph [ref=e973]: Reality is defined and we have a point of reference for those objects. It's impressive how far AI went, but it still sucks at generating reality, and since we have reality to compare, for many of us AI just feels off, or uncanny (dream-like but in negative sense), or very average.
+                          - paragraph [ref=e974]: Moreover, previous works were impressive and required some level of creativity. Prompting, in comparison, requires very little effort. Everyone can do that (reason why we're flooded with slop), so for about avg. €200/yr (or more for companies) software (whose price recently increased) it just feels cheap and a bit disrespectful*.
+                          - paragraph [ref=e975]: "[Moral things aside, since I don't know what you used.]"
+                          - paragraph [ref=e976]: "*at least for people outside the cult ;)"
+                  - article "Comment from Redholl 6 months ago" [ref=e982]:
+                    - generic "Metadata for Redholl's comment" [ref=e983]:
+                      - link "Redholl's profile --- avatar" [ref=e989] [cursor=pointer]:
+                        - /url: https://www.reddit.com/user/Redholl/
+                        - generic [ref=e991]:
+                          - img [ref=e993]
+                          - img [ref=e997]
+                          - img [ref=e1000]
+                      - generic [ref=e1006]:
+                        - link "Redholl's profile" [ref=e1010] [cursor=pointer]:
+                          - /url: https://www.reddit.com/user/Redholl/
+                          - text: Redholl
+                        - generic [ref=e1011]: •
+                        - link "6mo ago" [ref=e1013] [cursor=pointer]:
+                          - /url: https://www.reddit.com/r/Jetbrains/comments/1owz7vq/comment/nv955gm/
+                          - time [ref=e1014]: 6mo ago
+                    - paragraph [ref=e1022]: AI slop
+                  - article "Comment from Rude-Revolution-8687 5 months ago" [ref=e1028]:
+                    - generic "Metadata for Rude-Revolution-8687's comment" [ref=e1029]:
+                      - link "Rude-Revolution-8687's profile --- avatar" [ref=e1035] [cursor=pointer]:
+                        - /url: https://www.reddit.com/user/Rude-Revolution-8687/
+                        - img [ref=e1040]
+                      - generic [ref=e1046]:
+                        - link "Rude-Revolution-8687's profile" [ref=e1050] [cursor=pointer]:
+                          - /url: https://www.reddit.com/user/Rude-Revolution-8687/
+                          - text: Rude-Revolution-8687
+                        - generic [ref=e1051]: •
+                        - link "5mo ago" [ref=e1053] [cursor=pointer]:
+                          - /url: https://www.reddit.com/r/Jetbrains/comments/1owz7vq/comment/nzwco1c/
+                          - time [ref=e1054]: 5mo ago
+                    - generic [ref=e1061]:
+                      - paragraph [ref=e1062]: I just got a similar image in Webstorm...it's so tacky, and it's a sign that the devs don't respect or value artists. It leaves a bad taste in my mouth.
+                      - paragraph [ref=e1063]: I'll take it as a reminder to look into alternatives when the current licences are up for renewal.
+                  - article "Comment from samurai1495 7 months ago" [ref=e1069]:
+                    - generic "Metadata for samurai1495's comment" [ref=e1070]:
+                      - link "samurai1495's profile --- avatar" [ref=e1076] [cursor=pointer]:
+                        - /url: https://www.reddit.com/user/samurai1495/
+                        - img [ref=e1081]
+                      - generic [ref=e1087]:
+                        - link "samurai1495's profile" [ref=e1091] [cursor=pointer]:
+                          - /url: https://www.reddit.com/user/samurai1495/
+                          - text: samurai1495
+                        - generic [ref=e1092]: •
+                        - link "7mo ago" [ref=e1094] [cursor=pointer]:
+                          - /url: https://www.reddit.com/r/Jetbrains/comments/1owz7vq/comment/notmhm7/
+                          - time [ref=e1095]: 7mo ago
+                    - paragraph [ref=e1103]: What are they doing, turning every thing to fkn ai
+                  - article "Comment from THenrich 7 months ago" [ref=e1109]:
+                    - generic "Metadata for THenrich's comment" [ref=e1110]:
+                      - link "THenrich's profile --- avatar" [ref=e1116] [cursor=pointer]:
+                        - /url: https://www.reddit.com/user/THenrich/
+                        - img "u/THenrich avatar" [ref=e1119]
+                      - generic [ref=e1124]:
+                        - link "THenrich's profile" [ref=e1128] [cursor=pointer]:
+                          - /url: https://www.reddit.com/user/THenrich/
+                          - text: THenrich
+                        - generic [ref=e1129]: •
+                        - link "7mo ago" [ref=e1131] [cursor=pointer]:
+                          - /url: https://www.reddit.com/r/Jetbrains/comments/1owz7vq/comment/nouieau/
+                          - time [ref=e1132]: 7mo ago
+                    - generic [ref=e1133]:
+                      - generic [ref=e1141]:
+                        - paragraph [ref=e1142]: There are always people who will find anything to complain about. Is this a serious post!?
+                        - paragraph [ref=e1143]: Complaining about something that appears for a few seconds!
+                      - button "Toggle Comment Thread" [expanded] [ref=e1146] [cursor=pointer]:
+                        - img [ref=e1149]
+                      - 'article "Comment thread level 1: Reply from sxrions 3 months ago" [ref=e1157]':
+                        - generic "Metadata for sxrions's comment" [ref=e1158]:
+                          - link "sxrions's profile --- avatar" [ref=e1164] [cursor=pointer]:
+                            - /url: https://www.reddit.com/user/sxrions/
+                            - img "u/sxrions avatar" [ref=e1167]
+                          - generic [ref=e1172]:
+                            - link "sxrions's profile" [ref=e1176] [cursor=pointer]:
+                              - /url: https://www.reddit.com/user/sxrions/
+                              - text: sxrions
+                            - generic [ref=e1177]: •
+                            - link "3mo ago" [ref=e1179] [cursor=pointer]:
+                              - /url: https://www.reddit.com/r/Jetbrains/comments/1owz7vq/comment/o8snwsr/
+                              - time [ref=e1180]: 3mo ago
+                        - generic [ref=e1181]:
+                          - paragraph [ref=e1190]: bro it looks ugly af it looked nice before. I hate AI usage and now I have to see AI slop everytime I launch an app. So what
+                          - button "Toggle Comment Thread" [expanded] [ref=e1193] [cursor=pointer]:
+                            - img [ref=e1196]
+                          - 'article "Comment thread level 2: Reply from THenrich 3 months ago" [ref=e1204]':
+                            - generic "Metadata for THenrich's comment" [ref=e1205]:
+                              - link "THenrich's profile --- avatar" [ref=e1211] [cursor=pointer]:
+                                - /url: https://www.reddit.com/user/THenrich/
+                                - img "u/THenrich avatar" [ref=e1214]
+                              - generic [ref=e1219]:
+                                - link "THenrich's profile" [ref=e1223] [cursor=pointer]:
+                                  - /url: https://www.reddit.com/user/THenrich/
+                                  - text: THenrich
+                                - generic [ref=e1224]: •
+                                - link "3mo ago" [ref=e1226] [cursor=pointer]:
+                                  - /url: https://www.reddit.com/r/Jetbrains/comments/1owz7vq/comment/o8t49ls/
+                                  - time [ref=e1227]: 3mo ago
+                            - generic [ref=e1228]:
+                              - paragraph [ref=e1237]: First world problems. Poor bro. This must affect your work negatively.
+                              - button "1 more reply" [ref=e1249] [cursor=pointer]:
+                                - img [ref=e1251]
+                                - generic [ref=e1254]:
+                                  - generic [ref=e1255]: "1"
+                                  - text: more reply
+                  - article "Comment from _angh_ 7 months ago" [ref=e1257]:
+                    - generic "Metadata for _angh_'s comment" [ref=e1258]:
+                      - link "_angh_'s profile --- avatar" [ref=e1264] [cursor=pointer]:
+                        - /url: https://www.reddit.com/user/_angh_/
+                        - img [ref=e1269]
+                      - generic [ref=e1275]:
+                        - link "_angh_'s profile" [ref=e1279] [cursor=pointer]:
+                          - /url: https://www.reddit.com/user/_angh_/
+                          - text: _angh_
+                        - generic [ref=e1280]: •
+                        - link "7mo ago" [ref=e1282] [cursor=pointer]:
+                          - /url: https://www.reddit.com/r/Jetbrains/comments/1owz7vq/comment/notngqq/
+                          - time [ref=e1283]: 7mo ago
+                    - paragraph [ref=e1291]: And what make you believe there will be no ai generated garbage after next major release?:)
+            - generic [ref=e1296]:
+              - generic [ref=e1297]:
+                - complementary [ref=e1300]:
+                  - generic [ref=e1301]:
+                    - generic [ref=e1302]: New to Reddit?
+                    - paragraph [ref=e1303]: Create your account and connect with a world of communities.
+                  - generic [ref=e1304]:
+                    - iframe [ref=e1313]:
+                      - button "Continue with Google. Opens in new tab" [ref=f3e3] [cursor=pointer]:
+                        - generic [ref=f3e5]:
+                          - img [ref=f3e7]
+                          - generic [ref=f3e14]: Continue with Google
+                    - link "Continue with Email" [ref=e1315] [cursor=pointer]:
+                      - /url: https://www.reddit.com/register/
+                      - generic [ref=e1318]:
+                        - img [ref=e1319]
+                        - generic [ref=e1321]: Continue with Email
+                  - link "Continue with Phone Number" [ref=e1324] [cursor=pointer]:
+                    - /url: https://www.reddit.com/login/
+                    - generic [ref=e1327]:
+                      - img [ref=e1328]
+                      - generic [ref=e1331]: Continue with Phone Number
+                  - generic [ref=e1332]:
+                    - text: By continuing, you agree to our
+                    - link "User Agreement" [ref=e1333] [cursor=pointer]:
+                      - /url: https://www.redditinc.com/policies/user-agreement
+                    - text: and acknowledge that you understand the
+                    - link "Privacy Policy" [ref=e1334] [cursor=pointer]:
+                      - /url: https://www.redditinc.com/policies/privacy-policy
+                    - text: .
+                - complementary "People also ask about section" [ref=e1336]:
+                  - heading "People also ask about section" [level=1] [ref=e1337]
+                  - generic [ref=e1338]:
+                    - img [ref=e1340]
+                    - generic [ref=e1342]: People also ask about
+                  - generic [ref=e1343]:
+                    - link "Top features of IntelliJ IDEA for beginners" [ref=e1345] [cursor=pointer]:
+                      - /url: https://www.reddit.com/answers/3fefb10a-dc5a-4eb8-b3e9-39c2fae8c294/?q=Top+features+of+IntelliJ+IDEA+for+beginners&source=PDP
+                      - generic [ref=e1348]: Top features of IntelliJ IDEA for beginners
+                      - img [ref=e1351]
+                    - link "Best practices for using PyCharm effectively" [ref=e1354] [cursor=pointer]:
+                      - /url: https://www.reddit.com/answers/0427e2a2-842e-49bf-ae51-f2f3a1c8487d/?q=Best+practices+for+using+PyCharm+effectively&source=PDP
+                      - generic [ref=e1357]: Best practices for using PyCharm effectively
+                      - img [ref=e1360]
+                    - link "How to optimize ReSharper for large projects" [ref=e1363] [cursor=pointer]:
+                      - /url: https://www.reddit.com/answers/0092b874-26a9-4b39-9721-4cd8da72c513/?q=How+to+optimize+ReSharper+for+large+projects&source=PDP
+                      - generic [ref=e1366]: How to optimize ReSharper for large projects
+                      - img [ref=e1369]
+                    - link "Integrating AI tools with JetBrains IDEs" [ref=e1372] [cursor=pointer]:
+                      - /url: https://www.reddit.com/answers/cc367fdf-7d75-4bb8-a11b-a5b6aeb313e9/?q=Integrating+AI+tools+with+JetBrains+IDEs&source=PDP
+                      - generic [ref=e1375]: Integrating AI tools with JetBrains IDEs
+                      - img [ref=e1378]
+                    - link "Tips for debugging in IntelliJ IDEA" [ref=e1381] [cursor=pointer]:
+                      - /url: https://www.reddit.com/answers/8f089af9-bd07-41fe-b2fc-eea7b93d50ab/?q=Tips+for+debugging+in+IntelliJ+IDEA&source=PDP
+                      - generic [ref=e1384]: Tips for debugging in IntelliJ IDEA
+                      - img [ref=e1387]
+                - complementary "Related Posts Section" [ref=e1389]:
+                  - list [ref=e1395]:
+                    - listitem [ref=e1396]:
+                      - generic [ref=e1397]:
+                        - generic [ref=e1398]:
+                          - link "Half of this sub when they see non-Metroid things quietly existing in November in the year of our lord 2025:" [ref=e1399] [cursor=pointer]:
+                            - /url: https://www.reddit.com/r/Metroid/comments/1oui5oh/half_of_this_sub_when_they_see_nonmetroid_things/
+                            - generic [ref=e1400]:
+                              - generic: "Half of this sub when they see non-Metroid things quietly existing in November in the year of our lord 2025:"
+                          - generic [ref=e1401]:
+                            - generic [ref=e1402]:
+                              - generic [ref=e1405]:
+                                - link "r/Metroid" [ref=e1406] [cursor=pointer]:
+                                  - /url: https://www.reddit.com/r/Metroid/
+                                  - generic [ref=e1410]: r/Metroid
+                                - generic [ref=e1411]: •
+                                - time [ref=e1413]: 7mo ago
+                              - link "List item post - Half of this sub when they see non-Metroid things quietly e..." [ref=e1415] [cursor=pointer]:
+                                - /url: /r/Metroid/comments/1oui5oh/half_of_this_sub_when_they_see_nonmetroid_things/
+                                - heading "List item post - Half of this sub when they see non-Metroid things quietly e..." [level=3] [ref=e1418]: "Half of this sub when they see non-Metroid things quietly existing in November in the year of our lord 2025:"
+                            - generic [ref=e1420]:
+                              - link "r/Metroid - Half of this sub when they see non-Metroid things quietly existing in November in the year of our lord 2025:" [ref=e1421] [cursor=pointer]:
+                                - /url: /r/Metroid/comments/1oui5oh/half_of_this_sub_when_they_see_nonmetroid_things/
+                                - img "r/Metroid - Half of this sub when they see non-Metroid things quietly existing in November in the year of our lord 2025:" [ref=e1422]
+                              - generic:
+                                - img
+                          - generic [ref=e1424]:
+                            - generic [ref=e1425]: "390"
+                            - text: upvotes ·
+                            - generic [ref=e1426]: "49"
+                            - text: comments
+                        - separator [ref=e1427]
+                    - listitem [ref=e1428]:
+                      - generic [ref=e1429]:
+                        - generic [ref=e1430]:
+                          - link "Yall is this patch worth it finish before the next update??" [ref=e1431] [cursor=pointer]:
+                            - /url: https://www.reddit.com/r/InfinityNikki/comments/1od7eu5/yall_is_this_patch_worth_it_finish_before_the/
+                            - generic [ref=e1432]:
+                              - generic: Yall is this patch worth it finish before the next update??
+                          - generic [ref=e1434]:
+                            - generic [ref=e1437]:
+                              - link "r/InfinityNikki" [ref=e1438] [cursor=pointer]:
+                                - /url: https://www.reddit.com/r/InfinityNikki/
+                                - generic [ref=e1442]: r/InfinityNikki
+                              - generic [ref=e1443]: •
+                              - time [ref=e1445]: 8mo ago
+                            - link "List item post - Yall is this patch worth it finish before the next update??" [ref=e1447] [cursor=pointer]:
+                              - /url: /r/InfinityNikki/comments/1od7eu5/yall_is_this_patch_worth_it_finish_before_the/
+                              - heading "List item post - Yall is this patch worth it finish before the next update??" [level=3] [ref=e1450]: Yall is this patch worth it finish before the next update??
+                          - generic [ref=e1452]:
+                            - generic [ref=e1453]: "6"
+                            - text: comments
+                        - separator [ref=e1454]
+                    - listitem [ref=e1455]:
+                      - generic [ref=e1456]:
+                        - generic [ref=e1457]:
+                          - 'link "AI Assistant news: Temporary Update on Free AI Tier for some folks and other plans" [ref=e1458] [cursor=pointer]':
+                            - /url: https://www.reddit.com/r/Jetbrains/comments/1lrdtn3/ai_assistant_news_temporary_update_on_free_ai/
+                            - generic [ref=e1459]:
+                              - generic: "AI Assistant news: Temporary Update on Free AI Tier for some folks and other plans"
+                          - generic [ref=e1461]:
+                            - generic [ref=e1464]:
+                              - link "r/Jetbrains" [ref=e1465] [cursor=pointer]:
+                                - /url: https://www.reddit.com/r/Jetbrains/
+                                - generic [ref=e1469]: r/Jetbrains
+                              - generic [ref=e1470]: •
+                              - time [ref=e1472]: 1y ago
+                            - 'link "List item post - AI Assistant news: Temporary Update on Free AI Tier for som..." [ref=e1474] [cursor=pointer]':
+                              - /url: /r/Jetbrains/comments/1lrdtn3/ai_assistant_news_temporary_update_on_free_ai/
+                              - 'heading "List item post - AI Assistant news: Temporary Update on Free AI Tier for som..." [level=3] [ref=e1477]': "AI Assistant news: Temporary Update on Free AI Tier for some folks and other plans"
+                          - generic [ref=e1479]:
+                            - generic [ref=e1480]: "65"
+                            - text: upvotes ·
+                            - generic [ref=e1481]: "49"
+                            - text: comments
+                        - separator [ref=e1482]
+                    - listitem [ref=e1483]:
+                      - article [ref=e1486]:
+                        - generic [ref=e1487]:
+                          - generic [ref=e1488]: Promoted
+                          - button "Open user actions" [ref=e1494] [cursor=pointer]:
+                            - img [ref=e1497]
+                        - link "sidebar promoted post thumbnail" [ref=e1500] [cursor=pointer]:
+                          - /url: https://alb.reddit.com/cr?za=r0_yY9BtEWiLCU3JRUGTeBfT-iKTHw3ljXcw05xnNQRaeZmj2ChPGc5wkUbIAHP4XZ89Ieh84tDIBDlzEiXZPH6STwmaqr8zxSJ_G4ku82hzA2M54oUuZbggVtMLj57kui6nqJhWmldq-bMBoRgKbJ06V4a53wifiXmw4GAlyqaaTLwzO5xoIKEr6ieKjn7NHAAGI9y3Xz4JrU78YyD4V-hs-BohoHl2NyYriYHXqE8ZPAsBqyw_9BjOJ71fWrOPl2RDScmHYpNMaSk4-mQ3eSSIIljMuhUkaZMXI5CZv1cgoyQthFJhMbgOAHLJOobtnP9b9YivqITMxCkaBlEiXyRBtKnN3ERNnHNv9DSRScLIrLxXaLWYLybgJlpz-0w3DgZcuEnHBc9RZ3rPr2EiLcIDJ5YRcFsVRn1o1HkVCOEAP01ZuIl-Vm0Qghke1aySaFiNr6WhyZWfEArooM6vaNiThaipdUaN-LIDIRslXiqIYJAJ5JwHD97k4OdyDPzI8nbEWn5Sv8IP4g_yKeMrNe4IC9LCq_4W2mLllc9nonZ4UkNuKVODPeTSiKLKBRnMiiebneKdOkVqQ4vvi4GRPVncGc5gZTKN5rfCj1qFHpkcB8nbUq9NiLq7QpwWl-lMx8yq__n1fK08uIhzlQJBsmgbQM4z8HIuCOZSqE9By7rDZyEfMbX15MbgugXLrqh3Ca4U9LaTfxZp_ODq&zp=0v3-yWv_uOaERfgyqA_5OnyX7E95ELv6XQ0F3RFpwQhWIi6XJaxvAdylWXeElD02zxESngOr86sUhzdKTvcE2IDVn9SqsjwJnigIlIm846L15Z5NFVaQmQPlWj7Yff9Qa_N7Utwzsj8uKGDcPQ2JBSJRBIkA6G0byPtDNhhBbDk6zWSwDN8_yPgYNf7Yi9M22E2WcPBhjemQk2fqpRFtZ6uB-hu2jOum0oILhDQeJwBuNwOjTm9R9hMcfdeAw6VIldqzREZ61wdwBoW1PYKD5zDBlgCbxMNSLHE
+                          - img "sidebar promoted post thumbnail" [ref=e1502]
+                      - separator [ref=e1503]
+                    - listitem [ref=e1504]:
+                      - generic [ref=e1505]:
+                        - generic [ref=e1506]:
+                          - link "Cooool stuff are ready, But Play Store isn't ..... How long does a new update takes to get approval ʕつಠᴥಠʔつ ︵ ┻━┻" [ref=e1507] [cursor=pointer]:
+                            - /url: https://www.reddit.com/r/AirSync/comments/1nl4j4i/cooool_stuff_are_ready_but_play_store_isnt_how/
+                            - generic [ref=e1508]:
+                              - generic: Cooool stuff are ready, But Play Store isn't ..... How long does a new update takes to get approval ʕつಠᴥಠʔつ ︵ ┻━┻
+                          - generic [ref=e1509]:
+                            - generic [ref=e1510]:
+                              - generic [ref=e1513]:
+                                - link "r/AirSync" [ref=e1514] [cursor=pointer]:
+                                  - /url: https://www.reddit.com/r/AirSync/
+                                  - generic [ref=e1518]: r/AirSync
+                                - generic [ref=e1519]: •
+                                - time [ref=e1521]: 9mo ago
+                              - link "List item post - Cooool stuff are ready, But Play Store isn't ..... How long..." [ref=e1523] [cursor=pointer]:
+                                - /url: /r/AirSync/comments/1nl4j4i/cooool_stuff_are_ready_but_play_store_isnt_how/
+                                - heading "List item post - Cooool stuff are ready, But Play Store isn't ..... How long..." [level=3] [ref=e1526]: Cooool stuff are ready, But Play Store isn't ..... How long does a new update takes to get approval ʕつಠᴥಠʔつ ︵ ┻━┻
+                            - generic [ref=e1528]:
+                              - link "r/AirSync - Cooool stuff are ready, But Play Store isn't ..... How long does a new update takes to get approval ʕつಠᴥಠʔつ ︵ ┻━┻" [ref=e1529] [cursor=pointer]:
+                                - /url: /r/AirSync/comments/1nl4j4i/cooool_stuff_are_ready_but_play_store_isnt_how/
+                                - img "r/AirSync - Cooool stuff are ready, But Play Store isn't ..... How long does a new update takes to get approval ʕつಠᴥಠʔつ ︵ ┻━┻" [ref=e1530]
+                              - generic:
+                                - img
+                                - generic: 0:47
+                          - generic [ref=e1532]:
+                            - generic [ref=e1533]: "23"
+                            - text: upvotes ·
+                            - generic [ref=e1534]: "7"
+                            - text: comments
+                        - separator [ref=e1535]
+                    - listitem [ref=e1536]:
+                      - generic [ref=e1537]:
+                        - generic [ref=e1538]:
+                          - link "Anyone else miss Bex and getting teasers every day for 2-3 weeks before launch?" [ref=e1539] [cursor=pointer]:
+                            - /url: https://www.reddit.com/r/pathofexile/comments/1o56sym/anyone_else_miss_bex_and_getting_teasers_every/
+                            - generic [ref=e1540]:
+                              - generic: Anyone else miss Bex and getting teasers every day for 2-3 weeks before launch?
+                          - generic [ref=e1542]:
+                            - generic [ref=e1545]:
+                              - link "r/pathofexile" [ref=e1546] [cursor=pointer]:
+                                - /url: https://www.reddit.com/r/pathofexile/
+                                - generic [ref=e1550]: r/pathofexile
+                              - generic [ref=e1551]: •
+                              - time [ref=e1553]: 8mo ago
+                            - link "List item post - Anyone else miss Bex and getting teasers every day for 2-3 ..." [ref=e1555] [cursor=pointer]:
+                              - /url: /r/pathofexile/comments/1o56sym/anyone_else_miss_bex_and_getting_teasers_every/
+                              - heading "List item post - Anyone else miss Bex and getting teasers every day for 2-3 ..." [level=3] [ref=e1558]: Anyone else miss Bex and getting teasers every day for 2-3 weeks before launch?
+                          - generic [ref=e1560]:
+                            - generic [ref=e1561]: "807"
+                            - text: upvotes ·
+                            - generic [ref=e1562]: "312"
+                            - text: comments
+                        - separator [ref=e1563]
+                    - listitem [ref=e1564]:
+                      - generic [ref=e1565]:
+                        - generic [ref=e1566]:
+                          - link "How many Junies do you need? Yes." [ref=e1567] [cursor=pointer]:
+                            - /url: https://www.reddit.com/r/Jetbrains/comments/1svo5o4/how_many_junies_do_you_need_yes/
+                            - generic [ref=e1568]:
+                              - generic: How many Junies do you need? Yes.
+                          - generic [ref=e1569]:
+                            - generic [ref=e1570]:
+                              - generic [ref=e1573]:
+                                - link "r/Jetbrains" [ref=e1574] [cursor=pointer]:
+                                  - /url: https://www.reddit.com/r/Jetbrains/
+                                  - generic [ref=e1578]: r/Jetbrains
+                                - generic [ref=e1579]: •
+                                - time [ref=e1581]: 1mo ago
+                              - link "List item post - How many Junies do you need? Yes." [ref=e1583] [cursor=pointer]:
+                                - /url: /r/Jetbrains/comments/1svo5o4/how_many_junies_do_you_need_yes/
+                                - heading "List item post - How many Junies do you need? Yes." [level=3] [ref=e1586]: How many Junies do you need? Yes.
+                            - link "r/Jetbrains - How many Junies do you need? Yes." [ref=e1589] [cursor=pointer]:
+                              - /url: /r/Jetbrains/comments/1svo5o4/how_many_junies_do_you_need_yes/
+                              - img "r/Jetbrains - How many Junies do you need? Yes." [ref=e1590]
+                          - generic [ref=e1592]:
+                            - generic [ref=e1593]: "186"
+                            - text: upvotes ·
+                            - generic [ref=e1594]: "51"
+                            - text: comments
+                        - separator [ref=e1595]
+                    - listitem [ref=e1596]:
+                      - generic [ref=e1597]:
+                        - generic [ref=e1598]:
+                          - link "HERE WE GO! 🔥" [ref=e1599] [cursor=pointer]:
+                            - /url: https://www.reddit.com/r/GoogleAntigravityIDE/comments/1r9654c/here_we_go/
+                            - generic [ref=e1600]:
+                              - generic: HERE WE GO! 🔥
+                          - generic [ref=e1601]:
+                            - generic [ref=e1602]:
+                              - generic [ref=e1605]:
+                                - link "r/GoogleAntigravityIDE" [ref=e1606] [cursor=pointer]:
+                                  - /url: https://www.reddit.com/r/GoogleAntigravityIDE/
+                                  - generic [ref=e1610]: r/GoogleAntigravityIDE
+                                - generic [ref=e1611]: •
+                                - time [ref=e1613]: 4mo ago
+                              - link "List item post - HERE WE GO! 🔥" [ref=e1615] [cursor=pointer]:
+                                - /url: /r/GoogleAntigravityIDE/comments/1r9654c/here_we_go/
+                                - heading "List item post - HERE WE GO! 🔥" [level=3] [ref=e1618]: HERE WE GO! 🔥
+                            - link "r/GoogleAntigravityIDE - HERE WE GO! 🔥" [ref=e1621] [cursor=pointer]:
+                              - /url: /r/GoogleAntigravityIDE/comments/1r9654c/here_we_go/
+                              - img "r/GoogleAntigravityIDE - HERE WE GO! 🔥" [ref=e1622]
+                          - generic [ref=e1624]:
+                            - generic [ref=e1625]: "25"
+                            - text: upvotes ·
+                            - generic [ref=e1626]: "16"
+                            - text: comments
+                        - separator [ref=e1627]
+                    - listitem [ref=e1628]:
+                      - generic [ref=e1629]:
+                        - generic [ref=e1630]:
+                          - link "This is crazy" [ref=e1631] [cursor=pointer]:
+                            - /url: https://www.reddit.com/r/carsireland/comments/1qs2zhw/this_is_crazy/
+                            - generic [ref=e1632]:
+                              - generic: This is crazy
+                          - generic [ref=e1634]:
+                            - generic [ref=e1637]:
+                              - link "r/carsireland" [ref=e1638] [cursor=pointer]:
+                                - /url: https://www.reddit.com/r/carsireland/
+                                - generic [ref=e1642]: r/carsireland
+                              - generic [ref=e1643]: •
+                              - time [ref=e1645]: 4mo ago
+                            - link "List item post - This is crazy" [ref=e1647] [cursor=pointer]:
+                              - /url: /r/carsireland/comments/1qs2zhw/this_is_crazy/
+                              - heading "List item post - This is crazy" [level=3] [ref=e1650]: This is crazy
+                          - generic [ref=e1652]:
+                            - generic [ref=e1653]: "60"
+                            - text: upvotes ·
+                            - generic [ref=e1654]: "31"
+                            - text: comments
+                        - separator [ref=e1655]
+                    - listitem [ref=e1656]:
+                      - article [ref=e1659]:
+                        - generic [ref=e1660]:
+                          - generic [ref=e1661]: Promoted
+                          - button "Open user actions" [ref=e1667] [cursor=pointer]:
+                            - img [ref=e1670]
+                        - link "sidebar promoted post thumbnail" [ref=e1673] [cursor=pointer]:
+                          - /url: https://alb.reddit.com/cr?za=f_YXy2BSHRed5AxbtE2AScXHYhV3ZCRMvPux9YcLNkc4q9xFOBZFmVlsVLPjVS5py9N72r3GcbM1MoVmOhQFpd-vS80AcUfL5cQXo4Oq_ZS-CWEbFJH8u_4rtm07gaTUAPXrKIM3OTC98Prde8Ckh4w8UppEAVbzg5PXDNAjND2qpMFgNeJzb6JYa_s5M1wY0zsmBb2MZqAXQA06ELJV2d-Y4_68G1kuwNgZ0O98EHJvezETmIUzPkxdCoQ1efG41zBB_Qdtx4sJHrCrVUE2lNiV51WR20cTiiwZ7WAjOi1N-GvJL9e2DUwS6oIaRtDsAF81N98575b1uXuoMjfIUKPanQbvbStGNayWz3FQFkjEwyrt8Pc8L93Cjv_XvBrrp6bzsvhd4h2rACE-cuHAFD2RF5j_IQphqkjxkSKhvNxJZMfwHc8FID4aa5ktFEIR1jCTPMTC82CMoWfc5m8e84-rR6LazMEdshTAELhAccwOrJuU_hir4AAAPzazyIXfBO2O1K-BZKJTV2fZpzKNn8557AGobwCgdp_lEgAcKXFQ4j7ORuUKZgmwZu8PAuNSbir_0WT5YknWLiVDnGLlmVOvovu3SpL0X597dcVoA6Bun0nlM89APuyiMU5YvdmL7hawFIpVynql_7-wNT0iU9XA-vwiZTns-iTvQNqLj97RkhL2DWNWHxqPdpRyI7vXqngDICeB8OICjoYe&zp=-R81rZeG3t25kq9JokSdKe-BPR918iBfhstM6nVBtHCOrWRQhgkxJF3s9ojLvVEzsmyR4T2Mf3TmHB9wUybYrB2-yK45BkVBVgOkMVhe4janfpm0aXUXB4gmgwRpXjPLKxPyG3GT7yXYErB8_GfzhDQa2n0qw8v7GTS25k44zeLpXKS7cS7kjffCRKALyuYGuRO9DMYNNQ4oPAcmPRMqqXFrjRYWoZzIlyI5cS5xu1dVSD_F7v7OnDrNmpZNP3Q6QSiiGVm73IiqTP7U06se1R_1R1-Yo4wgrXI
+                          - img "sidebar promoted post thumbnail" [ref=e1675]
+                      - separator [ref=e1676]
+                    - listitem [ref=e1677]:
+                      - generic [ref=e1678]:
+                        - generic [ref=e1679]:
+                          - link "When you hit the nail right on the head" [ref=e1680] [cursor=pointer]:
+                            - /url: https://www.reddit.com/r/TheBrewery/comments/1su3w7j/when_you_hit_the_nail_right_on_the_head/
+                            - generic [ref=e1681]:
+                              - generic: When you hit the nail right on the head
+                          - generic [ref=e1682]:
+                            - generic [ref=e1683]:
+                              - generic [ref=e1686]:
+                                - link "r/TheBrewery" [ref=e1687] [cursor=pointer]:
+                                  - /url: https://www.reddit.com/r/TheBrewery/
+                                  - img [ref=e1691]
+                                  - generic [ref=e1693]: r/TheBrewery
+                                - generic [ref=e1694]: •
+                                - time [ref=e1696]: 2mo ago
+                              - link "List item post - When you hit the nail right on the head" [ref=e1698] [cursor=pointer]:
+                                - /url: /r/TheBrewery/comments/1su3w7j/when_you_hit_the_nail_right_on_the_head/
+                                - heading "List item post - When you hit the nail right on the head" [level=3] [ref=e1701]: When you hit the nail right on the head
+                            - link "r/TheBrewery - When you hit the nail right on the head" [ref=e1704] [cursor=pointer]:
+                              - /url: /r/TheBrewery/comments/1su3w7j/when_you_hit_the_nail_right_on_the_head/
+                              - img "r/TheBrewery - When you hit the nail right on the head" [ref=e1705]
+                          - generic [ref=e1707]:
+                            - generic [ref=e1708]: "62"
+                            - text: upvotes ·
+                            - generic [ref=e1709]: "7"
+                            - text: comments
+                        - separator [ref=e1710]
+                    - listitem [ref=e1711]:
+                      - generic [ref=e1712]:
+                        - generic [ref=e1713]:
+                          - link "So.. when do we think we'll get a bike summon ability again 😅" [ref=e1714] [cursor=pointer]:
+                            - /url: https://www.reddit.com/r/InfinityNikki/comments/1owcr8o/so_when_do_we_think_well_get_a_bike_summon/
+                            - generic [ref=e1715]:
+                              - generic: So.. when do we think we'll get a bike summon ability again 😅
+                          - generic [ref=e1717]:
+                            - generic [ref=e1720]:
+                              - link "r/InfinityNikki" [ref=e1721] [cursor=pointer]:
+                                - /url: https://www.reddit.com/r/InfinityNikki/
+                                - generic [ref=e1725]: r/InfinityNikki
+                              - generic [ref=e1726]: •
+                              - time [ref=e1728]: 7mo ago
+                            - link "List item post - So.. when do we think we'll get a bike summon ability again..." [ref=e1730] [cursor=pointer]:
+                              - /url: /r/InfinityNikki/comments/1owcr8o/so_when_do_we_think_well_get_a_bike_summon/
+                              - heading "List item post - So.. when do we think we'll get a bike summon ability again..." [level=3] [ref=e1733]: So.. when do we think we'll get a bike summon ability again 😅
+                          - generic [ref=e1735]:
+                            - generic [ref=e1736]: "25"
+                            - text: upvotes ·
+                            - generic [ref=e1737]: "23"
+                            - text: comments
+                        - separator [ref=e1738]
+                    - listitem [ref=e1739]:
+                      - generic [ref=e1740]:
+                        - generic [ref=e1741]:
+                          - link "This can't be right..." [ref=e1742] [cursor=pointer]:
+                            - /url: https://www.reddit.com/r/ExperiencedDevs/comments/1r3u5gu/this_cant_be_right/
+                            - generic [ref=e1743]:
+                              - generic: This can't be right...
+                          - generic [ref=e1745]:
+                            - generic [ref=e1748]:
+                              - link "r/ExperiencedDevs" [ref=e1749] [cursor=pointer]:
+                                - /url: https://www.reddit.com/r/ExperiencedDevs/
+                                - generic [ref=e1753]: r/ExperiencedDevs
+                              - generic [ref=e1754]: •
+                              - time [ref=e1756]: 4mo ago
+                            - link "List item post - This can't be right..." [ref=e1758] [cursor=pointer]:
+                              - /url: /r/ExperiencedDevs/comments/1r3u5gu/this_cant_be_right/
+                              - heading "List item post - This can't be right..." [level=3] [ref=e1761]: This can't be right...
+                          - generic [ref=e1763]:
+                            - generic [ref=e1764]: "204"
+                            - text: upvotes ·
+                            - generic [ref=e1765]: "86"
+                            - text: comments
+                        - separator [ref=e1766]
+                    - listitem [ref=e1767]:
+                      - generic [ref=e1768]:
+                        - generic [ref=e1769]:
+                          - link "Well... I will wait for the actual release" [ref=e1770] [cursor=pointer]:
+                            - /url: https://www.reddit.com/r/anno/comments/1n6tvhn/well_i_will_wait_for_the_actual_release/
+                            - generic [ref=e1771]:
+                              - generic: Well... I will wait for the actual release
+                          - generic [ref=e1773]:
+                            - generic [ref=e1776]:
+                              - link "r/anno" [ref=e1777] [cursor=pointer]:
+                                - /url: https://www.reddit.com/r/anno/
+                                - generic [ref=e1781]: r/anno
+                              - generic [ref=e1782]: •
+                              - time [ref=e1784]: 9mo ago
+                            - link "List item post - Well... I will wait for the actual release" [ref=e1786] [cursor=pointer]:
+                              - /url: /r/anno/comments/1n6tvhn/well_i_will_wait_for_the_actual_release/
+                              - heading "List item post - Well... I will wait for the actual release" [level=3] [ref=e1789]: Well... I will wait for the actual release
+                          - generic [ref=e1791]:
+                            - generic [ref=e1792]: "15"
+                            - text: comments
+                        - separator [ref=e1793]
+                    - listitem [ref=e1794]:
+                      - generic [ref=e1795]:
+                        - generic [ref=e1796]:
+                          - link "Do you think it will be possible to get it to work" [ref=e1797] [cursor=pointer]:
+                            - /url: https://www.reddit.com/r/CarHacking/comments/1sbnqyi/do_you_think_it_will_be_possible_to_get_it_to_work/
+                            - generic [ref=e1798]:
+                              - generic: Do you think it will be possible to get it to work
+                          - generic [ref=e1799]:
+                            - generic [ref=e1800]:
+                              - generic [ref=e1803]:
+                                - link "r/CarHacking" [ref=e1804] [cursor=pointer]:
+                                  - /url: https://www.reddit.com/r/CarHacking/
+                                  - generic [ref=e1808]: r/CarHacking
+                                - generic [ref=e1809]: •
+                                - time [ref=e1811]: 2mo ago
+                              - link "List item post - Do you think it will be possible to get it to work" [ref=e1813] [cursor=pointer]:
+                                - /url: /r/CarHacking/comments/1sbnqyi/do_you_think_it_will_be_possible_to_get_it_to_work/
+                                - heading "List item post - Do you think it will be possible to get it to work" [level=3] [ref=e1816]: Do you think it will be possible to get it to work
+                            - link "r/CarHacking - Do you think it will be possible to get it to work" [ref=e1819] [cursor=pointer]:
+                              - /url: /r/CarHacking/comments/1sbnqyi/do_you_think_it_will_be_possible_to_get_it_to_work/
+                              - img "r/CarHacking - Do you think it will be possible to get it to work" [ref=e1820]
+                          - generic [ref=e1822]:
+                            - generic [ref=e1823]: "93"
+                            - text: upvotes ·
+                            - generic [ref=e1824]: "15"
+                            - text: comments
+                        - separator [ref=e1825]
+                    - listitem [ref=e1826]:
+                      - generic [ref=e1827]:
+                        - generic [ref=e1828]:
+                          - link "Is this elite enough" [ref=e1829] [cursor=pointer]:
+                            - /url: https://www.reddit.com/r/elitesparkdrivers/comments/1pmw2io/is_this_elite_enough/
+                            - generic [ref=e1830]:
+                              - generic: Is this elite enough
+                          - generic [ref=e1831]:
+                            - generic [ref=e1832]:
+                              - generic [ref=e1835]:
+                                - link "r/elitesparkdrivers" [ref=e1836] [cursor=pointer]:
+                                  - /url: https://www.reddit.com/r/elitesparkdrivers/
+                                  - generic [ref=e1840]: r/elitesparkdrivers
+                                - generic [ref=e1841]: •
+                                - time [ref=e1843]: 6mo ago
+                              - link "List item post - Is this elite enough" [ref=e1845] [cursor=pointer]:
+                                - /url: /r/elitesparkdrivers/comments/1pmw2io/is_this_elite_enough/
+                                - heading "List item post - Is this elite enough" [level=3] [ref=e1848]: Is this elite enough
+                            - link "r/elitesparkdrivers - Is this elite enough" [ref=e1851] [cursor=pointer]:
+                              - /url: /r/elitesparkdrivers/comments/1pmw2io/is_this_elite_enough/
+                              - img "r/elitesparkdrivers - Is this elite enough" [ref=e1852]
+                          - generic [ref=e1854]:
+                            - generic [ref=e1855]: "34"
+                            - text: upvotes ·
+                            - generic [ref=e1856]: "48"
+                            - text: comments
+                        - separator [ref=e1857]
+                    - listitem [ref=e1858]:
+                      - generic [ref=e1859]:
+                        - generic [ref=e1860]:
+                          - link "What should I do?" [ref=e1861] [cursor=pointer]:
+                            - /url: https://www.reddit.com/r/Jigsawpuzzles/comments/1s0oar7/what_should_i_do/
+                            - generic [ref=e1862]:
+                              - generic: What should I do?
+                          - generic [ref=e1863]:
+                            - generic [ref=e1864]:
+                              - generic [ref=e1867]:
+                                - link "r/Jigsawpuzzles" [ref=e1868] [cursor=pointer]:
+                                  - /url: https://www.reddit.com/r/Jigsawpuzzles/
+                                  - generic [ref=e1872]: r/Jigsawpuzzles
+                                - generic [ref=e1873]: •
+                                - time [ref=e1875]: 3mo ago
+                              - link "List item post - What should I do?" [ref=e1877] [cursor=pointer]:
+                                - /url: /r/Jigsawpuzzles/comments/1s0oar7/what_should_i_do/
+                                - heading "List item post - What should I do?" [level=3] [ref=e1880]: What should I do?
+                            - link "r/Jigsawpuzzles - What should I do?" [ref=e1883] [cursor=pointer]:
+                              - /url: /r/Jigsawpuzzles/comments/1s0oar7/what_should_i_do/
+                              - img "r/Jigsawpuzzles - What should I do?" [ref=e1884]
+                          - generic [ref=e1886]:
+                            - generic [ref=e1887]: "35"
+                            - text: upvotes ·
+                            - generic [ref=e1888]: "29"
+                            - text: comments
+                        - separator [ref=e1889]
+                    - listitem [ref=e1890]:
+                      - generic [ref=e1891]:
+                        - generic [ref=e1892]:
+                          - link "Can we expect more servers? Or do I have to go through a 500.000+ queue now every time at least for the next couple of days, playing my full price AAA 70€ game?" [ref=e1893] [cursor=pointer]:
+                            - /url: https://www.reddit.com/r/Battlefield/comments/1o346s6/can_we_expect_more_servers_or_do_i_have_to_go/
+                            - generic [ref=e1894]:
+                              - generic: Can we expect more servers? Or do I have to go through a 500.000+ queue now every time at least for the next couple of days, playing my full price AAA 70€ game?
+                          - generic [ref=e1896]:
+                            - generic [ref=e1899]:
+                              - link "r/Battlefield" [ref=e1900] [cursor=pointer]:
+                                - /url: https://www.reddit.com/r/Battlefield/
+                                - generic [ref=e1904]: r/Battlefield
+                              - generic [ref=e1905]: •
+                              - time [ref=e1907]: 8mo ago
+                            - link "List item post - Can we expect more servers? Or do I have to go through a 50..." [ref=e1909] [cursor=pointer]:
+                              - /url: /r/Battlefield/comments/1o346s6/can_we_expect_more_servers_or_do_i_have_to_go/
+                              - heading "List item post - Can we expect more servers? Or do I have to go through a 50..." [level=3] [ref=e1912]: Can we expect more servers? Or do I have to go through a 500.000+ queue now every time at least for the next couple of days, playing my full price AAA 70€ game?
+                          - generic [ref=e1914]:
+                            - generic [ref=e1915]: "9"
+                            - text: upvotes ·
+                            - generic [ref=e1916]: "4"
+                            - text: comments
+                        - separator [ref=e1917]
+                    - listitem [ref=e1918]:
+                      - generic [ref=e1919]:
+                        - generic [ref=e1920]:
+                          - link "Saros 10R good to buy? Or wait till the next release?" [ref=e1921] [cursor=pointer]:
+                            - /url: https://www.reddit.com/r/Roborock/comments/1oghjec/saros_10r_good_to_buy_or_wait_till_the_next/
+                            - generic [ref=e1922]:
+                              - generic: Saros 10R good to buy? Or wait till the next release?
+                          - generic [ref=e1924]:
+                            - generic [ref=e1927]:
+                              - link "r/Roborock" [ref=e1928] [cursor=pointer]:
+                                - /url: https://www.reddit.com/r/Roborock/
+                                - generic [ref=e1932]: r/Roborock
+                              - generic [ref=e1933]: •
+                              - time [ref=e1935]: 8mo ago
+                            - link "List item post - Saros 10R good to buy? Or wait till the next release?" [ref=e1937] [cursor=pointer]:
+                              - /url: /r/Roborock/comments/1oghjec/saros_10r_good_to_buy_or_wait_till_the_next/
+                              - heading "List item post - Saros 10R good to buy? Or wait till the next release?" [level=3] [ref=e1940]: Saros 10R good to buy? Or wait till the next release?
+                          - generic [ref=e1942]:
+                            - generic [ref=e1943]: "6"
+                            - text: upvotes ·
+                            - generic [ref=e1944]: "43"
+                            - text: comments
+                        - separator [ref=e1945]
+                    - listitem [ref=e1946]:
+                      - generic [ref=e1947]:
+                        - generic [ref=e1948]:
+                          - link "How long will sora 2 be free for?" [ref=e1949] [cursor=pointer]:
+                            - /url: https://www.reddit.com/r/OpenAI/comments/1o5r41e/how_long_will_sora_2_be_free_for/
+                            - generic [ref=e1950]:
+                              - generic: How long will sora 2 be free for?
+                          - generic [ref=e1952]:
+                            - generic [ref=e1955]:
+                              - link "r/OpenAI" [ref=e1956] [cursor=pointer]:
+                                - /url: https://www.reddit.com/r/OpenAI/
+                                - generic [ref=e1960]: r/OpenAI
+                              - generic [ref=e1961]: •
+                              - time [ref=e1963]: 8mo ago
+                            - link "List item post - How long will sora 2 be free for?" [ref=e1965] [cursor=pointer]:
+                              - /url: /r/OpenAI/comments/1o5r41e/how_long_will_sora_2_be_free_for/
+                              - heading "List item post - How long will sora 2 be free for?" [level=3] [ref=e1968]: How long will sora 2 be free for?
+                          - generic [ref=e1970]:
+                            - generic [ref=e1971]: "6"
+                            - text: upvotes ·
+                            - generic [ref=e1972]: "24"
+                            - text: comments
+                        - separator [ref=e1973]
+                    - listitem [ref=e1974]:
+                      - generic [ref=e1975]:
+                        - generic [ref=e1976]:
+                          - link "Am I in the wrong here?" [ref=e1977] [cursor=pointer]:
+                            - /url: https://www.reddit.com/r/sysadmin/comments/1stvjr3/am_i_in_the_wrong_here/
+                            - generic [ref=e1978]:
+                              - generic: Am I in the wrong here?
+                          - generic [ref=e1980]:
+                            - generic [ref=e1983]:
+                              - link "r/sysadmin" [ref=e1984] [cursor=pointer]:
+                                - /url: https://www.reddit.com/r/sysadmin/
+                                - generic [ref=e1988]: r/sysadmin
+                              - generic [ref=e1989]: •
+                              - time [ref=e1991]: 2mo ago
+                            - link "List item post - Am I in the wrong here?" [ref=e1993] [cursor=pointer]:
+                              - /url: /r/sysadmin/comments/1stvjr3/am_i_in_the_wrong_here/
+                              - heading "List item post - Am I in the wrong here?" [level=3] [ref=e1996]: Am I in the wrong here?
+                          - generic [ref=e1998]:
+                            - generic [ref=e1999]: "89"
+                            - text: upvotes ·
+                            - generic [ref=e2000]: "63"
+                            - text: comments
+                        - separator [ref=e2001]
+                    - listitem [ref=e2002]:
+                      - generic [ref=e2003]:
+                        - generic [ref=e2004]:
+                          - link "This is one delay I can enjoy!" [ref=e2005] [cursor=pointer]:
+                            - /url: https://www.reddit.com/r/Amtrak/comments/1la4h3i/this_is_one_delay_i_can_enjoy/
+                            - generic [ref=e2006]:
+                              - generic: This is one delay I can enjoy!
+                          - generic [ref=e2007]:
+                            - generic [ref=e2008]:
+                              - generic [ref=e2011]:
+                                - link "r/Amtrak" [ref=e2012] [cursor=pointer]:
+                                  - /url: https://www.reddit.com/r/Amtrak/
+                                  - generic [ref=e2016]: r/Amtrak
+                                - generic [ref=e2017]: •
+                                - time [ref=e2019]: 1y ago
+                              - link "List item post - This is one delay I can enjoy!" [ref=e2021] [cursor=pointer]:
+                                - /url: /r/Amtrak/comments/1la4h3i/this_is_one_delay_i_can_enjoy/
+                                - heading "List item post - This is one delay I can enjoy!" [level=3] [ref=e2024]: This is one delay I can enjoy!
+                            - link "r/Amtrak - This is one delay I can enjoy!" [ref=e2027] [cursor=pointer]:
+                              - /url: /r/Amtrak/comments/1la4h3i/this_is_one_delay_i_can_enjoy/
+                              - img "r/Amtrak - This is one delay I can enjoy!" [ref=e2028]
+                          - generic [ref=e2030]:
+                            - generic [ref=e2031]: "515"
+                            - text: upvotes ·
+                            - generic [ref=e2032]: "20"
+                            - text: comments
+                        - separator [ref=e2033]
+                    - listitem [ref=e2034]:
+                      - generic [ref=e2035]:
+                        - generic [ref=e2036]:
+                          - link "The one thing I think I'm most looking forward to with the upcoming patch is..." [ref=e2037] [cursor=pointer]:
+                            - /url: https://www.reddit.com/r/LowSodiumHellDivers/comments/1n55avf/the_one_thing_i_think_im_most_looking_forward_to/
+                            - generic [ref=e2038]:
+                              - generic: The one thing I think I'm most looking forward to with the upcoming patch is...
+                          - generic [ref=e2040]:
+                            - generic [ref=e2043]:
+                              - link "r/LowSodiumHellDivers" [ref=e2044] [cursor=pointer]:
+                                - /url: https://www.reddit.com/r/LowSodiumHellDivers/
+                                - generic [ref=e2048]: r/LowSodiumHellDivers
+                              - generic [ref=e2049]: •
+                              - time [ref=e2051]: 9mo ago
+                            - link "List item post - The one thing I think I'm most looking forward to with the ..." [ref=e2053] [cursor=pointer]:
+                              - /url: /r/LowSodiumHellDivers/comments/1n55avf/the_one_thing_i_think_im_most_looking_forward_to/
+                              - heading "List item post - The one thing I think I'm most looking forward to with the ..." [level=3] [ref=e2056]: The one thing I think I'm most looking forward to with the upcoming patch is...
+                          - generic [ref=e2058]:
+                            - generic [ref=e2059]: "189"
+                            - text: upvotes ·
+                            - generic [ref=e2060]: "31"
+                            - text: comments
+                        - separator [ref=e2061]
+                    - listitem [ref=e2062]:
+                      - generic [ref=e2063]:
+                        - generic [ref=e2064]:
+                          - link "Please HELP me make up my mind!!" [ref=e2065] [cursor=pointer]:
+                            - /url: https://www.reddit.com/r/macsetups/comments/1pct9cw/please_help_me_make_up_my_mind/
+                            - generic [ref=e2066]:
+                              - generic: Please HELP me make up my mind!!
+                          - generic [ref=e2067]:
+                            - generic [ref=e2068]:
+                              - generic [ref=e2071]:
+                                - link "r/macsetups" [ref=e2072] [cursor=pointer]:
+                                  - /url: https://www.reddit.com/r/macsetups/
+                                  - img [ref=e2076]
+                                  - generic [ref=e2078]: r/macsetups
+                                - generic [ref=e2079]: •
+                                - time [ref=e2081]: 6mo ago
+                              - link "List item post - Please HELP me make up my mind!!" [ref=e2083] [cursor=pointer]:
+                                - /url: /r/macsetups/comments/1pct9cw/please_help_me_make_up_my_mind/
+                                - heading "List item post - Please HELP me make up my mind!!" [level=3] [ref=e2086]: Please HELP me make up my mind!!
+                            - link "r/macsetups - Please HELP me make up my mind!!" [ref=e2089] [cursor=pointer]:
+                              - /url: /r/macsetups/comments/1pct9cw/please_help_me_make_up_my_mind/
+                              - img "r/macsetups - Please HELP me make up my mind!!" [ref=e2090]
+                          - generic [ref=e2092]:
+                            - generic [ref=e2093]: "54"
+                            - text: upvotes ·
+                            - generic [ref=e2094]: "19"
+                            - text: comments
+                        - separator [ref=e2095]
+                    - listitem [ref=e2096]:
+                      - generic [ref=e2097]:
+                        - generic [ref=e2098]:
+                          - link "What could have I done in this situation?" [ref=e2099] [cursor=pointer]:
+                            - /url: https://www.reddit.com/r/Karting/comments/1s73i5p/what_could_have_i_done_in_this_situation/
+                            - generic [ref=e2100]:
+                              - generic: What could have I done in this situation?
+                          - generic [ref=e2101]:
+                            - generic [ref=e2102]:
+                              - generic [ref=e2105]:
+                                - link "r/Karting" [ref=e2106] [cursor=pointer]:
+                                  - /url: https://www.reddit.com/r/Karting/
+                                  - generic [ref=e2110]: r/Karting
+                                - generic [ref=e2111]: •
+                                - time [ref=e2113]: 2mo ago
+                              - link "List item post - What could have I done in this situation?" [ref=e2115] [cursor=pointer]:
+                                - /url: /r/Karting/comments/1s73i5p/what_could_have_i_done_in_this_situation/
+                                - heading "List item post - What could have I done in this situation?" [level=3] [ref=e2118]: What could have I done in this situation?
+                            - generic [ref=e2120]:
+                              - link "r/Karting - What could have I done in this situation?" [ref=e2121] [cursor=pointer]:
+                                - /url: /r/Karting/comments/1s73i5p/what_could_have_i_done_in_this_situation/
+                                - img "r/Karting - What could have I done in this situation?" [ref=e2122]
+                              - generic:
+                                - img
+                                - generic: 0:13
+                          - generic [ref=e2124]:
+                            - generic [ref=e2125]: "116"
+                            - text: upvotes ·
+                            - generic [ref=e2126]: "75"
+                            - text: comments
+                        - separator [ref=e2127]
+                    - listitem [ref=e2128]:
+                      - generic [ref=e2129]:
+                        - generic [ref=e2130]:
+                          - link "Finally passed this after mind blocking it for ages" [ref=e2131] [cursor=pointer]:
+                            - /url: https://www.reddit.com/r/beatsaber/comments/1rc0n5h/finally_passed_this_after_mind_blocking_it_for/
+                            - generic [ref=e2132]:
+                              - generic: Finally passed this after mind blocking it for ages
+                          - generic [ref=e2133]:
+                            - generic [ref=e2134]:
+                              - generic [ref=e2137]:
+                                - link "r/beatsaber" [ref=e2138] [cursor=pointer]:
+                                  - /url: https://www.reddit.com/r/beatsaber/
+                                  - generic [ref=e2142]: r/beatsaber
+                                - generic [ref=e2143]: •
+                                - time [ref=e2145]: 4mo ago
+                              - link "List item post - Finally passed this after mind blocking it for ages" [ref=e2147] [cursor=pointer]:
+                                - /url: /r/beatsaber/comments/1rc0n5h/finally_passed_this_after_mind_blocking_it_for/
+                                - heading "List item post - Finally passed this after mind blocking it for ages" [level=3] [ref=e2150]: Finally passed this after mind blocking it for ages
+                            - generic [ref=e2152]:
+                              - link "r/beatsaber - Finally passed this after mind blocking it for ages" [ref=e2153] [cursor=pointer]:
+                                - /url: /r/beatsaber/comments/1rc0n5h/finally_passed_this_after_mind_blocking_it_for/
+                                - img "r/beatsaber - Finally passed this after mind blocking it for ages" [ref=e2154]
+                              - generic:
+                                - img
+                                - generic: 1:22
+                          - generic [ref=e2156]:
+                            - generic [ref=e2157]: "163"
+                            - text: upvotes ·
+                            - generic [ref=e2158]: "61"
+                            - text: comments
+                        - separator [ref=e2159]
+                    - listitem [ref=e2160]:
+                      - generic [ref=e2162]:
+                        - link "What's gonna be fragpunk's future." [ref=e2163] [cursor=pointer]:
+                          - /url: https://www.reddit.com/r/FragpunkGame/comments/1ophzfr/whats_gonna_be_fragpunks_future/
+                          - generic [ref=e2164]:
+                            - generic: What's gonna be fragpunk's future.
+                        - generic [ref=e2166]:
+                          - generic [ref=e2169]:
+                            - link "r/FragpunkGame" [ref=e2170] [cursor=pointer]:
+                              - /url: https://www.reddit.com/r/FragpunkGame/
+                              - img [ref=e2174]
+                              - generic [ref=e2176]: r/FragpunkGame
+                            - generic [ref=e2177]: •
+                            - time [ref=e2179]: 7mo ago
+                          - link "List item post - What's gonna be fragpunk's future." [ref=e2181] [cursor=pointer]:
+                            - /url: /r/FragpunkGame/comments/1ophzfr/whats_gonna_be_fragpunks_future/
+                            - heading "List item post - What's gonna be fragpunk's future." [level=3] [ref=e2184]: What's gonna be fragpunk's future.
+                        - generic [ref=e2186]:
+                          - generic [ref=e2187]: "13"
+                          - text: upvotes ·
+                          - generic [ref=e2188]: "24"
+                          - text: comments
+                - generic [ref=e2189]:
+                  - heading "View Post in" [level=2] [ref=e2191]:
+                    - generic [ref=e2192]: View Post in
+                  - generic [ref=e2193]:
+                    - link "हिन्दी" [ref=e2195] [cursor=pointer]:
+                      - /url: https://www.reddit.com/r/Jetbrains/comments/1owz7vq/so_im_going_to_have_to_see_this_ai_garbage_every/?tl=hi
+                    - link "简体中文" [ref=e2197] [cursor=pointer]:
+                      - /url: https://www.reddit.com/r/Jetbrains/comments/1owz7vq/so_im_going_to_have_to_see_this_ai_garbage_every/?tl=zh-hans
+                    - link "Русский" [ref=e2199] [cursor=pointer]:
+                      - /url: https://www.reddit.com/r/Jetbrains/comments/1owz7vq/so_im_going_to_have_to_see_this_ai_garbage_every/?tl=ru
+                    - link "日本語" [ref=e2201] [cursor=pointer]:
+                      - /url: https://www.reddit.com/r/Jetbrains/comments/1owz7vq/so_im_going_to_have_to_see_this_ai_garbage_every/?tl=ja
+                    - link "Português (Brasil)" [ref=e2203] [cursor=pointer]:
+                      - /url: https://www.reddit.com/r/Jetbrains/comments/1owz7vq/so_im_going_to_have_to_see_this_ai_garbage_every/?tl=pt-br
+                    - link "Français" [ref=e2205] [cursor=pointer]:
+                      - /url: https://www.reddit.com/r/Jetbrains/comments/1owz7vq/so_im_going_to_have_to_see_this_ai_garbage_every/?tl=fr
+                    - group [ref=e2206]:
+                      - generic "See more" [ref=e2207] [cursor=pointer]:
+                        - generic [ref=e2208]: See more
+                        - img [ref=e2210]
+                - complementary "Community information" [ref=e2212]:
+                  - generic [ref=e2214]:
+                    - heading "Community Info Section" [level=1] [ref=e2215]
+                    - generic [ref=e2216]:
+                      - link "r/Jetbrains" [ref=e2218] [cursor=pointer]:
+                        - /url: /r/Jetbrains/
+                        - generic [ref=e2219]: r/Jetbrains
+                      - button "Join" [ref=e2223] [cursor=pointer]
+                    - generic [ref=e2224]:
+                      - generic [ref=e2225]: JetBrains Community
+                      - generic [ref=e2226]: Anything and everything relating to JetBrains their products and projects. Find out more about JetBrains at https://jetbrains.com/
+                      - button "Show more" [ref=e2227] [cursor=pointer]:
+                        - generic [ref=e2229]: Show more
+                      - generic [ref=e2232]:
+                        - img [ref=e2233]
+                        - text: Public
+              - list [ref=e2236]:
+                - listitem [ref=e2237]:
+                  - link "Reddit Rules" [ref=e2239] [cursor=pointer]:
+                    - /url: https://www.redditinc.com/policies/content-policy
+                - listitem [ref=e2240]:
+                  - link "Privacy Policy" [ref=e2242] [cursor=pointer]:
+                    - /url: https://www.reddit.com/policies/privacy-policy
+                - listitem [ref=e2243]:
+                  - link "User Agreement" [ref=e2245] [cursor=pointer]:
+                    - /url: https://www.redditinc.com/policies/user-agreement
+                - listitem [ref=e2246]:
+                  - link "Your Privacy Choices" [ref=e2248] [cursor=pointer]:
+                    - /url: https://support.reddithelp.com/hc/articles/43980704794004
+                - listitem [ref=e2249]:
+                  - link "Accessibility" [ref=e2251] [cursor=pointer]:
+                    - /url: https://support.reddithelp.com/hc/sections/38303584022676-Accessibility
+                - listitem [ref=e2252]:
+                  - link "Reddit, Inc. © 2026. All rights reserved." [ref=e2253] [cursor=pointer]:
+                    - /url: https://redditinc.com
+        - generic [ref=e2255]:
+          - button "Collapse Navigation" [ref=e2258] [cursor=pointer]:
+            - img [ref=e2261]
+            - generic [ref=e2263]:
+              - generic: Collapse Navigation
+          - navigation "Primary" [ref=e2268]:
+            - generic [ref=e2270]:
+              - link "Home" [ref=e2272] [cursor=pointer]:
+                - /url: https://www.reddit.com/?feed=home
+                - generic [ref=e2273]:
+                  - img [ref=e2275]
+                  - generic [ref=e2278]: Home
+              - link "Popular" [ref=e2280] [cursor=pointer]:
+                - /url: https://www.reddit.com/r/popular/
+                - generic [ref=e2281]:
+                  - img [ref=e2283]
+                  - generic [ref=e2286]: Popular
+              - link "News" [ref=e2287] [cursor=pointer]:
+                - /url: https://www.reddit.com/news/
+                - generic [ref=e2288]:
+                  - img [ref=e2290]
+                  - generic [ref=e2294]: News
+              - link "Explore" [ref=e2296] [cursor=pointer]:
+                - /url: https://www.reddit.com/explore/
+                - generic [ref=e2297]:
+                  - img [ref=e2299]
+                  - generic [ref=e2302]: Explore
+            - separator [ref=e2303]
+            - navigation "Reddit resources" [ref=e2304]:
+              - group [ref=e2306]:
+                - generic "RESOURCES" [ref=e2307] [cursor=pointer]:
+                  - generic [ref=e2309]:
+                    - generic [ref=e2312]: RESOURCES
+                    - img [ref=e2315]
+                - generic [ref=e2318]:
+                  - link "About Reddit" [ref=e2320] [cursor=pointer]:
+                    - /url: https://www.redditinc.com
+                    - generic [ref=e2321]:
+                      - img [ref=e2323]
+                      - generic [ref=e2327]: About Reddit
+                  - link "Advertise" [ref=e2329] [cursor=pointer]:
+                    - /url: https://ads.reddit.com/register?utm_source=web3x_consumer&utm_name=left_nav_cta
+                    - generic [ref=e2330]:
+                      - img [ref=e2332]
+                      - generic [ref=e2336]: Advertise
+                  - link "Developer Platform" [ref=e2338] [cursor=pointer]:
+                    - /url: https://developers.reddit.com/?utm_source=reddit&utm_medium=left_nav_resources
+                    - generic [ref=e2339]:
+                      - img [ref=e2341]
+                      - generic [ref=e2345]: Developer Platform
+                  - link "Reddit Pro BETA" [ref=e2347] [cursor=pointer]:
+                    - /url: /reddit-pro?utm_source=reddit&utm_medium=left_nav_resources
+                    - generic [ref=e2348]:
+                      - img [ref=e2350]
+                      - generic [ref=e2354]:
+                        - generic [ref=e2355]: Reddit Pro
+                        - generic [ref=e2356]: BETA
+                  - link "Help" [ref=e2358] [cursor=pointer]:
+                    - /url: https://support.reddithelp.com/hc?utm_source=reddit&utm_medium=footer&utm_campaign=evergreen
+                    - generic [ref=e2359]:
+                      - img [ref=e2361]
+                      - generic [ref=e2365]: Help
+                  - link "Blog" [ref=e2367] [cursor=pointer]:
+                    - /url: https://redditblog.com/
+                    - generic [ref=e2368]:
+                      - img [ref=e2370]
+                      - generic [ref=e2374]: Blog
+                  - link "Careers" [ref=e2376] [cursor=pointer]:
+                    - /url: https://www.redditinc.com/careers
+                    - generic [ref=e2377]:
+                      - img [ref=e2379]
+                      - generic [ref=e2383]: Careers
+                  - link "Press" [ref=e2385] [cursor=pointer]:
+                    - /url: https://www.redditinc.com/press
+                    - generic [ref=e2386]:
+                      - img [ref=e2388]
+                      - generic [ref=e2392]: Press
+                  - separator [ref=e2393]
+                  - link "Best of Reddit" [ref=e2395] [cursor=pointer]:
+                    - /url: https://www.reddit.com/posts/2026/global/
+                    - generic [ref=e2396]:
+                      - img [ref=e2398]
+                      - generic [ref=e2403]: Best of Reddit
+                  - separator [ref=e2404]
+                  - link "Reddit Rules" [ref=e2406] [cursor=pointer]:
+                    - /url: https://www.redditinc.com/policies/content-policy
+                    - generic [ref=e2407]:
+                      - img [ref=e2409]
+                      - generic [ref=e2413]: Reddit Rules
+                  - link "Privacy Policy" [ref=e2415] [cursor=pointer]:
+                    - /url: https://www.reddit.com/policies/privacy-policy
+                    - generic [ref=e2416]:
+                      - img [ref=e2418]
+                      - generic [ref=e2422]: Privacy Policy
+                  - link "User Agreement" [ref=e2424] [cursor=pointer]:
+                    - /url: https://www.redditinc.com/policies/user-agreement
+                    - generic [ref=e2425]:
+                      - img [ref=e2427]
+                      - generic [ref=e2431]: User Agreement
+                  - link "Your Privacy Choices" [ref=e2433] [cursor=pointer]:
+                    - /url: https://support.reddithelp.com/hc/articles/43980704794004
+                    - generic [ref=e2434]:
+                      - img [ref=e2436]
+                      - generic [ref=e2440]: Your Privacy Choices
+                  - link "Accessibility" [ref=e2442] [cursor=pointer]:
+                    - /url: https://support.reddithelp.com/hc/sections/38303584022676-Accessibility
+                    - generic [ref=e2443]:
+                      - img [ref=e2445]
+                      - generic [ref=e2450]: Accessibility
+            - link "Reddit, Inc. © 2026. All rights reserved." [ref=e2452] [cursor=pointer]:
+              - /url: https://redditinc.com

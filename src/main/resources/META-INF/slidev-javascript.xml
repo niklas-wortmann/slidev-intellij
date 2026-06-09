@@ -1,0 +1,14 @@
+<idea-plugin>
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- JS/TS support in slide content (plan.md, Phase 18), all targeting the markdown
+             file's HTML template-data root and guarded to Slidev decks:
+             - JS injection into Vue expression attribute values,
+             - lexer coloring of <script> bodies (the JS plugin already embeds them as JS PSI,
+               so completion works; only the editor colors are missing),
+             - suppression of the phantom parse errors that embedding produces. -->
+        <multiHostInjector implementation="dev.slidev.intellij.editor.SlidevScriptInjector"/>
+        <annotator language="HTML"
+                   implementationClass="dev.slidev.intellij.editor.SlidevScriptBodyAnnotator"/>
+        <highlightErrorFilter implementation="dev.slidev.intellij.editor.SlidevScriptErrorFilter"/>
+    </extensions>
+</idea-plugin>

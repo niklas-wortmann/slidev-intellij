@@ -41,3 +41,16 @@ class SlidevDirective(
     val description: String?,
     val docsUrl: String?,
 )
+
+/**
+ * Resolves [tagName] against this name-keyed component map the way Vue's template
+ * compiler does: an exact match first, then kebab-case mapped to PascalCase
+ * (`<v-click>` → `VClick`).
+ */
+fun Map<String, SlidevComponent>.componentForTag(tagName: String): SlidevComponent? {
+    this[tagName]?.let { return it }
+    if ('-' !in tagName) {
+        return null
+    }
+    return this[tagName.split('-').joinToString("") { it.replaceFirstChar(Char::uppercaseChar) }]
+}

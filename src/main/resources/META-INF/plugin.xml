@@ -32,6 +32,10 @@
     <depends optional="true" config-file="slidev-yaml.xml">org.jetbrains.plugins.yaml</depends>
     <!-- MCP tools (port of lmTools.ts); only active where the bundled MCP server plugin is available. -->
     <depends optional="true" config-file="slidev-mcp.xml">com.intellij.mcpServer</depends>
+    <!-- JS/TS languages come from the JavaScript plugin (paid IDEs / IDEA non-free mode);
+         script-block and Vue-expression support is optional so the plugin keeps working
+         without it. -->
+    <depends optional="true" config-file="slidev-javascript.xml">JavaScript</depends>
 
     <resource-bundle>messages.SlidevBundle</resource-bundle>
 

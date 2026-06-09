@@ -39,6 +39,20 @@ class CodeBlocksTest {
     }
 
     @Test
+    fun `magic-move steps get line numbers but the outer fence does not`() {
+        // 19.6 regression pin: only the inner 3-backtick steps are numbered, matching
+        // the VS Code annotator; the 4-backtick magic-move fence itself is skipped.
+        val found = blocks("````md magic-move {at:4} [app.js]\n```js {*|2}\nconst a = 1\n```\n```ts\nlet b\n```\n````")
+        assertEquals(
+            listOf(
+                CodeBlock(startLine = 2, endLine = 3, indent = 0),
+                CodeBlock(startLine = 5, endLine = 6, indent = 0),
+            ),
+            found,
+        )
+    }
+
+    @Test
     fun `indented fences keep their indentation`() {
         val found = blocks("- item\n  ```ts\n  code\n  ```")
         assertEquals(listOf(CodeBlock(startLine = 2, endLine = 3, indent = 2)), found)

@@ -9,6 +9,7 @@ import com.intellij.psi.PsiFile
 import dev.slidev.intellij.SlidevBundle
 import dev.slidev.intellij.components.SlidevComponent
 import dev.slidev.intellij.components.SlidevComponentIndex
+import dev.slidev.intellij.components.componentForTag
 import dev.slidev.intellij.project.SlidevProjectService
 
 /**
@@ -49,7 +50,8 @@ internal class SlidevComponentAnnotator : Annotator {
         holder: AnnotationHolder,
     ) {
         when {
-            token.name in components ->
+            // Exact or kebab-case match (`<v-click>` → VClick), like Vue's resolution.
+            components.componentForTag(token.name) != null ->
                 holder.newSilentAnnotation(HighlightSeverity.INFORMATION)
                     .range(token.range.asTextRange)
                     .textAttributes(SlidevHighlightColors.COMPONENT_TAG)

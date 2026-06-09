@@ -28,6 +28,11 @@ dependencies {
         // LM tools register against (see slidev-mcp.xml).
         bundledPlugin("com.intellij.mcpServer")
 
+        // JavaScript plugin defines the JS/TS languages our script/expression injection targets
+        // (see slidev-javascript.xml); needed on the sandbox/test classpath (the plugin
+        // dependency itself is optional, see plugin.xml).
+        bundledPlugin("JavaScript")
+
         pluginVerifier()
         zipSigner()
     }
