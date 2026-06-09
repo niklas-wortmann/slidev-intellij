@@ -23,6 +23,8 @@
     <!-- The headmatter is a YAML injection host (Markdown front-matter support), so docs and
          completion there must also be registered against the YAML language. -->
     <depends optional="true" config-file="slidev-yaml.xml">org.jetbrains.plugins.yaml</depends>
+    <!-- MCP tools (port of lmTools.ts); only active where the bundled MCP server plugin is available. -->
+    <depends optional="true" config-file="slidev-mcp.xml">com.intellij.mcpServer</depends>
 
     <resource-bundle>messages.SlidevBundle</resource-bundle>
 

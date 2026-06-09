@@ -1,0 +1,5 @@
+<idea-plugin>
+    <extensions defaultExtensionNs="com.intellij.mcpServer">
+        <mcpToolset implementation="dev.slidev.intellij.mcp.SlidevMcpToolset"/>
+    </extensions>
+</idea-plugin>
