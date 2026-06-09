@@ -25,10 +25,18 @@ internal abstract class SlidevPreviewAction : AnAction(), DumbAware {
 
     override fun update(e: AnActionEvent) {
         val project = e.project
-        e.presentation.isEnabled = project != null &&
-            SlidevProjectService.getInstance(project).activeState()?.serverRunning == true &&
+        val state = project?.let { SlidevProjectService.getInstance(it).activeState() }
+        // Old servers without navState broadcasting can't be navigated, mirroring
+        // the `!slidev:preview:compat` when-clauses of the VS Code extension.
+        val compatHidden = hiddenInCompatMode && state?.compatMode == true
+        e.presentation.isVisible = !compatHidden
+        e.presentation.isEnabled = project != null && !compatHidden &&
+            state?.serverRunning == true &&
             extraEnabled(SlidevPreviewService.getInstance(project))
     }
+
+    /** Whether the action is hidden while the server runs in compat mode (no version meta). */
+    protected open val hiddenInCompatMode: Boolean = false
 
     protected open fun extraEnabled(service: SlidevPreviewService): Boolean = true
 

@@ -4,6 +4,7 @@ import dev.slidev.intellij.ui.preview.SlidevPreviewService
 
 /** Navigates the preview to the next click, like `slidev.preview-next-click`. */
 internal class SlidevNextClickAction : SlidevPreviewAction() {
+    override val hiddenInCompatMode: Boolean = true
     override fun extraEnabled(service: SlidevPreviewService): Boolean = service.navState.hasNext
     override fun perform(service: SlidevPreviewService) = service.nextClick()
 }

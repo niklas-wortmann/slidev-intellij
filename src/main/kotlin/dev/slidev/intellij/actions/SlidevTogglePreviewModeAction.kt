@@ -4,6 +4,7 @@ import com.intellij.openapi.actionSystem.ActionUpdateThread
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.ToggleAction
 import com.intellij.openapi.project.DumbAware
+import dev.slidev.intellij.project.SlidevProjectService
 import dev.slidev.intellij.ui.preview.SlidevPreviewService
 
 /** Switches between slide and overview preview, like `slidev.show-slide/overview-preview`. */
@@ -13,7 +14,10 @@ internal class SlidevTogglePreviewModeAction : ToggleAction(), DumbAware {
 
     override fun update(e: AnActionEvent) {
         super.update(e)
-        e.presentation.isEnabled = e.project != null
+        val state = e.project?.let { SlidevProjectService.getInstance(it).activeState() }
+        // Old servers have no overview page; hidden in compat mode like in VS Code.
+        e.presentation.isVisible = state?.compatMode != true
+        e.presentation.isEnabled = e.project != null && state?.compatMode != true
     }
 
     override fun isSelected(e: AnActionEvent): Boolean =

@@ -16,4 +16,11 @@
                    implementationClass="dev.slidev.intellij.editor.SlidevFrontmatterAnnotator"/>
         <typedHandler implementation="dev.slidev.intellij.editor.SlidevFrontmatterTypedHandler"/>
     </extensions>
+
+    <extensions defaultExtensionNs="org.intellij.markdown">
+        <!-- Keeps the built-in markdown preview from aborting on Vue template attributes
+             (`@click`, `:class`, ...) that Slidev slides embed in inline HTML. -->
+        <browserPreviewExtensionProvider
+                implementation="dev.slidev.intellij.editor.SlidevPreviewVueAttributesExtension$Provider"/>
+    </extensions>
 </idea-plugin>

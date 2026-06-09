@@ -37,8 +37,13 @@ import javax.swing.SwingConstants
  * The embedded preview: a JCEF browser hosting a small wrapper page with an iframe pointing at
  * the dev server, replicating the relay protocol of `html/ready.ts` in the VS Code extension.
  * Falls back to explanatory cards when JCEF is unavailable or no server is running.
+ * Shared by the tool window and the split-editor preview; instances register themselves on
+ * [SlidevPreviewService] so navigation messages reach every open preview.
  */
-class SlidevPreviewPanel(private val project: Project) : JPanel(BorderLayout()), Disposable {
+class SlidevPreviewComponent(
+    private val project: Project,
+    withToolbar: Boolean = true,
+) : JPanel(BorderLayout()), Disposable {
 
     private val service = SlidevPreviewService.getInstance(project)
     private val gson = Gson()
@@ -55,13 +60,15 @@ class SlidevPreviewPanel(private val project: Project) : JPanel(BorderLayout()),
     private val pendingMessages = mutableListOf<String>()
 
     init {
-        val toolbar = ActionManager.getInstance().createActionToolbar(
-            "SlidevPreview",
-            ActionManager.getInstance().getAction("Slidev.PreviewToolbar") as ActionGroup,
-            true,
-        )
-        toolbar.targetComponent = this
-        add(toolbar.component, BorderLayout.NORTH)
+        if (withToolbar) {
+            val toolbar = ActionManager.getInstance().createActionToolbar(
+                "SlidevPreview",
+                ActionManager.getInstance().getAction("Slidev.PreviewToolbar") as ActionGroup,
+                true,
+            )
+            toolbar.targetComponent = this
+            add(toolbar.component, BorderLayout.NORTH)
+        }
 
         cards.add(messageCard(SlidevBundle.message("preview.error.no.project")), CARD_NO_PROJECT)
         cards.add(
@@ -86,8 +93,7 @@ class SlidevPreviewPanel(private val project: Project) : JPanel(BorderLayout()),
         }
         add(cards, BorderLayout.CENTER)
 
-        service.panel = this
-        service.installCaretListener(this)
+        service.registerPanel(this)
         project.messageBus.connect(this).subscribe(
             SlidevListener.TOPIC,
             object : SlidevListener {
@@ -305,9 +311,7 @@ class SlidevPreviewPanel(private val project: Project) : JPanel(BorderLayout()),
     }
 
     override fun dispose() {
-        if (service.panel === this) {
-            service.panel = null
-        }
+        service.unregisterPanel(this)
     }
 
     companion object {

@@ -5,11 +5,14 @@ import com.intellij.ide.BrowserUtil
 import com.intellij.openapi.Disposable
 import com.intellij.openapi.components.Service
 import com.intellij.openapi.components.service
+import com.intellij.openapi.editor.LogicalPosition
+import com.intellij.openapi.editor.ScrollType
 import com.intellij.openapi.editor.event.CaretEvent
 import com.intellij.openapi.editor.event.CaretListener
 import com.intellij.openapi.fileEditor.FileDocumentManager
 import com.intellij.openapi.fileEditor.FileEditorManager
 import com.intellij.openapi.fileEditor.OpenFileDescriptor
+import com.intellij.openapi.fileEditor.TextEditor
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.vfs.LocalFileSystem
 import com.intellij.util.Alarm
@@ -18,11 +21,13 @@ import dev.slidev.intellij.project.SlidevProjectService
 import dev.slidev.intellij.project.SlidevProjectState
 import dev.slidev.intellij.settings.SlidevSettings
 import dev.slidev.intellij.settings.SlidevWorkspaceState
+import java.util.concurrent.CopyOnWriteArrayList
 
 /**
  * Preview navigation state and the editor &harr; preview sync logic, the counterpart of
  * `previewWebview.ts` in the VS Code extension. All state is mutated on the EDT only;
- * the JCEF panel registers itself here so toolbar actions work through this service.
+ * JCEF panels (tool window, split editors) register themselves here so toolbar actions
+ * and sync messages reach every open preview through this service.
  */
 @Service(Service.Level.PROJECT)
 class SlidevPreviewService(private val project: Project) : Disposable {
@@ -42,10 +47,11 @@ class SlidevPreviewService(private val project: Project) : Disposable {
     var navState: NavState = NavState()
         private set
 
-    var panel: SlidevPreviewPanel? = null
+    /** Every open preview (tool window, split editors); messages are broadcast to all of them. */
+    private val panels = CopyOnWriteArrayList<SlidevPreviewComponent>()
 
-    /** clientId of the iframe page we already seeded, see the VS Code `initializedClientId` handshake. */
-    private var initializedClientId: String? = null
+    /** clientIds of iframe pages we already seeded, see the VS Code `initializedClientId` handshake. */
+    private val initializedClientIds = mutableSetOf<String>()
 
     /** While now() is before this, editor scrolls are echoes of preview overview scrolls. */
     private var syncEditorToOverviewUntil = 0L
@@ -61,9 +67,21 @@ class SlidevPreviewService(private val project: Project) : Disposable {
                 return
             }
             workspace.previewMode = raw
-            initializedClientId = null
-            panel?.reloadWrapper()
+            initializedClientIds.clear()
+            panels.forEach(SlidevPreviewComponent::reloadWrapper)
         }
+
+    init {
+        installCaretListener()
+    }
+
+    fun registerPanel(panel: SlidevPreviewComponent) {
+        panels.add(panel)
+    }
+
+    fun unregisterPanel(panel: SlidevPreviewComponent) {
+        panels.remove(panel)
+    }
 
     private val syncEnabled: Boolean
         get() = SlidevSettings.getInstance(project).state.previewSync
@@ -73,7 +91,7 @@ class SlidevPreviewService(private val project: Project) : Disposable {
     // ------------------------------------------------------------- outgoing messages
 
     fun postToSlidev(type: String, payload: Map<String, Any?> = emptyMap()) {
-        panel?.postMessage(type, payload)
+        panels.forEach { it.postMessage(type, payload) }
     }
 
     fun navigateTo(no: Int, clicks: Int = LAST_CLICK) =
@@ -88,8 +106,8 @@ class SlidevPreviewService(private val project: Project) : Disposable {
         postToSlidev("navigate", mapOf("operation" to operation, "args" to args))
 
     fun refresh() {
-        initializedClientId = null
-        panel?.reloadWrapper()
+        initializedClientIds.clear()
+        panels.forEach(SlidevPreviewComponent::reloadWrapper)
     }
 
     /** Opens the slides in the system browser at the current slide, honoring `routerMode`. */
@@ -102,8 +120,8 @@ class SlidevPreviewService(private val project: Project) : Disposable {
 
     // ------------------------------------------------------------- editor -> preview
 
-    /** Application-wide caret listener, installed by the preview panel with itself as disposable. */
-    fun installCaretListener(disposable: Disposable) {
+    /** Application-wide caret listener, installed once so multiple panels don't duplicate messages. */
+    private fun installCaretListener() {
         com.intellij.openapi.editor.EditorFactory.getInstance().eventMulticaster.addCaretListener(
             object : CaretListener {
                 override fun caretPositionChanged(event: CaretEvent) {
@@ -115,12 +133,12 @@ class SlidevPreviewService(private val project: Project) : Disposable {
                     onCaretMoved(file.path, event.newPosition.line)
                 }
             },
-            disposable,
+            this,
         )
     }
 
     private fun onCaretMoved(path: String, line: Int) {
-        if (!syncEnabled) {
+        if (panels.isEmpty() || !syncEnabled) {
             return
         }
         val state = activeState() ?: return
@@ -173,10 +191,9 @@ class SlidevPreviewService(private val project: Project) : Disposable {
         )
         val clientId = data.get("clientId")?.takeIf { it.isJsonPrimitive }?.asString
 
-        // A new clientId means the iframe page just loaded: seed it with the editor position
+        // A new clientId means an iframe page just loaded: seed it with the editor position
         // instead of yanking the editor to wherever the page starts.
-        if (clientId != null && clientId != initializedClientId) {
-            initializedClientId = clientId
+        if (clientId != null && initializedClientIds.add(clientId)) {
             navState = newState
             val focused = focusedEditorSlideNo()
             if (syncEnabled && mode == Mode.SLIDE && focused != null && focused != no) {
@@ -223,7 +240,25 @@ class SlidevPreviewService(private val project: Project) : Disposable {
 
     private fun navigateToSource(filepath: String, line: Int, focus: Boolean) {
         val file = LocalFileSystem.getInstance().findFileByPath(filepath) ?: return
-        OpenFileDescriptor(project, file, line, 0).navigate(focus)
+        if (focus) {
+            OpenFileDescriptor(project, file, line, 0).navigate(true)
+            return
+        }
+        // Focus-less sync (preview arrows, overview scroll): move the caret in already-open
+        // editors directly. OpenFileDescriptor.navigate() would re-select a text editor for
+        // the file, flipping a preview-only split editor back to the markdown view.
+        var moved = false
+        for (fileEditor in FileEditorManager.getInstance(project).getEditors(file)) {
+            val editor = (fileEditor as? TextEditor)?.editor ?: continue
+            if (line < editor.document.lineCount) {
+                editor.caretModel.moveToLogicalPosition(LogicalPosition(line, 0))
+                editor.scrollingModel.scrollToCaret(ScrollType.MAKE_VISIBLE)
+                moved = true
+            }
+        }
+        if (!moved) {
+            OpenFileDescriptor(project, file, line, 0).navigate(false)
+        }
     }
 
     private fun focusedEditorSlideNo(): Int? {

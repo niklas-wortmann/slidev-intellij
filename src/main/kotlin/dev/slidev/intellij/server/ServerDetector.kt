@@ -62,7 +62,12 @@ object ServerDetector {
     }
 
     private fun fetch(url: String, timeoutMs: Long): String? = try {
-        val client = HttpClient.newBuilder().connectTimeout(Duration.ofMillis(timeoutMs)).build()
+        // HTTP/1.1 must be forced: the default HTTP/2 h2c upgrade request is swallowed by
+        // the websocket upgrade handling of Vite's dev server and never gets a response.
+        val client = HttpClient.newBuilder()
+            .version(HttpClient.Version.HTTP_1_1)
+            .connectTimeout(Duration.ofMillis(timeoutMs))
+            .build()
         val request = HttpRequest.newBuilder(URI.create(url)).timeout(Duration.ofMillis(timeoutMs)).GET().build()
         client.send(request, HttpResponse.BodyHandlers.ofString()).body()
     }

@@ -4,6 +4,18 @@ import com.intellij.testFramework.fixtures.BasePlatformTestCase
 
 class SlidevSettingsTest : BasePlatformTestCase() {
 
+    override fun tearDown() {
+        try {
+            // The light test project is reused between test classes; restore the defaults
+            // so glob-dependent tests elsewhere keep finding their fixtures.
+            SlidevSettings.getInstance(project).loadState(SlidevSettings.State())
+            SlidevWorkspaceState.getInstance(project).loadState(SlidevWorkspaceState.State())
+        }
+        finally {
+            super.tearDown()
+        }
+    }
+
     fun `test defaults match the VS Code extension`() {
         val state = SlidevSettings.getInstance(project).state
         assertEquals(3030, state.port)
@@ -35,6 +47,8 @@ class SlidevSettingsTest : BasePlatformTestCase() {
 
     fun `test workspace state round-trips through loadState`() {
         val workspace = SlidevWorkspaceState.getInstance(project)
+        // The light test project is reused between test classes; start from a clean state.
+        workspace.loadState(SlidevWorkspaceState.State())
         assertEmpty(workspace.state.entries)
         assertNull(workspace.state.activeEntry)
 

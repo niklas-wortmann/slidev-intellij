@@ -24,8 +24,10 @@ class SlidevProjectServiceTest : BasePlatformTestCase() {
     }
 
     fun `test shallowest slides md becomes the active project`() {
-        myFixture.addFileToProject("a/b/slides.md", "# Deep")
+        // Shallow file first: each file creation triggers an async rescan via the VFS listener,
+        // and the first pick is sticky — creating the deep file first makes this test flaky.
         myFixture.addFileToProject("a/slides.md", "# Shallow")
+        myFixture.addFileToProject("a/b/slides.md", "# Deep")
 
         service.rescanSync()
 

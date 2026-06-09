@@ -43,10 +43,14 @@
              legacy lang.documentationProvider registrations. -->
         <platform.backend.documentation.targetProvider
                 implementation="dev.slidev.intellij.editor.SlidevFrontmatterDocumentationTargetProvider"/>
+        <fileEditorProvider implementation="dev.slidev.intellij.ui.preview.SlidevSplitEditorProvider"/>
+        <fileIconProvider implementation="dev.slidev.intellij.ui.SlidevFileIconProvider"/>
     </extensions>
 
     <projectListeners>
         <listener class="dev.slidev.intellij.editor.SlidevAnnotationsRefresher"
+                  topic="dev.slidev.intellij.project.SlidevListener"/>
+        <listener class="dev.slidev.intellij.ui.SlidevFileIconRefresher"
                   topic="dev.slidev.intellij.project.SlidevListener"/>
     </projectListeners>
 

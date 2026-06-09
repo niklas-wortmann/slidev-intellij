@@ -24,9 +24,11 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.concurrent.ConcurrentHashMap
+import java.util.concurrent.atomic.AtomicBoolean
 
 /**
  * Starts, adopts, and stops one Slidev dev server per project, the counterpart of
@@ -36,6 +38,60 @@ import java.util.concurrent.ConcurrentHashMap
 class SlidevServerManager(private val project: Project, private val scope: CoroutineScope) {
 
     private val startJobs = ConcurrentHashMap<String, Job>()
+    private val watcherStarted = AtomicBoolean()
+
+    /**
+     * Periodically probes the configured port to adopt servers started outside the IDE and to
+     * release adopted ones that went away, like `useServerDetector` polling in the VS Code extension.
+     */
+    fun startWatcher() {
+        if (!watcherStarted.compareAndSet(false, true)) {
+            return
+        }
+        scope.launch(Dispatchers.IO) {
+            while (isActive) {
+                delay(WATCH_INTERVAL_MS)
+                watchOnce()
+            }
+        }
+    }
+
+    private fun watchOnce() {
+        val service = SlidevProjectService.getInstance(project)
+
+        // Release adopted servers that were stopped outside the IDE.
+        for (state in service.projects()) {
+            val port = state.port
+            if (state.detected && port != null && ServerDetector.probe(port)?.isSlidev != true) {
+                state.port = null
+                state.detected = false
+                state.compatMode = false
+                publishServerChanged(state)
+            }
+        }
+
+        val configured = SlidevSettings.getInstance(project).state.port
+        if (service.projects().any { it.port == configured }) {
+            return
+        }
+        val detection = ServerDetector.probe(configured)?.takeIf { it.isSlidev } ?: return
+        // The `slidev:entry` meta tells which deck the server serves; without it (compat
+        // mode servers) assume the active project.
+        val state = when (val entry = detection.entry?.replace('\\', '/')) {
+            null -> service.activeState()
+            else -> service.projects().firstOrNull { it.entryPath == entry }
+        } ?: return
+        if (state.serverRunning || startJobs[state.entryPath]?.isActive == true) {
+            return
+        }
+        state.port = configured
+        state.detected = true
+        state.compatMode = detection.compatMode
+        if (detection.compatMode) {
+            notify(SlidevBundle.message("notification.compat.mode", configured), NotificationType.WARNING)
+        }
+        publishServerChanged(state)
+    }
 
     fun start(state: SlidevProjectState) {
         if (state.serverRunning) {
@@ -177,6 +233,7 @@ class SlidevServerManager(private val project: Project, private val scope: Corou
     companion object {
         private const val POLL_ATTEMPTS = 100
         private const val POLL_INTERVAL_MS = 500L
+        private const val WATCH_INTERVAL_MS = 2000L
 
         @JvmStatic
         fun getInstance(project: Project): SlidevServerManager = project.service()
